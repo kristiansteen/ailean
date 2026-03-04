@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AILEAN - Downloads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="assets/css/ailean.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background -->
+    <div class="background-wrapper fixed">
+        <img src="assets/images/ailean-burst-precision.jpg" alt="Background" class="hero-bg-image">
+        <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AILEAN</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="form-container">
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <div class="lang-btn active" onclick="setLanguage('da')">DA</div>
+                <div class="lang-btn" onclick="setLanguage('en')">EN</div>
+            </div>
+
+            <div class="form-header">
+                <h1 data-lang="da">Downloads</h1>
+                <h1 data-lang="en">Downloads</h1>
+
+                <p class="subtitle" data-lang="da">Få adgang til vores indsigt og værktøjer</p>
+                <p class="subtitle" data-lang="en">Get access to our insights and tools</p>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <form id="downloadForm">
+                <div class="form-group">
+                    <label>
+                        <span data-lang="da">Navn *</span>
+                        <span data-lang="en">Name *</span>
+                    </label>
+                    <input type="text" id="name" name="name" required autocomplete="name" placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <span data-lang="da">Email *</span>
+                        <span data-lang="en">Email *</span>
+                    </label>
+                    <input type="email" id="email" name="email" required autocomplete="email"
+                        placeholder="john@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <span data-lang="da">Telefon (Valgfrit)</span>
+                        <span data-lang="en">Phone (Optional)</span>
+                    </label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+45 12 34 56 78">
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <span data-lang="da">Vælg dokumenter</span>
+                        <span data-lang="en">Select documents</span>
+                    </label>
+                    <div id="artifacts-list" class="artifacts-container">
+                        <div style="color: rgba(255,255,255,0.4); padding: 1rem; text-align: center;">Loading
+                            artifacts...</div>
+                    </div>
+                </div>
+
+                <div class="terms">
+                    <span data-lang="da">Ved at indsende denne formular accepterer du AILEAN's <a
+                            href="ailean-privacy.html">Privatlivspolitik</a>.</span>
+                    <span data-lang="en">By submitting this form you agree to AILEAN's <a
+                            href="ailean-privacy.html">Privacy
+                            Policy</a>.</span>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span data-lang="da">Hent</span>
+                    <span data-lang="en">Download</span>
+                </button>
+            </form>
+
+            <div id="downloadSection" class="download-links">
+                <h3 style="color: var(--white); margin-bottom: 1rem; font-size: 1.2rem;">
+                    <span data-lang="da">Dine downloads</span>
+                    <span data-lang="en">Your downloads</span>
+                </h3>
+                <div id="linksContainer"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AILEAN.</p>
+        </div>
+    </footer>
+
+    <script>
+        let availableArtifacts = [];
+        let currentLang = 'da';
+
+        // Language Toggle Logic
+        function setLanguage(lang) {
+            currentLang = lang;
+
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === lang) btn.classList.add('active');
+            });
+
+            // Update text elements
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.tagName === 'SPAN' || el.tagName === 'A') {
+                    el.style.display = el.getAttribute('data-lang') === lang ? 'inline' : 'none';
+                } else {
+                    el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
+                }
+            });
+        }
+
+        // Initialize Language
+        setLanguage('da');
+
+        // Load artifacts from JSON or use defaults
+        async function loadArtifacts() {
+            const container = document.getElementById('artifacts-list');
+
+            // Default artifacts for fallback
+            const defaultArtifacts = [
+                {
+                    "id": "whitepaper-ai-lean",
+                    "title": "AILEAN White Paper - Why AI rhymes with LEAN",
+                    "filename": "AILEAN White Paper.pdf"
+                },
+                {
+                    "id": "ebook-perfect-processes",
+                    "title": "The e-Book - \"Perfect processes\" - On Lean and Six Sigma",
+                    "filename": "Perfect Processes_ENG.pdf"
+                }
+            ];
+
+            try {
+                const response = await fetch('assets/artifacts.json');
+                if (!response.ok) throw new Error('Failed to load artifacts');
+
+                availableArtifacts = await response.json();
+            } catch (error) {
+                console.warn('Could not load external artifacts, using defaults.', error);
+                availableArtifacts = defaultArtifacts;
+            }
+
+            if (availableArtifacts.length === 0) {
+                container.innerHTML = '<div style="color: rgba(255,255,255,0.4);">No artifacts available.</div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            availableArtifacts.forEach(artifact => {
+                const item = document.createElement('div');
+                item.className = 'artifact-item';
+                item.innerHTML = `
+                    <input type="checkbox" id="${artifact.id}" name="artifacts" value="${artifact.filename}">
+                    <label for="${artifact.id}">${artifact.title}</label>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Initialize Artifacts
+        loadArtifacts();
+
+        // Handle form submission
+        document.getElementById('downloadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Get selected artifacts
+            const selectedFilenames = [];
+            document.querySelectorAll('input[name="artifacts"]:checked').forEach(checkbox => {
+                selectedFilenames.push(checkbox.value);
+            });
+
+            if (selectedFilenames.length === 0) {
+                const msgDa = 'Vælg venligst mindst ét dokument.';
+                const msgEn = 'Please select at least one document.';
+                showError(currentLang === 'da' ? msgDa : msgEn);
+                return;
+            }
+
+            // Disable button & Show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span> ...';
+            hideMessages();
+
+            // Get API Base URL
+            const API_BASE_URL = window.location.origin.includes('localhost')
+                ? 'http://localhost:3001/api/v1'
+                : '/api/v1';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/leads`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        selectedDocuments: selectedFilenames
+                    }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to submit request');
+                }
+
+                // Show success
+                const successDa = 'Tak for din interesse! Dine downloads starter nu, og vi har sendt dig en velkomstmail.';
+                const successEn = 'Thank you for your interest! Your downloads are starting now, and we have sent you a welcome email.';
+                showSuccess(currentLang === 'da' ? successDa : successEn);
+
+                document.getElementById('downloadForm').style.display = 'none';
+
+                // Trigger downloads
+                selectedFilenames.forEach((filename, index) => {
+                    setTimeout(() => {
+                        const link = document.createElement('a');
+                        link.href = `assets/documents/${filename}`;
+                        link.download = filename;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }, index * 800);
+                });
+
+                // Show manual links
+                showDownloadLinks(selectedFilenames);
+
+            } catch (error) {
+                console.error('Lead capture error:', error);
+                const errorDa = 'Der opstod en fejl. Prøv venligst igen senere.';
+                const errorEn = 'An error occurred. Please try again later.';
+                showError(currentLang === 'da' ? errorDa : errorEn);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = currentLang === 'da' ? 'Hent' : 'Download';
+            }
+        });
+
+        function showDownloadLinks(filenames) {
+            const section = document.getElementById('downloadSection');
+            const container = document.getElementById('linksContainer');
+            container.innerHTML = '';
+
+            filenames.forEach(filename => {
+                const artifact = availableArtifacts.find(a => a.filename === filename);
+                const title = artifact ? artifact.title : filename;
+
+                const link = document.createElement('a');
+                link.href = `assets/documents/${filename}`;
+                link.className = 'download-link';
+                link.setAttribute('download', '');
+                link.target = '_blank';
+                link.innerHTML = `
+                    <span class="download-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                    </span>
+                    <span>${title}</span>
+                `;
+                container.appendChild(link);
+            });
+
+            section.style.display = 'block';
+
+            // Re-apply language visibility for the download section
+            setLanguage(currentLang);
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        function hideMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

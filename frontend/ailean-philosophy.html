@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AILEAN - Our AI philosophy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="assets/css/ailean.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AILEAN</div>
+            <div class="nav-right">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang-switch="da">DA</button>
+                    <button class="lang-btn" data-lang-switch="en">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background-wrapper">
+            <img src="assets/images/ailean-burst-vision.jpg" alt="Roadmap 2025 Backdrop" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-category">Roadmap 2025</div>
+
+                <h1 data-lang="da">AI-filosofi</h1>
+                <h1 data-lang="en">AI Philosophy</h1>
+
+                <div class="hero-description">
+                    <p data-lang="da">Vi hjælper vores kunder med at realisere potentialet i AI i deres eksisterende
+                        forretningsprocesser.</p>
+                    <p data-lang="en">We help our customers realize the potential of AI in their existing business
+                        processes</p>
+                </div>
+
+                <a href="ailean-downloads.html" class="cta-button">
+                    <span data-lang="da">Hent whitepaper</span>
+                    <span data-lang="en">Download whitepaper</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-tabs">
+            <a href="ailean-philosophy.html" class="tab-item active">
+                <span data-lang="da"> AI-filosofi</span>
+                <span data-lang="en"> AI philosophy</span>
+            </a>
+            <a href="ailean-background.html" class="tab-item">
+                <span data-lang="da">Baggrund</span>
+                <span data-lang="en">background</span>
+            </a>
+            <a href="ailean-cases.html" class="tab-item">
+                <span data-lang="da">Cases</span>
+                <span data-lang="en">Cases</span>
+            </a>
+            <a href="ailean-blitz.html" class="tab-item">
+                <span data-lang="da">En uges "blitz"</span>
+                <span data-lang="en">One week "blitz"</span>
+            </a>
+        </div>
+
+        <div class="playback-controls">
+            <div class="control-btn">←</div>
+            <div class="control-btn">→</div>
+        </div>
+    </section>
+
+    <!-- AI Philosophy Principles Section -->
+    <section class="text-section" style="padding: 8rem 0; background: var(--dark-grey);">
+        <div class="container">
+            <div class="section-header" style="max-width: 860px; margin: 0 auto 1rem auto;">
+                <h2 data-lang="da">AI-filosofi</h2>
+                <h2 data-lang="en">AI Philosophy</h2>
+            </div>
+            <p style="max-width: 860px; margin: 0 auto 3.5rem; color: rgba(255,255,255,0.45); font-size: 0.9rem; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;"
+                data-lang="da">Baseret på universelle Lean-principper</p>
+            <p style="max-width: 860px; margin: 0 auto 3.5rem; color: rgba(255,255,255,0.45); font-size: 0.9rem; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;"
+                data-lang="en">Based on universal Lean principles</p>
+
+            <!-- Accordion -->
+            <div style="max-width: 860px; margin: 0 auto;" id="philosophy-accordion">
+
+                <!-- Principle 1: Hyper-personalization -->
+                <div class="phil-item" onclick="togglePhil(this)"
+                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    <div class="phil-header"
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        <span
+                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">01</span>
+                        <div style="flex: 1;">
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="da">#Kundens_stemme</div>
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="en">#voice_of_customer</div>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="da">AI som motor for hyper-personalisering</h3>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="en">AI as the engine for hyper-personalization</h3>
+                        </div>
+                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5"
+                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </div>
+                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="padding-top: 1.5rem;">
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="da">AI gør det muligt at bevæge sig fra segmentering til reel
+                                    1-til-1-tilpasning i realtid. Hvor klassisk personalisering bygger på statiske
+                                    regler og historiske data, kan AI kontinuerligt kombinere adfærd, kontekst og
+                                    intention og omsætte det til handling. Resultatet er oplevelser, processer og
+                                    beslutninger, der tilpasser sig den enkelte kunde, en medarbejder eller en specifik
+                                    systemkonfiguration.<br><br>Hyper-personalisering opstår, når AI ikke blot anbefaler
+                                    indhold eller produkter, men aktivt former flow, prioriteringer og interaktioner på
+                                    tværs af kanaler og kundekontaktpunkter. Det kræver et stærkt datafundament og et
+                                    end-to-end-perspektiv, men når det lykkes, skaber AI differentierede oplevelser,
+                                    højere relevans og markant større effekt end traditionel personalisering.</p>
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="en">AI makes it possible to move from broad segmentation to true 1-to-1
+                                    adaptation in real-time. While classic personalization relies on static rules and
+                                    historical data, AI can continuously combine behavior, context, and intent and
+                                    translate them into action. The result is experiences, processes, and decisions that
+                                    adapt to the individual customer, employee, or specific system
+                                    configuration.<br><br>Hyper-personalization occurs when AI does not merely recommend
+                                    content or products, but actively shapes flow, priorities, and interactions across
+                                    all channels and customer touchpoints. This requires a strong data foundation and an
+                                    end-to-end perspective, but when successful, AI creates differentiated experiences,
+                                    higher relevance, and significantly greater impact than traditional personalization.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principle 2: Value Stream Mapping -->
+                <div class="phil-item" onclick="togglePhil(this)"
+                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    <div class="phil-header"
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        <span
+                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">02</span>
+                        <div style="flex: 1;">
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="da">#værdistrømskortlægning</div>
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="en">#value_stream_mapping</div>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="da">AI gør værdistrømmen synlig — og spildet umuligt at ignorere</h3>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="en">AI makes value stream mapping more precise</h3>
+                        </div>
+                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5"
+                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </div>
+                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="padding-top: 1.5rem;">
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="da">Vi bruger AI til at afdække, hvor værdien faktisk skabes, og hvor den
+                                    forsvinder. Ved at analysere digitale spor fra forretningssystemer kan AI kortlægge
+                                    den faktiske værdistrøm end-to-end og synliggøre, hvor tid, kvalitet og kapacitet
+                                    tabes gennem ventetid, gentagelser, overleveringer og unødvendige
+                                    beslutningspunkter.<br><br>I stedet for et statisk øjebliksbillede baseret på
+                                    antagelser, giver AI en datadrevet forståelse af, hvilke aktiviteter der reelt
+                                    skaber værdi — og hvilke der ikke gør. Det gør det muligt systematisk at fjerne
+                                    spild, prioritere forbedringer med størst effekt og designe et flow, der
+                                    understøtter både Kaizen-forbedringer og mere radikale Kaikaku-spring.</p>
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="en">AI makes the value stream visible — and the waste impossible to
+                                    ignore. We use AI to uncover where value is actually created and where it
+                                    disappears. By analyzing digital footprints from business systems, AI can map the
+                                    actual end-to-end value stream and visualize where time, quality, and capacity are
+                                    lost through waiting times, rework, handovers, and unnecessary decision
+                                    points.<br><br>Instead of a static snapshot based on assumptions, AI provides a
+                                    data-driven understanding of which activities truly create value — and which do not.
+                                    This makes it possible to systematically eliminate waste, prioritize improvements
+                                    with the greatest impact, and design a flow that supports both incremental Kaizen
+                                    improvements and more radical Kaikaku leaps.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principle 3: End-to-End -->
+                <div class="phil-item" onclick="togglePhil(this)"
+                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    <div class="phil-header"
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        <span
+                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">03</span>
+                        <div style="flex: 1;">
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="da">#skab_flow</div>
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="en">#create_flow</div>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="da">End-2-End perspektiv skaber resultatet</h3>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="en">An End-to-End perspective creates the result</h3>
+                        </div>
+                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5"
+                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </div>
+                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="padding-top: 1.5rem;">
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="da">AI indfrier ikke løftet om tidsbesparelser eller øget kvalitet, hvis
+                                    ikke man anlægger et end-2-end perspektiv. Det skaber ikke værdi at begynde at lave
+                                    mødereferater ved at sætte AI til at transkribere møder, hvis man ikke anvender den
+                                    indsamlede data. Mao. skaber det ikke værdi at opfinde en process, som man kan
+                                    fuldautomatisere, hvis der aldrig var behov for processen i første omgang.<br><br>I
+                                    stedet skal der tænkes end-2-end. Hvor kunne den indsamlede data skabe værdi? Er der
+                                    andre møder, hvor der er behov for et beslutningsreferat fra et tidligere møde?
+                                    Kunne man etablere en mødestruktur og en governance model, der var baseret på at
+                                    møderne informerer hinanden 'just in time'.</p>
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="en">AI will not deliver on its promise of time savings or increased
+                                    quality unless an end-to-end perspective is applied. There is no value in using AI
+                                    to transcribe meetings if the collected data is never utilized. In other words,
+                                    there is no value in inventing a process that can be fully automated if there was
+                                    never a need for that process in the first place.<br><br>Instead, we must think
+                                    end-to-end. Where could the collected data actually create value? Are there other
+                                    meetings that require decision logs from previous sessions? Could we establish a
+                                    meeting structure and a governance model based on meetings informing each other
+                                    'just-in-time'?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principle 4: Establish Pull -->
+                <div class="phil-item" onclick="togglePhil(this)"
+                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    <div class="phil-header"
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        <span
+                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">04</span>
+                        <div style="flex: 1;">
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="da">#etabler_pull</div>
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="en">#establish_pull</div>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="da">Nye muligheder for overvågning og etablering af signaler</h3>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="en">New opportunities for monitoring and establishing signals</h3>
+                        </div>
+                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5"
+                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </div>
+                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="padding-top: 1.5rem;">
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="da">AI gør det muligt at etablere pull uden at skabe bunker mellem
+                                    procestrin. Ved kontinuerligt at overvåge kapacitet og gennemløbstid kan AI styre
+                                    frigivelsen af arbejde, så hvert procestrin kun modtager opgaver, når der er reel
+                                    evne til at forbruge dem.<br><br>I stedet for at optimere lokalt og producere til
+                                    kø, håndhæver AI dynamiske WIP-grænser, prioriterer færdiggørelse frem for
+                                    igangsætning og synkroniserer flow på tværs af værdistrømmen. Resultatet er færre
+                                    ventetider, kortere lead time og et stabilt pull-flow, hvor problemer bliver
+                                    synlige, når de opstår — ikke gemt i bunker mellem procestrin.</p>
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="en">AI makes it possible to establish pull without creating piles between
+                                    process steps. By continuously monitoring capacity and throughput time, AI can
+                                    control the release of work, ensuring that each process step only receives tasks
+                                    when there is a genuine capacity to consume them.<br><br>Instead of local
+                                    optimization and producing for a queue, AI enforces dynamic WIP limits, prioritizes
+                                    completion over initiation, and synchronizes flow across the entire value stream.
+                                    The result is reduced waiting times, shorter lead times, and a stable pull-flow
+                                    where problems become visible as they arise — rather than being hidden in piles
+                                    between process steps.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principle 5: Kaizen -->
+                <div class="phil-item" onclick="togglePhil(this)"
+                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    <div class="phil-header"
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        <span
+                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">05</span>
+                        <div style="flex: 1;">
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="da">#kaizen</div>
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="en">#kaizen</div>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="da">Genbesøg idékataloget</h3>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="en">Revisiting the Idea Catalog</h3>
+                        </div>
+                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5"
+                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </div>
+                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="padding-top: 1.5rem;">
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="da">AI har flyttet grænsen for, hvad der er high effort — high impact. Vi
+                                    hjælper jer med at genbesøge jeres Kaizen-idéer og realisere de resultater Lean
+                                    tidligere lovede.<br><br>Kig på jeres processer med nye briller og få indløst nogle
+                                    af de forventninger I havde til LEAN. En hel række af de ideer, som kommer frem
+                                    gennem arbejdet med LEAN viser sig at være besværlige at implementere. Enten kræver
+                                    de et særligt system eller en bunke manuelt arbejde. Med AI kan man bygge disse
+                                    systemer og man kan få AI til at udføre en række af de manuelle opgaver. På den måde
+                                    bliver en række af de ideer, som man kom frem under proceskortlægningen, mere
+                                    tilgængelige og sniger sig over barren for hvad vi betragter som high effort.</p>
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="en">AI has shifted the boundary of what we consider "high effort — high
+                                    impact." We help you revisit your Kaizen ideas and realize the results that Lean
+                                    previously promised.<br><br>Look at your processes through a new lens and fulfill
+                                    the expectations you originally had for Lean. A wide range of ideas that emerge
+                                    through Lean initiatives often prove difficult to implement — either they require a
+                                    specialized system or a mountain of manual labor. With AI, you can build these
+                                    systems and have AI perform many of those manual tasks. In this way, ideas generated
+                                    during your process mapping become more accessible, sliding under the bar of what
+                                    was previously categorized as "high effort."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principle 6: Kaikaku -->
+                <div class="phil-item" onclick="togglePhil(this)"
+                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    <div class="phil-header"
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        <span
+                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">06</span>
+                        <div style="flex: 1;">
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="da">#kaikaku</div>
+                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                                data-lang="en">#kaikaku</div>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="da">Radikal transformation</h3>
+                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
+                                data-lang="en">Radical transformation</h3>
+                        </div>
+                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5"
+                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </div>
+                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="padding-top: 1.5rem;">
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="da">AI skaber først reel værdi, når infrastruktur, data, processer og
+                                    ledelse hænger sammen. Vi hjælper organisationer med at flytte AI fra pilot til
+                                    varig konkurrencefordel.<br><br>Når inkrementelle forbedringer ikke længere er nok,
+                                    eller når ny teknologi gør det muligt at springe hele procestrin over, kræver det et
+                                    fundamentalt skift i måden organisationen tænker, beslutter og arbejder på. Succes
+                                    med AI handler ikke om modeller, men om organisationens evne til at omsætte
+                                    teknologi til beslutninger og handling i drift. De virksomheder, der skaber reel
+                                    AI-impact, investerer målrettet i et solidt fundament: en skalerbar
+                                    AI-infrastruktur, data der er struktureret og processer der er redesignet — ikke
+                                    blot automatiseret. Når AI behandles som kritisk forretningsinfrastruktur frem for
+                                    et teknologiprojekt, transformeres hele organisationen langsomt imod en varig
+                                    konkurrencefordel.</p>
+                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0;"
+                                    data-lang="en">AI only creates real value when infrastructure, data, processes, and
+                                    leadership are interconnected. We help organizations move AI from pilot projects to
+                                    lasting competitive advantage.<br><br>When incremental improvements are no longer
+                                    enough, or when new technology makes it possible to skip entire process steps, it
+                                    requires a fundamental shift in the way the organization thinks, decides, and works.
+                                    Success with AI is not about models; it is about the organization's ability to
+                                    translate technology into decisions and operational action. The companies that
+                                    create real AI impact invest purposefully in a solid foundation: a scalable AI
+                                    infrastructure, structured data, and redesigned processes — not just automated ones.
+                                    When AI is treated as critical business infrastructure rather than a technology
+                                    project, the entire organization gradually transforms toward a lasting competitive
+                                    advantage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /accordion -->
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AILEAN.</p>
+        </div>
+    </footer>
+
+    <script>
+        function togglePhil(item) {
+            // Close all other items
+            document.querySelectorAll('.phil-item').forEach(el => {
+                if (el !== item) el.classList.remove('open');
+            });
+            // Toggle clicked item
+            item.classList.toggle('open');
+        }
+
+        const htmlElement = document.documentElement;
+        const langButtons = document.querySelectorAll('.lang-btn');
+        htmlElement.setAttribute('lang', 'da');
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang-switch');
+                htmlElement.setAttribute('lang', lang);
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                if (lang === 'da') {
+                    document.title = 'AILEAN - Vision 2025';
+                } else {
+                    document.title = 'AILEAN - Vision 2025';
+                }
+            });
+        });
+
+        // Playback Controls Navigation
+        const pages = [
+            'ailean-philosophy.html',
+            'ailean-background.html',
+            'ailean-cases.html',
+            'ailean-blitz.html'
+        ];
+        const currentPage = window.location.pathname.split('/').pop() || 'ailean-philosophy.html';
+        const currentIndex = pages.indexOf(currentPage) === -1 ? 0 : pages.indexOf(currentPage);
+
+        document.querySelectorAll('.control-btn').forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+                if (btn.textContent === '←') {
+                    const prevIndex = (currentIndex - 1 + pages.length) % pages.length;
+                    window.location.href = pages[prevIndex];
+                } else if (btn.textContent === '→') {
+                    const nextIndex = (currentIndex + 1) % pages.length;
+                    window.location.href = pages[nextIndex];
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

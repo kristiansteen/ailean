@@ -213,13 +213,25 @@
             submitBtn.innerHTML = '<span class="spinner"></span> ...';
             hideMessages();
 
-            // Get API Base URL
-            const API_BASE_URL = window.location.origin.includes('localhost')
-                ? 'http://localhost:3001/api/v1'
-                : '/api/v1';
+            // 1. ALWAYS trigger downloads immediately — this is the primary action
+            selectedFilenames.forEach((filename, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = `assets/documents/${filename}`;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, index * 800);
+            });
 
+            // Hide form and show download links right away
+            document.getElementById('downloadForm').style.display = 'none';
+            showDownloadLinks(selectedFilenames);
+
+            // 2. Send confirmation email via API (best-effort, does not block downloads)
             try {
-                const response = await fetch(`${API_BASE_URL}/leads`, {
+                const response = await fetch('/api/v1/leads', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -232,38 +244,23 @@
                     }),
                 });
 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Failed to submit request');
+                if (response.ok) {
+                    // Email sent — show enhanced success
+                    const successDa = 'Tak for din interesse! Dine downloads er startet, og vi har sendt dig en bekræftelsesmail.';
+                    const successEn = 'Thank you for your interest! Your downloads have started, and we have sent you a confirmation email.';
+                    showSuccess(currentLang === 'da' ? successDa : successEn);
+                } else {
+                    // API error — still show success for downloads
+                    const successDa = 'Tak for din interesse! Dine downloads er startet.';
+                    const successEn = 'Thank you for your interest! Your downloads have started.';
+                    showSuccess(currentLang === 'da' ? successDa : successEn);
                 }
-
-                // Show success
-                const successDa = 'Tak for din interesse! Dine downloads starter nu, og vi har sendt dig en velkomstmail.';
-                const successEn = 'Thank you for your interest! Your downloads are starting now, and we have sent you a welcome email.';
-                showSuccess(currentLang === 'da' ? successDa : successEn);
-
-                document.getElementById('downloadForm').style.display = 'none';
-
-                // Trigger downloads
-                selectedFilenames.forEach((filename, index) => {
-                    setTimeout(() => {
-                        const link = document.createElement('a');
-                        link.href = `assets/documents/${filename}`;
-                        link.download = filename;
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }, index * 800);
-                });
-
-                // Show manual links
-                showDownloadLinks(selectedFilenames);
-
             } catch (error) {
-                console.error('Lead capture error:', error);
-                const errorDa = 'Der opstod en fejl. Prøv venligst igen senere.';
-                const errorEn = 'An error occurred. Please try again later.';
-                showError(currentLang === 'da' ? errorDa : errorEn);
+                // Network error — still show success for downloads
+                console.warn('Could not send confirmation email:', error);
+                const successDa = 'Tak for din interesse! Dine downloads er startet.';
+                const successEn = 'Thank you for your interest! Your downloads have started.';
+                showSuccess(currentLang === 'da' ? successDa : successEn);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = currentLang === 'da' ? 'Hent' : 'Download';

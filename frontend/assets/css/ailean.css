@@ -1025,3 +1025,50 @@ footer p {
     opacity: 0.7;
     font-size: 0.9rem;
 }
+
+/* =========================================
+   12. Powered by AILEAN Badge
+   ========================================= */
+.powered-by-badge {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 18px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.powered-by-badge:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background: #ffffff;
+}
+
+.powered-by-badge span:first-child {
+    font-size: 11px;
+    font-weight: 700;
+    color: #5a5c6e;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.powered-by-badge .lean-logo {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'DM Sans', sans-serif;
+}

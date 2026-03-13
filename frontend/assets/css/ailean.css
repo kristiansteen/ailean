@@ -1072,3 +1072,167 @@ footer p {
     background-clip: text;
     font-family: 'DM Sans', sans-serif;
 }
+
+/* =========================================
+   13. Section Background Variants
+   ========================================= */
+.bg-alt-1 { background: #07090a !important; }
+.bg-alt-2 { background: #080b07 !important; }
+.bg-alt-3 { background: #0f1214 !important; }
+.bg-alt-4 { background: #0b0e10 !important; }
+.bg-alt-5 { background: #090e0b !important; }
+.bg-alt-6 { background: #08100e !important; }
+
+/* =========================================
+   14. Blitz Timeline — Responsive
+   ========================================= */
+.timeline-day-num {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: var(--primary);
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .timeline-container {
+        padding-left: 3rem !important;
+        max-width: 100% !important;
+    }
+
+    .timeline-line {
+        left: 0.75rem !important;
+        transform: none !important;
+    }
+
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+
+    .timeline-item .content-box {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .timeline-dot {
+        left: 0.75rem !important;
+        position: absolute !important;
+        top: 1.5rem !important;
+    }
+
+    .timeline-day-num {
+        display: none;
+    }
+}
+
+/* =========================================
+   15. API Endpoint Rows — Responsive
+   ========================================= */
+.endpoint-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+    flex-wrap: wrap;
+}
+
+.endpoint-row .endpoint-desc {
+    margin-left: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+@media (max-width: 640px) {
+    .endpoint-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+
+    .endpoint-row .endpoint-desc {
+        margin-left: 0;
+        white-space: normal;
+        font-size: 0.75rem !important;
+        color: rgba(255,255,255,0.4) !important;
+    }
+}
+
+/* =========================================
+   16. Extra Small Devices (480px)
+   ========================================= */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    nav {
+        padding: 1.5rem 0;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .hero {
+        padding-bottom: 120px;
+    }
+
+    .hero-content {
+        padding-left: 1rem;
+        border-left-width: 3px;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .hero-tabs {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .tab-item {
+        font-size: 0.7rem;
+    }
+
+    .death-section,
+    .value-section,
+    .visual-section,
+    .blitz-section,
+    .cases-section,
+    .text-section,
+    .expertise-section {
+        padding: 4rem 0 !important;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .comparison-column {
+        padding: 1.25rem;
+    }
+
+    .timeline-container {
+        padding-left: 2.5rem !important;
+    }
+
+    .form-container {
+        padding: 1.25rem;
+    }
+
+    footer {
+        padding: 2rem 0;
+    }
+}

@@ -923,11 +923,17 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         transform: none;
-        /* Reset transform centered */
+        /* Fade right edge to signal scrollability */
+        -webkit-mask-image: linear-gradient(to right, black 0, black calc(100% - 2.5rem), transparent 100%);
+        mask-image: linear-gradient(to right, black 0, black calc(100% - 2.5rem), transparent 100%);
     }
 
     .hero-tabs::-webkit-scrollbar {
         display: none;
+    }
+
+    .hero {
+        min-height: 500px;
     }
 
     .tab-item {
@@ -1234,5 +1240,30 @@ footer p {
 
     footer {
         padding: 2rem 0;
+    }
+
+    /* Hero fixes */
+    .hero h1 {
+        line-height: 1.05;
+    }
+
+    .playback-controls {
+        display: none;
+    }
+
+    /* Section typography */
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    /* Accordion body: remove the heavy 5.25rem left indent */
+    .phil-body > div {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .phil-header {
+        padding: 1.25rem 1rem !important;
+        gap: 0.75rem !important;
     }
 }

@@ -876,31 +876,41 @@ input:not([type="checkbox"]):focus {
    10. Utilities & Language
    ========================================= */
 [data-lang] {
-    display: none;
+    display: none !important;
 }
 
 /* Default / Danish active */
 html:not([lang="en"]) [data-lang="da"] {
-    display: block;
+    display: block !important;
 }
 
 html:not([lang="en"]) span[data-lang="da"],
 html:not([lang="en"]) a[data-lang="da"] {
-    display: inline;
+    display: inline !important;
+}
+
+html:not([lang="en"]) h3[data-lang="da"],
+html:not([lang="en"]) h4[data-lang="da"] {
+    display: inline-block !important;
 }
 
 /* English active */
 html[lang="en"] [data-lang="en"] {
-    display: block;
+    display: block !important;
 }
 
 html[lang="en"] span[data-lang="en"],
 html[lang="en"] a[data-lang="en"] {
-    display: inline;
+    display: inline !important;
+}
+
+html[lang="en"] h3[data-lang="en"],
+html[lang="en"] h4[data-lang="en"] {
+    display: inline-block !important;
 }
 
 html[lang="en"] [data-lang="da"] {
-    display: none;
+    display: none !important;
 }
 
 /* Complex comparison item handling */

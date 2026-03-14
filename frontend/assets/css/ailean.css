@@ -243,8 +243,80 @@ nav .container {
 }
 
 /* =========================================
-   6. Hero Tabs
+   6. Hero Tabs + Mobile Nav Menu
    ========================================= */
+
+/* Burger button — hidden on desktop */
+.nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1100;
+}
+.nav-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Full-screen mobile nav overlay */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.97);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.mobile-nav.open { display: flex; }
+
+.mobile-nav-item {
+    color: rgba(255,255,255,0.55);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+    width: 280px;
+    text-align: center;
+}
+.mobile-nav-item:hover,
+.mobile-nav-item.active {
+    color: var(--white);
+    background: rgba(101,196,52,0.08);
+}
+.mobile-nav-item.active {
+    color: var(--primary);
+    border: 1px solid rgba(101,196,52,0.3);
+}
+
+/* Lang switcher inside mobile menu */
+.mobile-nav-lang {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 280px;
+    justify-content: center;
+}
+
 .hero-tabs {
     position: absolute;
     bottom: 3rem;
@@ -888,6 +960,7 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
 @media (max-width: 768px) {
     /* ── Layout ─────────────────────────── */
     .nav-links { display: none; }
+    .nav-burger { display: flex; }
 
     .container { padding: 0 1.25rem; }
 
@@ -939,26 +1012,9 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
         justify-content: center;
     }
 
-    /* ── Hero tabs — centered, wrapping ─── */
-    .hero-tabs {
-        bottom: 1.25rem;
-        left: 0;
-        width: 100%;
-        transform: none;
-        padding: 0 1.25rem;
-        gap: 1.25rem 2rem;          /* row-gap col-gap */
-        justify-content: center;
-        flex-wrap: wrap;
-        white-space: normal;
-        -webkit-mask-image: none;
-        mask-image: none;
-    }
-
-    .tab-item {
-        font-size: 0.78rem;
-        letter-spacing: 0.08em;
-        padding-bottom: 0.4rem;
-    }
+    /* ── Hero tabs — hidden on mobile (use burger menu instead) */
+    .hero-tabs { display: none; }
+    .tab-item { font-size: 0.78rem; }
 
     /* ── Hide decorative controls ────────── */
     .playback-controls { display: none; }
@@ -983,12 +1039,19 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
         font-size: 1rem;
     }
 
-    /* ── Cards ──────────────────────────── */
+    /* ── Cards — all two-column grids stack ─ */
     .comparison-column { padding: 1.5rem; }
+    .comparison-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
 
     .visual-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    /* Prevent auto-fit minmax grids from overflowing on narrow screens */
+    [style*="minmax(260px"], [style*="minmax(280px"], [style*="minmax(300px"],
+    [style*="minmax(400px"] {
+        grid-template-columns: 1fr !important;
     }
 
     .form-container { padding: 1.5rem; }

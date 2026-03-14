@@ -14,14 +14,41 @@
     <nav>
         <div class="container">
             <div class="logo">AILEAN</div>
-            <div class="nav-right">
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang-switch="da">DA</button>
-                    <button class="lang-btn" data-lang-switch="en">EN</button>
-                </div>
+        <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang-switch="da">DA</button>
+                <button class="lang-btn" data-lang-switch="en">EN</button>
             </div>
+            <button class="nav-burger" id="navBurger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
         </div>
     </nav>
+
+    <!-- Mobile nav overlay -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-item">
+            <span data-lang="da">Hjem</span>
+            <span data-lang="en">Home</span>
+        </a>
+        <a href="ailean-philosophy.html" class="mobile-nav-item active">
+            <span data-lang="da">AI-filosofi</span>
+            <span data-lang="en">AI philosophy</span>
+        </a>
+        <a href="ailean-background.html" class="mobile-nav-item">
+            <span data-lang="da">Baggrund</span>
+            <span data-lang="en">Background</span>
+        </a>
+        <a href="ailean-cases.html" class="mobile-nav-item">
+            <span data-lang="da">Cases</span>
+            <span data-lang="en">Cases</span>
+        </a>
+        <div class="mobile-nav-lang">
+            <button class="lang-btn" data-lang-switch="da">DA</button>
+            <button class="lang-btn" data-lang-switch="en">EN</button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -770,6 +797,31 @@
     </footer>
 
     <script>
+        // Mobile burger menu
+        const burger = document.getElementById('navBurger');
+        const mobileNav = document.getElementById('mobileNav');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileNav.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                burger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+        // Mobile nav lang buttons mirror main lang switcher
+        mobileNav.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang-switch');
+                document.documentElement.setAttribute('lang', lang);
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll(`.lang-btn[data-lang-switch="${lang}"]`).forEach(b => b.classList.add('active'));
+            });
+        });
+
         function togglePhil(item) {
             // Close all other items
             document.querySelectorAll('.phil-item').forEach(el => {

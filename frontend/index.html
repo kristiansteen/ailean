@@ -4,9 +4,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AILEAN - Our AI philosophy</title>
+    <title>AILEAN — Verdens første virtuelle lean-konsulent</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="assets/css/ailean.css" rel="stylesheet">
+    <style>
+        .pill {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.3rem 0.9rem;
+            border-radius: 100px;
+            border: 1px solid rgba(101,196,52,0.4);
+            color: var(--primary);
+            background: rgba(101,196,52,0.07);
+            margin-bottom: 1.5rem;
+        }
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .tool-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .tool-card:hover { border-color: rgba(101,196,52,0.35); }
+        .tool-card .tool-number {
+            font-size: 4rem;
+            font-weight: 900;
+            font-family: monospace;
+            color: rgba(101,196,52,0.12);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+        }
+        .step-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            max-width: 760px;
+            margin: 0 auto 2.5rem;
+        }
+        .step-num {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(101,196,52,0.12);
+            border: 1px solid rgba(101,196,52,0.35);
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+        .connector {
+            width: 1px;
+            height: 2.5rem;
+            background: linear-gradient(to bottom, rgba(101,196,52,0.3), transparent);
+            margin: 0.25rem 0 0.25rem 1.25rem;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .cta-section {
+            text-align: center;
+            padding: 6rem 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(101,196,52,0.08) 0%, transparent 70%);
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--primary);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover { background: #7ddb4a; transform: translateY(-1px); }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+        .section-label {
+            color: rgba(101,196,52,0.7);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .split-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 
 <body>
@@ -26,48 +158,53 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-background-wrapper">
-            <img src="assets/images/ailean-burst-vision.jpg" alt="Roadmap 2025 Backdrop" class="hero-bg-image">
+            <img src="assets/images/ailean-burst-vision.jpg" alt="AILEAN background" class="hero-bg-image">
             <div class="hero-overlay"></div>
         </div>
 
         <div class="container">
             <div class="hero-content">
-                <div class="hero-category">BUILD YOUR AI ROADMAP</div>
+                <div class="hero-category" data-lang="da">VIRTUEL LEAN-KONSULENT</div>
+                <div class="hero-category" data-lang="en">VIRTUAL LEAN CONSULTANT</div>
 
-                <h1 data-lang="da">AI-filosofi</h1>
-                <h1 data-lang="en">AI Philosophy</h1>
+                <h1 data-lang="da">Verdens første<br>virtuelle lean-konsulent</h1>
+                <h1 data-lang="en">The world's first<br>virtual lean consultant</h1>
 
                 <div class="hero-description">
-                    <p data-lang="da">Vi hjælper vores kunder med at realisere potentialet i AI med udgangspunkt i deres
-                        eksisterende
-                        forretningsprocesser.</p>
-                    <p data-lang="en">We help our customers realize the potential of AI in their existing business
-                        processes</p>
+                    <p data-lang="da">En erfaren lean-konsulent koster 5.000–8.000 kr. i timen. AILEAN leverer samme ekspertise — altid tilgængelig, til en brøkdel af prisen.</p>
+                    <p data-lang="en">An experienced lean consultant costs $500–$1,000 per hour. AILEAN delivers the same expertise — always available, at a fraction of the price.</p>
                 </div>
 
-                <a href="ailean-downloads.html" class="cta-button">
-                    <span data-lang="da">Hent whitepaper</span>
-                    <span data-lang="en">Download whitepaper</span>
-                </a>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                    <a href="https://voice-2-launch.vercel.app" target="_blank" class="btn-primary">
+                        <span data-lang="da">Prøv AILEAN gratis</span>
+                        <span data-lang="en">Try AILEAN free</span>
+                        <span>→</span>
+                    </a>
+                    <a href="ailean-philosophy.html" class="btn-secondary">
+                        <span data-lang="da">Vores AI-filosofi</span>
+                        <span data-lang="en">Our AI philosophy</span>
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="hero-tabs">
-            <a href="ailean-philosophy.html" class="tab-item active">
-                <span data-lang="da"> AI-filosofi</span>
-                <span data-lang="en"> AI philosophy</span>
+            <a href="index.html" class="tab-item active">
+                <span data-lang="da">Hjem</span>
+                <span data-lang="en">Home</span>
+            </a>
+            <a href="ailean-philosophy.html" class="tab-item">
+                <span data-lang="da">AI-filosofi</span>
+                <span data-lang="en">AI philosophy</span>
             </a>
             <a href="ailean-background.html" class="tab-item">
                 <span data-lang="da">Baggrund</span>
-                <span data-lang="en">background</span>
+                <span data-lang="en">Background</span>
             </a>
             <a href="ailean-cases.html" class="tab-item">
                 <span data-lang="da">Cases</span>
                 <span data-lang="en">Cases</span>
-            </a>
-            <a href="ailean-blitz.html" class="tab-item">
-                <span data-lang="da">En uges "blitz"</span>
-                <span data-lang="en">One week "blitz"</span>
             </a>
         </div>
 
@@ -77,902 +214,287 @@
         </div>
     </section>
 
-    <!-- AI Philosophy Principles Section -->
-    <section class="text-section bg-alt-1" style="padding: 8rem 0;">
+    <!-- Problem: The $500/hr consultant -->
+    <section class="text-section bg-alt-1" style="padding: 7rem 0;">
         <div class="container">
-            <div class="section-header" style="max-width: 860px; margin: 0 auto 1rem auto;">
-                <h2 data-lang="da">AI-filosofi</h2>
-                <h2 data-lang="en">AI Philosophy</h2>
-            </div>
-            <p style="max-width: 860px; margin: 0 auto 1.5rem; color: rgba(255,255,255,0.45); font-size: 0.9rem; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;"
-                data-lang="da">Baseret på universelle Lean-principper</p>
-            <p style="max-width: 860px; margin: 0 auto 1.5rem; color: rgba(255,255,255,0.45); font-size: 0.9rem; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;"
-                data-lang="en">Based on universal Lean principles</p>
-
-            <div style="max-width: 860px; margin: 0 auto 3.5rem; text-align: left;">
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0 0 1.5rem;"
-                    data-lang="da">
-                    De fleste organisationer springer direkte til AI-løsninger uden først at forstå, hvad der faktisk
-                    driver værdi i deres forretning. Det er den strategiske fejl, vi ser gang på gang: man investerer i
-                    teknologi, før man har overblik over de processer, teknologien skal forbedre.
+            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
+                <div class="section-label" data-lang="da">Problemet</div>
+                <div class="section-label" data-lang="en">The problem</div>
+                <h2 data-lang="da">Lean virker — men det er svært og dyrt at gøre rigtigt</h2>
+                <h2 data-lang="en">Lean works — but it's hard and expensive to do right</h2>
+                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="da">
+                    De fleste organisationer ved, at de har processer der kan forbedres. Men at kortlægge dem, identificere spild og eksekvere forbedringsprojekter kræver erfaring, metode og tid. En senior lean-konsulent koster 5.000–8.000 kr. i timen — og de fleste projekter kræver uger af arbejde. Det betyder, at lean-transformation er forbeholdt de største virksomheder.
                 </p>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0 0 1.5rem;"
-                    data-lang="da">
-                    AILEAN's filosofi er grundlæggende anderledes. Vi mener, at vejen til meningsfuld AI-implementering
-                    starter med et komplet end-to-end overblik over jeres kerneprocesser — fra det øjeblik et kundebehov
-                    opstår, til det er opfyldt. Uden denne forståelse risikerer I at automatisere spild, accelerere fejl
-                    og investere i løsninger, der optimerer lokalt, men svækker helheden.
-                </p>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0 0 1.5rem;"
-                    data-lang="da">
-                    Først når værdistrømmen er kortlagt og forstået, kan vi sammen identificere de reelle AI-kandidater
-                    — de processer, hvor AI ikke blot er mulig, men hvor den skaber målbar effekt. Det er forskellen på
-                    AI som et pilotprojekt og AI som en varig konkurrencefordel.
-                </p>
-
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0 0 1.5rem;"
-                    data-lang="en">
-                    Most organisations leap straight to AI solutions without first understanding what actually drives
-                    value in their business. This is the strategic error we see time and again: investing in technology
-                    before having visibility into the very processes that technology is meant to improve.
-                </p>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0 0 1.5rem;"
-                    data-lang="en">
-                    AILEAN's philosophy is fundamentally different. We believe the path to meaningful AI implementation
-                    begins with a complete end-to-end overview of your core processes — from the moment a customer need
-                    arises to the moment it is fulfilled. Without this understanding, you risk automating waste,
-                    accelerating errors, and investing in solutions that optimise locally but weaken the whole.
-                </p>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0 0 1.5rem;"
-                    data-lang="en">
-                    Only when the value stream has been mapped and understood can we jointly identify the real AI
-                    candidates — the processes where AI is not merely possible, but where it creates measurable impact.
-                    That is the difference between AI as a pilot project and AI as a lasting competitive advantage.
+                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="en">
+                    Most organisations know they have processes that can be improved. But mapping them, identifying waste, and executing improvement projects requires experience, methodology, and time. A senior lean consultant costs $500–$1,000 per hour — and most projects require weeks of work. This means lean transformation is reserved for the largest companies.
                 </p>
             </div>
 
-            <!-- Accordion -->
-            <div style="max-width: 860px; margin: 0 auto;" id="philosophy-accordion">
-
-                <!-- Principle 1: Hyper-personalization -->
-                <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span
-                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">01</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="da">#Kundens_stemme</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="en">#voice_of_customer</div>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="da">AI som motor for hyper-personalisering</h3>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="en">AI as the engine for hyper-personalization</h3>
-                        </div>
-                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="padding-top: 1.5rem;">
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
-                                    data-lang="da">AI gør det muligt at bevæge sig fra segmentering til reel
-                                    1-til-1-tilpasning i realtid. Hvor klassisk personalisering bygger på statiske
-                                    regler og historiske data, kan AI kontinuerligt kombinere adfærd, kontekst og
-                                    intention og omsætte det til handling. Resultatet er oplevelser, processer og
-                                    beslutninger, der tilpasser sig den enkelte kunde, en medarbejder eller en specifik
-                                    systemkonfiguration.<br><br>Hyper-personalisering opstår, når AI ikke blot anbefaler
-                                    indhold eller produkter, men aktivt former flow, prioriteringer og interaktioner på
-                                    tværs af kanaler og kundekontaktpunkter. Det kræver et stærkt datafundament og et
-                                    end-to-end-perspektiv, men når det lykkes, skaber AI differentierede oplevelser,
-                                    højere relevans og markant større effekt end traditionel personalisering.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Konkret eksempel</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        Forestil dig en B2B-softwarevirksomhed med 3.000 kunder. Tidligere sendte de det
-                                        samme onboarding-forløb til alle. Med AI analyserer de, hvilke moduler hver
-                                        kunde faktisk bruger i de første 14 dage, og tilpasser automatisk den næste
-                                        e-mail, den næste in-app-tooltip og den næste supportartikel. Churn i de første
-                                        90 dage falder med 22 %. Ikke fordi de arbejdede hårdere — men fordi de endelig
-                                        lyttede til kunden i realtid.</p>
-                                </div>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 1.5rem 0 0;"
-                                    data-lang="en">AI makes it possible to move from broad segmentation to true 1-to-1
-                                    adaptation in real-time. While classic personalization relies on static rules and
-                                    historical data, AI can continuously combine behavior, context, and intent and
-                                    translate them into action. The result is experiences, processes, and decisions that
-                                    adapt to the individual customer, employee, or specific system
-                                    configuration.<br><br>Hyper-personalization occurs when AI does not merely recommend
-                                    content or products, but actively shapes flow, priorities, and interactions across
-                                    all channels and customer touchpoints. This requires a strong data foundation and an
-                                    end-to-end perspective, but when successful, AI creates differentiated experiences,
-                                    higher relevance, and significantly greater impact than traditional personalization.
-                                </p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Concrete example</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        Imagine a B2B software company with 3,000 customers. Previously, they sent the
-                                        same onboarding sequence to everyone. With AI, they now analyse which modules
-                                        each customer actually uses in the first 14 days, and automatically adapt the
-                                        next email, the next in-app tooltip, and the next support article. Churn in the
-                                        first 90 days drops by 22%. Not because they worked harder — but because they
-                                        finally listened to the customer in real-time.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Stats -->
+            <div style="max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                <div class="stat-card">
+                    <div class="stat-value">$500+</div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="da">Timepris for en erfaren lean-konsulent</p>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="en">Hourly rate for an experienced lean consultant</p>
                 </div>
-
-                <!-- Principle 2: Value Stream Mapping -->
-                <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span
-                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">02</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="da">#værdistrømskortlægning</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="en">#value_stream_mapping</div>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="da">AI gør værdistrømmen synlig — og spildet umuligt at ignorere</h3>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="en">AI makes value stream mapping more precise</h3>
-                        </div>
-                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="padding-top: 1.5rem;">
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
-                                    data-lang="da">Vi bruger AI til at afdække, hvor værdien faktisk skabes, og hvor den
-                                    forsvinder. Ved at analysere digitale spor fra forretningssystemer kan AI kortlægge
-                                    den faktiske værdistrøm end-to-end og synliggøre, hvor tid, kvalitet og kapacitet
-                                    tabes gennem ventetid, gentagelser, overleveringer og unødvendige
-                                    beslutningspunkter.<br><br>I stedet for et statisk øjebliksbillede baseret på
-                                    antagelser, giver AI en datadrevet forståelse af, hvilke aktiviteter der reelt
-                                    skaber værdi — og hvilke der ikke gør. Det gør det muligt systematisk at fjerne
-                                    spild, prioritere forbedringer med størst effekt og designe et flow, der
-                                    understøtter både Kaizen-forbedringer og mere radikale Kaikaku-spring.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Konkret eksempel</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        En logistikvirksomhed kørte en manuel process-review hver 6. måned. Med AI
-                                        analyserede de event-logs fra deres TMS og WMS — og fik på 48 timer kortlagt, at
-                                        34 % af alle forsendelser oplevede ventetid i præcis ét procestrin: manuel
-                                        godkendelse ved toldklarering. Tre uger senere var processen redesignet. Det,
-                                        der tog et halvt år at opdage, tog to dage med AI.</p>
-                                </div>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 1.5rem 0 0;"
-                                    data-lang="en">AI makes the value stream visible — and the waste impossible to
-                                    ignore. We use AI to uncover where value is actually created and where it
-                                    disappears. By analyzing digital footprints from business systems, AI can map the
-                                    actual end-to-end value stream and visualize where time, quality, and capacity are
-                                    lost through waiting times, rework, handovers, and unnecessary decision
-                                    points.<br><br>Instead of a static snapshot based on assumptions, AI provides a
-                                    data-driven understanding of which activities truly create value — and which do not.
-                                    This makes it possible to systematically eliminate waste, prioritize improvements
-                                    with the greatest impact, and design a flow that supports both incremental Kaizen
-                                    improvements and more radical Kaikaku leaps.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Concrete example</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A logistics company ran a manual process review every 6 months. With AI, they
-                                        analysed event logs from their TMS and WMS — and within 48 hours had mapped that
-                                        34% of all shipments experienced waiting time at exactly one process step:
-                                        manual approval at customs clearance. Three weeks later, the process was
-                                        redesigned. What took half a year to discover took two days with AI.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value">6–12</div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="da">Uger fra procesinterview til forbedringsprojekt i gang</p>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="en">Weeks from process interview to improvement project running</p>
                 </div>
-
-                <!-- Principle 3: End-to-End -->
-                <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span
-                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">03</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="da">#skab_flow</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="en">#create_flow</div>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="da">End-2-End perspektiv skaber resultatet</h3>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="en">An End-to-End perspective creates the result</h3>
-                        </div>
-                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="padding-top: 1.5rem;">
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
-                                    data-lang="da">AI indfrier ikke løftet om tidsbesparelser eller øget kvalitet, hvis
-                                    ikke man anlægger et end-2-end perspektiv. Det skaber ikke værdi at begynde at lave
-                                    mødereferater ved at sætte AI til at transkribere møder, hvis man ikke anvender den
-                                    indsamlede data. Mao. skaber det ikke værdi at opfinde en process, som man kan
-                                    fuldautomatisere, hvis der aldrig var behov for processen i første omgang.<br><br>I
-                                    stedet skal der tænkes end-2-end. Hvor kunne den indsamlede data skabe værdi? Er der
-                                    andre møder, hvor der er behov for et beslutningsreferat fra et tidligere møde?
-                                    Kunne man etablere en mødestruktur og en governance model, der var baseret på at
-                                    møderne informerer hinanden 'just in time'.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Konkret eksempel</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        En konsulentvirksomhed implementerede AI-transskription af alle kundemøder. Fint
-                                        nok — men værdien kom først, da referaterne begyndte at fodre projektlederens
-                                        statusrapport automatisk, og statusrapporten fodrede ledergruppens ugentlige
-                                        prioriteringsmøde. Samme data, tre gange. Ingen genindtastning. Det er flow.</p>
-                                </div>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 1.5rem 0 0;"
-                                    data-lang="en">AI will not deliver on its promise of time savings or increased
-                                    quality unless an end-to-end perspective is applied. There is no value in using AI
-                                    to transcribe meetings if the collected data is never utilized. In other words,
-                                    there is no value in inventing a process that can be fully automated if there was
-                                    never a need for that process in the first place.<br><br>Instead, we must think
-                                    end-to-end. Where could the collected data actually create value? Are there other
-                                    meetings that require decision logs from previous sessions? Could we establish a
-                                    meeting structure and a governance model based on meetings informing each other
-                                    'just-in-time'?</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Concrete example</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A consulting firm implemented AI transcription for all client meetings. Fine —
-                                        but the real value came when those transcripts started to automatically feed the
-                                        project manager's status report, and the status report fed the leadership team's
-                                        weekly prioritisation meeting. Same data, three times. No re-entry. That is
-                                        flow.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value">&lt; 1h</div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="da">Med AILEAN: fra interview til projektplan klar</p>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="en">With AILEAN: from interview to project plan ready</p>
                 </div>
-
-                <!-- Principle 4: Establish Pull -->
-                <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span
-                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">04</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="da">#etabler_pull</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="en">#establish_pull</div>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="da">Nye muligheder for overvågning og etablering af signaler</h3>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="en">New opportunities for monitoring and establishing signals</h3>
-                        </div>
-                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="padding-top: 1.5rem;">
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
-                                    data-lang="da">AI gør det muligt at etablere pull uden at skabe bunker mellem
-                                    procestrin. Ved kontinuerligt at overvåge kapacitet og gennemløbstid kan AI styre
-                                    frigivelsen af arbejde, så hvert procestrin kun modtager opgaver, når der er reel
-                                    evne til at forbruge dem.<br><br>I stedet for at optimere lokalt og producere til
-                                    kø, håndhæver AI dynamiske WIP-grænser, prioriterer færdiggørelse frem for
-                                    igangsætning og synkroniserer flow på tværs af værdistrømmen. Resultatet er færre
-                                    ventetider, kortere lead time og et stabilt pull-flow, hvor problemer bliver
-                                    synlige, når de opstår — ikke gemt i bunker mellem procestrin.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Konkret eksempel</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        Et produktionsselskab kæmpede med, at produktionsordrer blev frigivet for
-                                        tidligt — og dermed skabte bunker foran flaskehalse. AI overvåger nu kapacitet i
-                                        realtid og holder ordrer tilbage, indtil der er reel kapacitet til at forbruge
-                                        dem. Lead time faldt 18 %. Ikke ved at producere hurtigere — men ved at stoppe
-                                        med at producere for tidligt.</p>
-                                </div>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 1.5rem 0 0;"
-                                    data-lang="en">AI makes it possible to establish pull without creating piles between
-                                    process steps. By continuously monitoring capacity and throughput time, AI can
-                                    control the release of work, ensuring that each process step only receives tasks
-                                    when there is a genuine capacity to consume them.<br><br>Instead of local
-                                    optimization and producing for a queue, AI enforces dynamic WIP limits, prioritizes
-                                    completion over initiation, and synchronizes flow across the entire value stream.
-                                    The result is reduced waiting times, shorter lead times, and a stable pull-flow
-                                    where problems become visible as they arise — rather than being hidden in piles
-                                    between process steps.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Concrete example</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A manufacturing company struggled with production orders being released too
-                                        early — creating piles in front of bottlenecks. AI now monitors capacity in
-                                        real-time and holds back orders until there is genuine capacity to consume them.
-                                        Lead time dropped 18%. Not by producing faster — but by stopping the practice of
-                                        producing too early.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Principle 5: Kaizen -->
-                <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span
-                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">05</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="da">#kaizen</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="en">#kaizen</div>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="da">Et helt nyt idékatalog — og de gamle ideer kan endelig realiseres</h3>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="en">A whole new idea catalog — and old ideas can finally be realised</h3>
-                        </div>
-                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="padding-top: 1.5rem;">
-                                <!-- Existing: Revisiting old ideas (DA) -->
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
-                                    data-lang="da">AI har flyttet grænsen for, hvad der er high effort — high impact. Vi
-                                    hjælper jer med at genbesøge jeres Kaizen-idéer og realisere de resultater Lean
-                                    tidligere lovede.<br><br>Kig på jeres processer med nye briller og få indløst nogle
-                                    af de forventninger I havde til LEAN. En hel række af de ideer, som kommer frem
-                                    gennem arbejdet med LEAN viser sig at være besværlige at implementere. Enten kræver
-                                    de et særligt system eller en bunke manuelt arbejde. Med AI kan man bygge disse
-                                    systemer og man kan få AI til at udføre en række af de manuelle opgaver. På den måde
-                                    bliver en række af de ideer, som man kom frem under proceskortlægningen, mere
-                                    tilgængelige og sniger sig over barren for hvad vi betragter som high effort.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Eksempel — gammelt potentiale realiseret</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        En virksomhed havde i årevis haft en kaizen-idé om at standardisere
-                                        proces-dokumentation på tværs af afdelinger. Det krævede et dedikeret team og et
-                                        halvt år. Med en BPMN-agent kan de nu uploade eksisterende proceskort,
-                                        beskrivelser og e-mails — og få struktureret, ensartet dokumentation ud på
-                                        timer. Idéen gik fra "nice to have" til "done" på én sprint.</p>
-                                </div>
-
-                                <!-- NEW: New potential (DA) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
-                                    data-lang="da">Nye ideer, der ikke fandtes før</p>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
-                                    data-lang="da">AI åbner ikke kun for realisering af gamle ideer. Det skaber et helt
-                                    nyt idékatalog.<br><br>Opgaver, der tidligere krævede en specialist, kan nu løses af
-                                    en agent. Processer, der krævede menneskelig vurdering i hvert trin, kan nu delvist
-                                    — eller fuldt — automatiseres. Det handler ikke om at erstatte mennesker, men om at
-                                    flytte menneskelig kapacitet derhen, hvor den skaber mest værdi.<br><br>Spørgsmålet
-                                    er ikke længere: "Hvad kan vi forbedre?" — men: "Hvad er muligt nu, som ikke var
-                                    muligt for 18 måneder siden?"</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Eksempel — nyt potentiale</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        En salgsafdeling opdagede, at 40 % af interne e-mails handlede om at finde
-                                        status på tilbud. En AI-agent forbundet til CRM og e-mail kan nu besvare disse
-                                        spørgsmål direkte — uden menneskelig involvering. Den opgave eksisterede ikke
-                                        som en "kaizen-idé", fordi ingen havde forestillet sig, at den kunne løses
-                                        automatisk. Nu er den væk.</p>
-                                </div>
-
-                                <!-- NEW: Task transfer to AI agents (DA) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
-                                    data-lang="da">Fra menneskelig opgave til AI-agent</p>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
-                                    data-lang="da">Den mest direkte form for AI-impact er enkel: opgaver, der i dag
-                                    udføres af mennesker, udføres i morgen af AI.<br><br>Det handler ikke om at erstatte
-                                    mennesker — det handler om at flytte menneskelig kapacitet. Rutineprægede,
-                                    regelbaserede og dataintensive opgaver er oplagte kandidater: dokumentation,
-                                    databehandling, klassificering, overvågning, sagsbehandling. Når AI overtager disse,
-                                    frigøres tid til de opgaver, der kræver erfaring, dømmekraft og menneskelig
-                                    relation.<br><br>Resultatet er dobbeltsidigt: lavere omkostninger og højere kvalitet
-                                    — ikke som en trade-off, men som en direkte konsekvens af, at AI er mere konsistent,
-                                    hurtigere og fejlfri på de opgaver, det er sat til.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Eksempel — BPMN-agent</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        En procesrådgiver brugte tidligere 2-3 dage på at tegne og dokumentere en
-                                        BPMN-procesmodel efter en workshop. En AI-agent kan nu tage workshop-noter,
-                                        eksisterende beskrivelser og interviews som input — og producere en struktureret
-                                        BPMN-model på under en time. Rådgiveren bruger den sparede tid på at validere og
-                                        forbedre modellen i stedet for at bygge den fra bunden.</p>
-                                </div>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Eksempel — Logistik-agent</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        Et logistikfirma har en medarbejder, der dagligt bruger 3 timer på at matche
-                                        forsendelser med transportører baseret på pris, lead time og kapacitet. En
-                                        AI-agent gør det samme på 3 minutter — og dokumenterer beslutningsgrundlaget
-                                        automatisk. Medarbejderen er nu frigjort til at håndtere undtagelser og
-                                        leverandørrelationer.</p>
-                                </div>
-
-                                <!-- Existing: Revisiting old ideas (EN) -->
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 2rem 0 1.5rem;"
-                                    data-lang="en">AI has shifted the boundary of what we consider "high effort — high
-                                    impact." We help you revisit your Kaizen ideas and realize the results that Lean
-                                    previously promised.<br><br>Look at your processes through a new lens and fulfill
-                                    the expectations you originally had for Lean. A wide range of ideas that emerge
-                                    through Lean initiatives often prove difficult to implement — either they require a
-                                    specialized system or a mountain of manual labor. With AI, you can build these
-                                    systems and have AI perform many of those manual tasks. In this way, ideas generated
-                                    during your process mapping become more accessible, sliding under the bar of what
-                                    was previously categorized as "high effort."</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Example — old potential realised</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A company had for years had a Kaizen idea to standardise process documentation
-                                        across departments. It required a dedicated team and half a year. With a BPMN
-                                        agent, they can now upload existing process maps, descriptions and emails — and
-                                        get structured, consistent documentation out in hours. The idea went from "nice
-                                        to have" to "done" in one sprint.</p>
-                                </div>
-
-                                <!-- NEW: New potential (EN) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
-                                    data-lang="en">New ideas that didn't exist before</p>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
-                                    data-lang="en">AI does not just unlock the realisation of old ideas. It creates an
-                                    entirely new idea catalog.<br><br>Tasks that previously required a specialist can
-                                    now be handled by an agent. Processes that demanded human judgment at every step can
-                                    now be partly — or fully — automated. This is not about replacing people; it is
-                                    about reallocating human capacity to where it creates the most value.<br><br>The
-                                    question is no longer: "What can we improve?" — but: "What is possible now that
-                                    wasn't possible 18 months ago?"</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Example — new potential</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A sales department discovered that 40% of internal emails were about finding the
-                                        status of proposals. An AI agent connected to CRM and email can now answer these
-                                        questions directly — with zero human involvement. That task never existed as a
-                                        "Kaizen idea" because no one had imagined it could be solved automatically. Now
-                                        it's gone.</p>
-                                </div>
-
-                                <!-- NEW: Task transfer to AI agents (EN) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
-                                    data-lang="en">From human task to AI agent</p>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
-                                    data-lang="en">The most direct form of AI impact is simple: tasks performed by
-                                    humans today are performed by AI tomorrow.<br><br>This is not about replacing people
-                                    — it is about reallocating human capacity. Routine, rule-based, and data-intensive
-                                    tasks are natural candidates: documentation, data processing, classification,
-                                    monitoring, and case handling. When AI takes over these tasks, human time is freed
-                                    for work that requires experience, judgment, and relationship.<br><br>The result is
-                                    two-sided: lower costs and higher quality — not as a trade-off, but as a direct
-                                    consequence of AI being more consistent, faster, and error-free on the tasks it is
-                                    assigned.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Example — BPMN agent</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A process consultant previously spent 2-3 days drawing and documenting a BPMN
-                                        process model after a workshop. An AI agent can now take workshop notes,
-                                        existing descriptions and interviews as input — and produce a structured BPMN
-                                        model in under an hour. The consultant now spends the saved time validating and
-                                        improving the model instead of building it from scratch.</p>
-                                </div>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Example — Logistics agent</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A logistics company has an employee who spends 3 hours daily matching shipments
-                                        with carriers based on price, lead time, and capacity. An AI agent does the same
-                                        in 3 minutes — and automatically documents the decision rationale. The employee
-                                        is now freed to handle exceptions and supplier relationships.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Principle 6: Kaikaku -->
-                <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span
-                            style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">06</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="da">#kaikaku</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
-                                data-lang="en">#kaikaku</div>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="da">Radikal transformation</h3>
-                            <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
-                                data-lang="en">Radical transformation</h3>
-                        </div>
-                        <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="padding-top: 1.5rem;">
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
-                                    data-lang="da">AI skaber først reel værdi, når infrastruktur, data, processer og
-                                    ledelse hænger sammen. Vi hjælper organisationer med at flytte AI fra pilot til
-                                    varig konkurrencefordel.<br><br>Når inkrementelle forbedringer ikke længere er nok,
-                                    eller når ny teknologi gør det muligt at springe hele procestrin over, kræver det et
-                                    fundamentalt skift i måden organisationen tænker, beslutter og arbejder på. Succes
-                                    med AI handler ikke om modeller, men om organisationens evne til at omsætte
-                                    teknologi til beslutninger og handling i drift. De virksomheder, der skaber reel
-                                    AI-impact, investerer målrettet i et solidt fundament: en skalerbar
-                                    AI-infrastruktur, data der er struktureret og processer der er redesignet — ikke
-                                    blot automatiseret. Når AI behandles som kritisk forretningsinfrastruktur frem for
-                                    et teknologiprojekt, transformeres hele organisationen langsomt imod en varig
-                                    konkurrencefordel.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="da">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Konkret eksempel</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        En mellemstor produktionsvirksomhed besluttede at behandle AI som kritisk
-                                        infrastruktur — på linje med deres ERP-system. De designede processer,
-                                        datastruktur og organisationsmodel om fra grunden. 18 måneder senere opererer
-                                        dele af deres supply chain med AI-agenter, der træffer beslutninger autonomt
-                                        inden for definerede rammer. Det er ikke automatisering — det er transformation.
-                                    </p>
-                                </div>
-                                <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 1.5rem 0 0;"
-                                    data-lang="en">AI only creates real value when infrastructure, data, processes, and
-                                    leadership are interconnected. We help organizations move AI from pilot projects to
-                                    lasting competitive advantage.<br><br>When incremental improvements are no longer
-                                    enough, or when new technology makes it possible to skip entire process steps, it
-                                    requires a fundamental shift in the way the organization thinks, decides, and works.
-                                    Success with AI is not about models; it is about the organization's ability to
-                                    translate technology into decisions and operational action. The companies that
-                                    create real AI impact invest purposefully in a solid foundation: a scalable AI
-                                    infrastructure, structured data, and redesigned processes — not just automated ones.
-                                    When AI is treated as critical business infrastructure rather than a technology
-                                    project, the entire organization gradually transforms toward a lasting competitive
-                                    advantage.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
-                                    data-lang="en">
-                                    <p
-                                        style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
-                                        Concrete example</p>
-                                    <p
-                                        style="color: var(--light-grey); line-height: 1.8; font-size: 0.9rem; margin: 0; font-style: italic;">
-                                        A mid-sized manufacturing company decided to treat AI as critical infrastructure
-                                        — on par with their ERP system. They redesigned processes, data structures, and
-                                        organisational models from the ground up. 18 months later, parts of their supply
-                                        chain operate with AI agents making decisions autonomously within defined
-                                        boundaries. That is not automation — that is transformation.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /accordion -->
+            </div>
         </div>
     </section>
 
-
-
-    <!-- API reference moved to vimpl.com/#api -->
-    <!--
-                <div style="color: rgba(101,196,52,0.6); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem;" data-lang="en">DEVELOPER INTEGRATION</div>
-                <div style="color: rgba(101,196,52,0.6); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem;" data-lang="da">UDVIKLER INTEGRATION</div>
-                <h2 style="font-size: 2.5rem; font-weight: 900; color: var(--white); margin: 0 0 1.25rem;" data-lang="en">vimpl API Reference</h2>
-                <h2 style="font-size: 2.5rem; font-weight: 900; color: var(--white); margin: 0 0 1.25rem;" data-lang="da">vimpl API Reference</h2>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0;" data-lang="en">
-                    Full REST API for the vimpl visual planning platform. Integrate process insights from Voice-to-BPMN directly into vimpl boards — or build your own tooling on top of the same endpoints.
+    <!-- What is AILEAN -->
+    <section class="text-section" style="padding: 7rem 0;">
+        <div class="container">
+            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
+                <div class="section-label" data-lang="da">Hvad er AILEAN</div>
+                <div class="section-label" data-lang="en">What is AILEAN</div>
+                <h2 data-lang="da">To kraftfulde værktøjer. Én samlet løsning.</h2>
+                <h2 data-lang="en">Two powerful tools. One integrated solution.</h2>
+                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="da">
+                    AILEAN er en kombination af to AI-drevne værktøjer: <strong style="color: var(--white);">Voice-to-BPMN</strong>, der omdanner procesinterviews til professionelle proceskort og forbedringsplaner, og <strong style="color: var(--white);">vimpl</strong>, der giver dig den visuelle projekttavle du skal bruge for at eksekvere lean-projektet. Tilsammen erstatter de det, der normalt kræver en konsulent i ugevis.
                 </p>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0;" data-lang="da">
-                    Fuld REST API til vimpl visual planning-platformen. Integrer procesindsigt fra Voice-to-BPMN direkte i vimpl-boards — eller byg dine egne værktøjer oven på de samme endpoints.
+                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="en">
+                    AILEAN is a combination of two AI-driven tools: <strong style="color: var(--white);">Voice-to-BPMN</strong>, which transforms process interviews into professional process maps and improvement plans, and <strong style="color: var(--white);">vimpl</strong>, the visual project board you need to execute the lean project. Together, they replace what normally requires a consultant for weeks.
                 </p>
             </div>
 
-            <!-- Base URL + Auth cards -->
-            <div style="max-width: 860px; margin: 0 auto 2.5rem auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div style="background: rgba(101,196,52,0.06); border: 1px solid rgba(101,196,52,0.2); border-radius: 10px; padding: 1.25rem 1.5rem;">
-                    <div style="color: rgba(101,196,52,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Base URL</div>
-                    <code style="font-family: monospace; font-size: 0.9rem; color: var(--white);">http://localhost:3001/api/v1</code>
-                    <div style="color: rgba(255,255,255,0.4); font-size: 0.78rem; margin-top: 0.5rem;">Production: set via <code style="color: var(--primary);">SERVER_URL</code> env var</div>
+            <!-- Two tool cards -->
+            <div class="split-grid">
+                <!-- Voice-to-BPMN -->
+                <div class="tool-card">
+                    <div class="tool-number">01</div>
+                    <div style="color: rgba(101,196,52,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="da">Proceskortlægning</div>
+                    <div style="color: rgba(101,196,52,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="en">Process mapping</div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem;">Voice-to-BPMN</h3>
+                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="da">
+                        Tal med din procesejers stemme. AI'en lytter, strukturerer og genererer automatisk et professionelt BPMN-procesdiagram, identificerer spild og foreslår konkrete forbedringer — præcis som en lean-konsulent ville gøre det efter et daglangt workshop.
+                    </p>
+                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="en">
+                        Speak with your process owner's voice. The AI listens, structures, and automatically generates a professional BPMN process diagram, identifies waste, and suggests concrete improvements — exactly as a lean consultant would after a full-day workshop.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
+                            <span style="color: var(--primary); font-size: 0.8rem;">✓</span>
+                            <span data-lang="da">BPMN-diagram genereret på minutter</span>
+                            <span data-lang="en">BPMN diagram generated in minutes</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
+                            <span style="color: var(--primary); font-size: 0.8rem;">✓</span>
+                            <span data-lang="da">AI identificerer spild og forbedringsmuligheder</span>
+                            <span data-lang="en">AI identifies waste and improvement opportunities</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
+                            <span style="color: var(--primary); font-size: 0.8rem;">✓</span>
+                            <span data-lang="da">Eksporter direkte til vimpl projektboard</span>
+                            <span data-lang="en">Export directly to vimpl project board</span>
+                        </div>
+                    </div>
+                    <a href="https://voice-2-launch.vercel.app" target="_blank" class="btn-primary" style="font-size: 0.85rem; padding: 0.7rem 1.4rem;">
+                        <span data-lang="da">Åbn Voice-to-BPMN →</span>
+                        <span data-lang="en">Open Voice-to-BPMN →</span>
+                    </a>
                 </div>
-                <div style="background: rgba(14,165,233,0.06); border: 1px solid rgba(14,165,233,0.2); border-radius: 10px; padding: 1.25rem 1.5rem;">
-                    <div style="color: rgba(14,165,233,0.8); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Authentication</div>
-                    <code style="font-family: monospace; font-size: 0.85rem; color: var(--white);">Authorization: Bearer &lt;token&gt;</code>
-                    <div style="color: rgba(255,255,255,0.4); font-size: 0.78rem; margin-top: 0.5rem;">Obtain via <code style="color: #38bdf8;">POST /auth/login</code> or <code style="color: #38bdf8;">POST /auth/refresh</code></div>
+
+                <!-- vimpl -->
+                <div class="tool-card">
+                    <div class="tool-number">02</div>
+                    <div style="color: rgba(14,165,233,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="da">Lean projektstyring</div>
+                    <div style="color: rgba(14,165,233,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="en">Lean project management</div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem;">vimpl</h3>
+                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="da">
+                        Et visuelt projektstyringværktøj bygget specifikt til lean-projekter. Modtager forbedringsplanerne direkte fra Voice-to-BPMN og giver dit team en klar tavle med opgaver, milepæle og risici — klar til at eksekvere fra dag ét.
+                    </p>
+                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="en">
+                        A visual project management tool built specifically for lean projects. Receives improvement plans directly from Voice-to-BPMN and gives your team a clear board with tasks, milestones, and risks — ready to execute from day one.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
+                            <span style="color: #0ea5e9; font-size: 0.8rem;">✓</span>
+                            <span data-lang="da">Projektplan importeret automatisk fra AI</span>
+                            <span data-lang="en">Project plan imported automatically from AI</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
+                            <span style="color: #0ea5e9; font-size: 0.8rem;">✓</span>
+                            <span data-lang="da">Risikomatrix og idékatalog inkluderet</span>
+                            <span data-lang="en">Risk matrix and idea catalogue included</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
+                            <span style="color: #0ea5e9; font-size: 0.8rem;">✓</span>
+                            <span data-lang="da">Visuelt gantt-board med tracks og ugeplan</span>
+                            <span data-lang="en">Visual Gantt board with tracks and week plan</span>
+                        </div>
+                    </div>
+                    <a href="https://frontend-puce-ten-18.vercel.app" target="_blank" class="btn-secondary" style="font-size: 0.85rem; padding: 0.7rem 1.4rem; border-color: rgba(14,165,233,0.4); color: #0ea5e9;">
+                        <span data-lang="da">Åbn vimpl →</span>
+                        <span data-lang="en">Open vimpl →</span>
+                    </a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Key integration callout -->
-            <div style="max-width: 860px; margin: 0 auto 2.5rem auto; background: linear-gradient(135deg, rgba(101,196,52,0.1), rgba(14,165,233,0.08)); border: 1px solid rgba(101,196,52,0.35); border-radius: 12px; padding: 1.75rem 2rem;">
-                <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                    <span style="background: var(--primary); color: #000; font-size: 0.7rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.05em; white-space: nowrap; margin-top: 2px;">KEY ENDPOINT</span>
+    <!-- How it works -->
+    <section class="text-section bg-alt-1" style="padding: 7rem 0;">
+        <div class="container">
+            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
+                <div class="section-label" data-lang="da">Sådan fungerer det</div>
+                <div class="section-label" data-lang="en">How it works</div>
+                <h2 data-lang="da">Fra procesinterview til lean-projekt på under en time</h2>
+                <h2 data-lang="en">From process interview to lean project in under an hour</h2>
+            </div>
+
+            <!-- Steps -->
+            <div style="max-width: 760px; margin: 0 auto;">
+
+                <div class="step-row">
+                    <div class="step-num">1</div>
                     <div>
-                        <div style="font-family: monospace; font-size: 1rem; color: var(--white); margin-bottom: 0.4rem;"><span style="color: #f59e0b; font-weight: 700;">POST</span> &nbsp;/boards/import</div>
-                        <div style="color: var(--light-grey); font-size: 0.9rem; line-height: 1.7;" data-lang="en">Imports a full project plan from Voice-to-BPMN in a single atomic operation — creates the board, a 14-week weekplan section, task post-its positioned by track and week, a risk matrix with P×C scores, and an ideas matrix scored by effort and impact.</div>
-                        <div style="color: var(--light-grey); font-size: 0.9rem; line-height: 1.7;" data-lang="da">Importerer en komplet projektplan fra Voice-to-BPMN i én atomisk operation — opretter board, 14-ugers weekplan, opgave post-its placeret efter track og uge, risikomatrix med P×C-score og idématrix med indsats og impact.</div>
-                        <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.3); border-radius: 6px; font-family: monospace; font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.8;">
-                            Body: { plan_name, process_name, duration_weeks, tracks[], tasks[], risks[], improvements[] }<br>
-                            Returns: { boardId, boardUrl, sectionId, tasksCreated }
+                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="da">Interview procesejeren med din stemme</h3>
+                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="en">Interview the process owner by voice</h3>
+                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="da">Optag eller indsæt et procesinterview. Voice-to-BPMN AI'en analyserer samtalen og strukturerer den i et end-to-end procesforløb med roller, aktiviteter og beslutningspunkter.</p>
+                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="en">Record or paste a process interview. The Voice-to-BPMN AI analyses the conversation and structures it into an end-to-end process flow with roles, activities, and decision points.</p>
+                    </div>
+                </div>
+                <div class="connector"></div>
+
+                <div class="step-row">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="da">Godkend BPMN-diagram og forbedringsforslag</h3>
+                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="en">Approve the BPMN diagram and improvement suggestions</h3>
+                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="da">AI'en genererer automatisk et professionelt BPMN 2.0-procesdiagram og identificerer konkrete forbedringsmuligheder, spild og risici — præcis som en erfaren lean-konsulent ville gøre det.</p>
+                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="en">The AI automatically generates a professional BPMN 2.0 process diagram and identifies concrete improvement opportunities, waste, and risks — exactly as an experienced lean consultant would.</p>
+                    </div>
+                </div>
+                <div class="connector"></div>
+
+                <div class="step-row">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="da">Eksporter til vimpl og start projektet</h3>
+                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="en">Export to vimpl and start the project</h3>
+                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="da">Med ét klik oprettes et komplet lean-projektboard i vimpl med opgaver, risikomatrix og idékatalog. Dit team kan begynde at eksekvere med det samme — uden at starte fra bunden.</p>
+                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="en">With one click, a complete lean project board is created in vimpl with tasks, risk matrix, and idea catalogue. Your team can start executing immediately — without starting from scratch.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Value comparison -->
+    <section class="text-section" style="padding: 7rem 0;">
+        <div class="container">
+            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
+                <div class="section-label" data-lang="da">Hvad du får</div>
+                <div class="section-label" data-lang="en">What you get</div>
+                <h2 data-lang="da">Konsulentekspertisen — uden konsulentprisen</h2>
+                <h2 data-lang="en">Consultant expertise — without the consultant price</h2>
+            </div>
+
+            <div style="max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <!-- Traditional -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 2rem;">
+                    <div style="color: rgba(255,255,255,0.35); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem;" data-lang="da">Traditionel lean-konsulent</div>
+                    <div style="color: rgba(255,255,255,0.35); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem;" data-lang="en">Traditional lean consultant</div>
+                    <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
+                            <span style="color: #ef4444;">✕</span>
+                            <span data-lang="da">5.000–8.000 kr./time</span>
+                            <span data-lang="en">$500–$1,000/hour</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
+                            <span style="color: #ef4444;">✕</span>
+                            <span data-lang="da">Ugers kalenderplanlægning</span>
+                            <span data-lang="en">Weeks of calendar planning</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
+                            <span style="color: #ef4444;">✕</span>
+                            <span data-lang="da">Manuel dokumentation og procesdiagrammer</span>
+                            <span data-lang="en">Manual documentation and process diagrams</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
+                            <span style="color: #ef4444;">✕</span>
+                            <span data-lang="da">Projektstyring i Excel eller generiske tools</span>
+                            <span data-lang="en">Project management in Excel or generic tools</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
+                            <span style="color: #ef4444;">✕</span>
+                            <span data-lang="da">Viden forsvinder når konsulenten rejser</span>
+                            <span data-lang="en">Knowledge disappears when the consultant leaves</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AILEAN -->
+                <div style="background: rgba(101,196,52,0.04); border: 1px solid rgba(101,196,52,0.25); border-radius: 16px; padding: 2rem; position: relative;">
+                    <div style="position: absolute; top: -0.75rem; right: 1.5rem; background: var(--primary); color: #000; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 100px;" data-lang="da">Med AILEAN</div>
+                    <div style="position: absolute; top: -0.75rem; right: 1.5rem; background: var(--primary); color: #000; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 100px;" data-lang="en">With AILEAN</div>
+                    <div style="color: rgba(101,196,52,0.8); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem;">AILEAN</div>
+                    <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <span style="color: var(--primary);">✓</span>
+                            <span data-lang="da">Fast månedlig pris — ingen timepris</span>
+                            <span data-lang="en">Fixed monthly price — no hourly rate</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <span style="color: var(--primary);">✓</span>
+                            <span data-lang="da">Projektplan klar på under en time</span>
+                            <span data-lang="en">Project plan ready in under an hour</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <span style="color: var(--primary);">✓</span>
+                            <span data-lang="da">Automatisk BPMN-diagram og procesanalyse</span>
+                            <span data-lang="en">Automatic BPMN diagram and process analysis</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <span style="color: var(--primary);">✓</span>
+                            <span data-lang="da">vimpl projektboard bygget til lean</span>
+                            <span data-lang="en">vimpl project board built for lean</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                            <span style="color: var(--primary);">✓</span>
+                            <span data-lang="da">Al viden gemt og tilgængelig for altid</span>
+                            <span data-lang="en">All knowledge saved and accessible forever</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Accordion groups -->
-            <div style="max-width: 860px; margin: 0 auto;" id="api-accordion">
-
-                <!-- Auth -->
-                <div class="phil-item" onclick="togglePhil(this)" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span style="color: var(--primary); font-size: 1.1rem; font-weight: 900; min-width: 2rem; font-family: monospace;">01</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;">Auth</div>
-                            <h3 style="color: var(--white); font-size: 1rem; font-weight: 700; margin: 0;">Authentication &amp; User Management</h3>
-                        </div>
-                        <svg class="phil-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 1.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/auth/register</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Register a new user</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/auth/login</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Log in with email and password</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/auth/logout</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Log out the current user</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/auth/refresh</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Refresh access token using refresh token cookie</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/auth/verify-email?token=</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Verify email address</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/auth/me</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Get currently authenticated user</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/auth/google</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Initiate Google OAuth login</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Boards -->
-                <div class="phil-item" onclick="togglePhil(this)" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span style="color: var(--primary); font-size: 1.1rem; font-weight: 900; min-width: 2rem; font-family: monospace;">02</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;">Boards</div>
-                            <h3 style="color: var(--white); font-size: 1rem; font-weight: 700; margin: 0;">Board CRUD &amp; Project Plan Import</h3>
-                        </div>
-                        <svg class="phil-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 1.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/boards</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Get all boards for the authenticated user</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/boards</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Create a new board</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(101,196,52,0.08); border: 1px solid rgba(101,196,52,0.25); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/boards/import</code><span style="color: var(--primary); font-size: 0.75rem; font-weight: 700; margin-left: auto;">⚡ Key integration endpoint</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/boards/slug/:slug</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Get a board by its slug</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:id</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Get a board by ID</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #38bdf8; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">PUT</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:id</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Update a board (optimistic locking via version)</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f87171; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">DEL</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:id</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Delete a board</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:id/share</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Share a board with another user by email</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sections & Post-its -->
-                <div class="phil-item" onclick="togglePhil(this)" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span style="color: var(--primary); font-size: 1.1rem; font-weight: 900; min-width: 2rem; font-family: monospace;">03</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;">Sections &amp; Post-its</div>
-                            <h3 style="color: var(--white); font-size: 1rem; font-weight: 700; margin: 0;">Board Content Management</h3>
-                        </div>
-                        <svg class="phil-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 1.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Sections</div>
-                            <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.25rem;">
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:boardId/sections</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Create a section</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #38bdf8; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">PUT</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:boardId/sections/:id</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Update a section</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f87171; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">DEL</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:boardId/sections/:id</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Delete a section</span></div>
-                            </div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Post-its</div>
-                            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:boardId/postits</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Create a post-it note</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #38bdf8; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">PUT</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:boardId/postits/:id</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Update a post-it note</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f87171; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">DEL</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:boardId/postits/:id</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Delete a post-it note</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Subscription -->
-                <div class="phil-item" onclick="togglePhil(this)" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span style="color: var(--primary); font-size: 1.1rem; font-weight: 900; min-width: 2rem; font-family: monospace;">04</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;">Subscription</div>
-                            <h3 style="color: var(--white); font-size: 1rem; font-weight: 700; margin: 0;">Tier Management — Student / Commercial / Enterprise</h3>
-                        </div>
-                        <svg class="phil-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 1.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/subscription/tiers</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">List all available subscription tiers</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/subscription/current</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Get the current user's subscription</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/subscription/can-create-board</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Check if user can create another board</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/subscription/upgrade/commercial</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Upgrade to Commercial tier</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/subscription/upgrade/enterprise</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Upgrade to Enterprise tier</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/subscription/downgrade/student</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Downgrade to free Student tier</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio & Analytics -->
-                <div class="phil-item" onclick="togglePhil(this)" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span style="color: var(--primary); font-size: 1.1rem; font-weight: 900; min-width: 2rem; font-family: monospace;">05</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;">Portfolio &amp; Event Log</div>
-                            <h3 style="color: var(--white); font-size: 1rem; font-weight: 700; margin: 0;">Cross-Board Analytics &amp; Activity History</h3>
-                        </div>
-                        <svg class="phil-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 1.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Portfolio</div>
-                            <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.25rem;">
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/portfolio</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Portfolio dashboard — all boards with stats</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/portfolio/compare</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Compare metrics across all boards</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/portfolio/activity</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Recent activity across all boards</span></div>
-                            </div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Event Log</div>
-                            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/boards/:boardId/events</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Board activity history</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #4ade80; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">GET</span><code style="color: var(--white); font-size: 0.85rem;">/admin/login-audit</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Login audit log (admin only)</span></div>
-                                <div style="display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-radius: 6px;"><span style="color: #f59e0b; font-family: monospace; font-size: 0.78rem; font-weight: 700; min-width: 44px;">POST</span><code style="color: var(--white); font-size: 0.85rem;">/leads</code><span style="color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-left: auto;">Submit a contact / interest form lead</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Schema reference -->
-                <div class="phil-item" onclick="togglePhil(this)" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
-                    <div class="phil-header" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 2rem; background: rgba(255,255,255,0.03);">
-                        <span style="color: var(--primary); font-size: 1.1rem; font-weight: 900; min-width: 2rem; font-family: monospace;">06</span>
-                        <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;">Schema</div>
-                            <h3 style="color: var(--white); font-size: 1rem; font-weight: 700; margin: 0;">ProjectPlanImportRequest — Full Body Schema</h3>
-                        </div>
-                        <svg class="phil-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 1.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-                            <pre style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1.5rem; overflow-x: auto; font-family: monospace; font-size: 0.78rem; line-height: 1.8; color: rgba(255,255,255,0.8);">{
-  <span style="color:#4ade80;">"plan_name"</span>:       <span style="color:#f59e0b;">"string"</span>,              <span style="color:rgba(255,255,255,0.3);">// board title</span>
-  <span style="color:#4ade80;">"process_name"</span>:    <span style="color:#f59e0b;">"string"</span>,              <span style="color:rgba(255,255,255,0.3);">// fallback title</span>
-  <span style="color:#4ade80;">"duration_weeks"</span>:  <span style="color:#38bdf8;">14</span>,                    <span style="color:rgba(255,255,255,0.3);">// default 14</span>
-  <span style="color:#4ade80;">"tracks"</span>: [
-    { <span style="color:#4ade80;">"id"</span>: <span style="color:#f59e0b;">"track_1"</span>, <span style="color:#4ade80;">"name"</span>: <span style="color:#f59e0b;">"Technology"</span> }
-  ],
-  <span style="color:#4ade80;">"tasks"</span>: [{
-    <span style="color:#4ade80;">"id"</span>: <span style="color:#f59e0b;">"task_1"</span>,  <span style="color:#4ade80;">"title"</span>: <span style="color:#f59e0b;">"string"</span>,
-    <span style="color:#4ade80;">"track_id"</span>: <span style="color:#f59e0b;">"track_1"</span>,
-    <span style="color:#4ade80;">"week_start"</span>: <span style="color:#38bdf8;">1</span>,  <span style="color:#4ade80;">"week_end"</span>: <span style="color:#38bdf8;">3</span>,
-    <span style="color:#4ade80;">"owner"</span>: <span style="color:#f59e0b;">"string"</span>
-  }],
-  <span style="color:#4ade80;">"risks"</span>: [{
-    <span style="color:#4ade80;">"id"</span>: <span style="color:#f59e0b;">"risk_1"</span>,  <span style="color:#4ade80;">"title"</span>: <span style="color:#f59e0b;">"string"</span>,
-    <span style="color:#4ade80;">"probability"</span>: <span style="color:#38bdf8;">60</span>,  <span style="color:#4ade80;">"consequence"</span>: <span style="color:#38bdf8;">80</span>,
-    <span style="color:#4ade80;">"mitigation"</span>: <span style="color:#f59e0b;">"string"</span>
-  }],
-  <span style="color:#4ade80;">"improvements"</span>: [{
-    <span style="color:#4ade80;">"id"</span>: <span style="color:#f59e0b;">"imp_1"</span>,  <span style="color:#4ade80;">"title"</span>: <span style="color:#f59e0b;">"string"</span>,
-    <span style="color:#4ade80;">"effort_score"</span>: <span style="color:#38bdf8;">30</span>,   <span style="color:rgba(255,255,255,0.3);">// 0-100 → Ideas Matrix X axis</span>
-    <span style="color:#4ade80;">"impact_score"</span>: <span style="color:#38bdf8;">85</span>    <span style="color:rgba(255,255,255,0.3);">// 0-100 → Ideas Matrix Y axis</span>
-  }]
-}</pre>
-                            <div style="margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(14,165,233,0.07); border: 1px solid rgba(14,165,233,0.2); border-radius: 6px; font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.7;" data-lang="en">
-                                Returns <code style="color:#38bdf8;">201</code> with <code style="color:#4ade80;">{ boardId, boardUrl, sectionId, tasksCreated }</code>. The <code style="color:#4ade80;">boardUrl</code> links directly to the new board in the vimpl frontend.
-                            </div>
-                            <div style="margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(14,165,233,0.07); border: 1px solid rgba(14,165,233,0.2); border-radius: 6px; font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.7;" data-lang="da">
-                                Returnerer <code style="color:#38bdf8;">201</code> med <code style="color:#4ade80;">{ boardId, boardUrl, sectionId, tasksCreated }</code>. <code style="color:#4ade80;">boardUrl</code> linker direkte til det nye board i vimpl frontend.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /api-accordion -->
         </div>
     </section>
-    -->
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div style="max-width: 640px; margin: 0 auto;">
+                <div class="pill" data-lang="da">Gratis at komme i gang</div>
+                <div class="pill" data-lang="en">Free to get started</div>
+                <h2 style="font-size: 2.5rem; font-weight: 900; color: var(--white); margin-bottom: 1.25rem;" data-lang="da">Start dit første lean-projekt i dag</h2>
+                <h2 style="font-size: 2.5rem; font-weight: 900; color: var(--white); margin-bottom: 1.25rem;" data-lang="en">Start your first lean project today</h2>
+                <p style="color: var(--light-grey); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.5rem;" data-lang="da">Ingen kreditkort. Ingen installation. Åbn Voice-to-BPMN, indsæt et procesinterview og se din første projektplan genereres på minutter.</p>
+                <p style="color: var(--light-grey); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.5rem;" data-lang="en">No credit card. No installation. Open Voice-to-BPMN, paste a process interview, and watch your first project plan be generated in minutes.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://voice-2-launch.vercel.app" target="_blank" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.25rem;">
+                        <span data-lang="da">Prøv Voice-to-BPMN gratis →</span>
+                        <span data-lang="en">Try Voice-to-BPMN free →</span>
+                    </a>
+                    <a href="ailean-cases.html" class="btn-secondary" style="font-size: 1rem; padding: 1rem 2.25rem;">
+                        <span data-lang="da">Se cases</span>
+                        <span data-lang="en">See cases</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -982,15 +504,6 @@
     </footer>
 
     <script>
-        function togglePhil(item) {
-            // Close all other items
-            document.querySelectorAll('.phil-item').forEach(el => {
-                if (el !== item) el.classList.remove('open');
-            });
-            // Toggle clicked item
-            item.classList.toggle('open');
-        }
-
         const htmlElement = document.documentElement;
         const langButtons = document.querySelectorAll('.lang-btn');
         htmlElement.setAttribute('lang', 'da');
@@ -999,37 +512,23 @@
             button.addEventListener('click', () => {
                 const lang = button.getAttribute('data-lang-switch');
                 htmlElement.setAttribute('lang', lang);
-                langButtons.forEach(btn => btn.classList.remove('active'));
+                langButtons.forEach(b => b.classList.remove('active'));
                 button.classList.add('active');
-                if (lang === 'da') {
-                    document.title = 'AILEAN - Vision 2025';
-                } else {
-                    document.title = 'AILEAN - Vision 2025';
-                }
             });
         });
 
-        // Playback Controls Navigation
-        const pages = [
-            'ailean-philosophy.html',
-            'ailean-background.html',
-            'ailean-cases.html',
-            'ailean-blitz.html'
-        ];
-        const currentPage = window.location.pathname.split('/').pop() || 'ailean-philosophy.html';
-        const currentIndex = pages.indexOf(currentPage) === -1 ? 0 : pages.indexOf(currentPage);
-
-        document.querySelectorAll('.control-btn').forEach((btn, idx) => {
-            btn.addEventListener('click', () => {
-                if (btn.textContent === '←') {
-                    const prevIndex = (currentIndex - 1 + pages.length) % pages.length;
-                    window.location.href = pages[prevIndex];
-                } else if (btn.textContent === '→') {
-                    const nextIndex = (currentIndex + 1) % pages.length;
-                    window.location.href = pages[nextIndex];
-                }
+        // Show/hide elements based on lang attribute
+        function applyLang(lang) {
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
             });
+        }
+
+        const observer = new MutationObserver(() => {
+            applyLang(htmlElement.getAttribute('lang'));
         });
+        observer.observe(htmlElement, { attributes: true, attributeFilter: ['lang'] });
+        applyLang('da');
     </script>
 </body>
 

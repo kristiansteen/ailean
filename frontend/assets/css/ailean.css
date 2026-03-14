@@ -886,97 +886,200 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
+    /* ── Layout ─────────────────────────── */
+    .nav-links { display: none; }
 
+    .container { padding: 0 1.25rem; }
+
+    /* ── Hero ───────────────────────────── */
     .hero {
-        padding-bottom: 140px;
+        min-height: 100svh;
+        padding-bottom: 110px;
         justify-content: center;
     }
 
-    .hero-content {
-        padding-left: 1.5rem;
-        border-left-width: 4px;
+    /* Stronger overlay — readable on portrait photo */
+    .hero-overlay {
+        background:
+            linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.0) 30%),
+            linear-gradient(to top,    rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.0) 65%),
+            linear-gradient(to right,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 100%);
     }
 
-    .hero h1 {
-        font-size: clamp(2.2rem, 8vw, 3.5rem);
+    /* Drop the left accent bar — wastes horizontal space */
+    .hero-content {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .hero-category {
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
         margin-bottom: 1rem;
     }
 
+    .hero h1 {
+        font-size: clamp(2.4rem, 9vw, 3.5rem);
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        margin-bottom: 1.25rem;
+    }
+
     .hero-description {
-        font-size: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.65;
         margin-bottom: 2rem;
-    }
-
-    /* Scrollable Tabs */
-    .hero-tabs {
-        bottom: 1.5rem;
-        left: 0;
-        width: 100%;
-        padding: 0 1.5rem;
-        gap: 1.5rem;
-        overflow-x: auto;
-        justify-content: flex-start;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        transform: none;
-        /* Fade right edge to signal scrollability */
-        -webkit-mask-image: linear-gradient(to right, black 0, black calc(100% - 2.5rem), transparent 100%);
-        mask-image: linear-gradient(to right, black 0, black calc(100% - 2.5rem), transparent 100%);
-    }
-
-    .hero-tabs::-webkit-scrollbar {
-        display: none;
-    }
-
-    .hero {
-        min-height: 500px;
-    }
-
-    .tab-item {
-        font-size: 0.75rem;
-        flex-shrink: 0;
-    }
-
-    .playback-controls {
-        bottom: auto;
-        top: 50%;
-        right: 1rem;
-        flex-direction: column;
-        transform: translateY(-50%);
-        gap: 1rem;
+        max-width: 100%;
     }
 
     .cta-button {
         padding: 1rem 2rem;
         font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
     }
 
-    .container {
-        padding: 0 1.5rem;
+    /* ── Hero tabs — centered, wrapping ─── */
+    .hero-tabs {
+        bottom: 1.25rem;
+        left: 0;
+        width: 100%;
+        transform: none;
+        padding: 0 1.25rem;
+        gap: 1.25rem 2rem;          /* row-gap col-gap */
+        justify-content: center;
+        flex-wrap: wrap;
+        white-space: normal;
+        -webkit-mask-image: none;
+        mask-image: none;
     }
 
-    /* Component fixes */
-    .form-container {
-        padding: 1.5rem;
+    .tab-item {
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        padding-bottom: 0.4rem;
     }
 
-    .language-switcher {
-        top: 1rem;
-        right: 1rem;
+    /* ── Hide decorative controls ────────── */
+    .playback-controls { display: none; }
+
+    /* ── Section spacing ────────────────── */
+    .death-section,
+    .value-section,
+    .visual-section,
+    .blitz-section,
+    .cases-section,
+    .text-section,
+    .expertise-section {
+        padding: 4.5rem 0 !important;
     }
+
+    /* ── Section typography ─────────────── */
+    .section-header h2 {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    /* ── Cards ──────────────────────────── */
+    .comparison-column { padding: 1.5rem; }
 
     .visual-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
-    .comparison-column {
-        padding: 1.5rem;
+    .form-container { padding: 1.5rem; }
+
+    .value-card { padding: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+    /* ── Container ──────────────────────── */
+    .container { padding: 0 1rem; }
+
+    /* ── Nav ────────────────────────────── */
+    nav { padding: 1.25rem 0; }
+    .logo { font-size: 1.8rem; }
+
+    /* ── Hero ───────────────────────────── */
+    .hero {
+        padding-bottom: 100px;
     }
+
+    .hero-category {
+        font-size: 0.65rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.1rem, 10vw, 2.8rem);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .hero-tabs {
+        bottom: 1rem;
+        padding: 0 1rem;
+        gap: 0.9rem 1.5rem;
+    }
+
+    .tab-item {
+        font-size: 0.72rem;
+    }
+
+    /* ── Sections ───────────────────────── */
+    .death-section,
+    .value-section,
+    .visual-section,
+    .blitz-section,
+    .cases-section,
+    .text-section,
+    .expertise-section {
+        padding: 3.5rem 0 !important;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+        font-size: clamp(1.6rem, 8vw, 2.2rem);
+    }
+
+    /* ── General body text bump ─────────── */
+    /* Inline styles often use 0.85–0.95rem — override to readable minimum */
+    .text-section p,
+    section p {
+        font-size: max(1rem, 1em) !important;
+        line-height: 1.75 !important;
+    }
+
+    /* ── Accordion ──────────────────────── */
+    .phil-header {
+        padding: 1.25rem 1rem !important;
+        gap: 0.75rem !important;
+    }
+
+    .phil-body > div {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* ── Cards ──────────────────────────── */
+    .comparison-column { padding: 1.25rem; }
+    .value-card { padding: 1.5rem; }
+
+    .form-container { padding: 1.25rem; }
+
+    footer { padding: 2rem 0; }
 }
 
 /* =========================================
@@ -1172,98 +1275,4 @@ footer p {
 /* =========================================
    16. Extra Small Devices (480px)
    ========================================= */
-@media (max-width: 480px) {
-    .container {
-        padding: 0 1rem;
-    }
-
-    nav {
-        padding: 1.5rem 0;
-    }
-
-    .logo {
-        font-size: 1.8rem;
-    }
-
-    .hero {
-        padding-bottom: 120px;
-    }
-
-    .hero-content {
-        padding-left: 1rem;
-        border-left-width: 3px;
-    }
-
-    .hero-description {
-        font-size: 0.9rem;
-    }
-
-    .cta-button {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.85rem;
-    }
-
-    .hero-tabs {
-        gap: 1rem;
-        padding: 0 1rem;
-    }
-
-    .tab-item {
-        font-size: 0.7rem;
-    }
-
-    .death-section,
-    .value-section,
-    .visual-section,
-    .blitz-section,
-    .cases-section,
-    .text-section,
-    .expertise-section {
-        padding: 4rem 0 !important;
-    }
-
-    .section-header {
-        margin-bottom: 2.5rem;
-    }
-
-    .comparison-column {
-        padding: 1.25rem;
-    }
-
-    .timeline-container {
-        padding-left: 2.5rem !important;
-    }
-
-    .form-container {
-        padding: 1.25rem;
-    }
-
-    footer {
-        padding: 2rem 0;
-    }
-
-    /* Hero fixes */
-    .hero h1 {
-        line-height: 1.05;
-    }
-
-    .playback-controls {
-        display: none;
-    }
-
-    /* Section typography */
-    .section-header p {
-        font-size: 1rem;
-    }
-
-    /* Accordion body: remove the heavy 5.25rem left indent */
-    .phil-body > div {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-
-    .phil-header {
-        padding: 1.25rem 1rem !important;
-        gap: 0.75rem !important;
-    }
-}
+/* duplicate block removed — 480px rules consolidated above */

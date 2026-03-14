@@ -72,11 +72,32 @@
             .split-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: 1fr; }
             .comparison-value-grid { grid-template-columns: 1fr; }
+            .stat-value { font-size: 2.2rem; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .cta-section { padding: 4rem 0; }
+            /* Scale down section intro h2 (uses inline font-size: 2.5rem etc.) */
+            section h2[style] { font-size: clamp(1.6rem, 6vw, 2.2rem) !important; }
+            /* Body text in sections */
+            section p[style] { font-size: 1rem !important; line-height: 1.75 !important; }
+            /* Hero CTA buttons go full width */
+            .hero-content .btn-primary,
+            .hero-content .btn-secondary { width: auto; }
         }
         @media (max-width: 480px) {
             .tool-card { padding: 1.5rem 1.25rem; }
             .tool-card .tool-number { font-size: 2.5rem; right: 1rem; top: 0.75rem; }
             .step-row { gap: 1rem; }
+            /* Bump all small inline text to readable minimum */
+            .tool-card p,
+            .tool-card div,
+            .step-row p,
+            .stat-card p { font-size: 1rem !important; line-height: 1.7 !important; }
+            .tool-card h3 { font-size: 1.25rem !important; }
+            /* Section body paragraphs */
+            .text-section p[style],
+            section p[style] { font-size: 1rem !important; line-height: 1.75 !important; }
+            /* Comparison cards */
+            .comparison-value-grid div[style] { font-size: 1rem; }
         }
         .step-row {
             display: flex;
@@ -123,6 +144,10 @@
             line-height: 1;
             margin-bottom: 0.5rem;
         }
+        .text-section-inner { padding: 7rem 0; }
+        @media (max-width: 768px) { .text-section-inner { padding: 4.5rem 0; } }
+        @media (max-width: 480px) { .text-section-inner { padding: 3.5rem 0; } }
+
         .cta-section {
             text-align: center;
             padding: 6rem 0;
@@ -245,7 +270,7 @@
     </section>
 
     <!-- Problem: The $500/hr consultant -->
-    <section class="text-section bg-alt-1" style="padding: 7rem 0;">
+    <section class="text-section bg-alt-1 text-section-inner">
         <div class="container">
             <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
                 <div class="section-label" data-lang="da">Problemet</div>
@@ -282,7 +307,7 @@
     </section>
 
     <!-- What is AILEAN -->
-    <section class="text-section" style="padding: 7rem 0;">
+    <section class="text-section text-section-inner">
         <div class="container">
             <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
                 <div class="section-label" data-lang="da">Hvad er AILEAN</div>
@@ -373,7 +398,7 @@
     </section>
 
     <!-- How it works -->
-    <section class="text-section bg-alt-1" style="padding: 7rem 0;">
+    <section class="text-section bg-alt-1 text-section-inner">
         <div class="container">
             <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
                 <div class="section-label" data-lang="da">Sådan fungerer det</div>
@@ -422,7 +447,7 @@
     </section>
 
     <!-- Value comparison -->
-    <section class="text-section" style="padding: 7rem 0;">
+    <section class="text-section text-section-inner">
         <div class="container">
             <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
                 <div class="section-label" data-lang="da">Hvad du får</div>

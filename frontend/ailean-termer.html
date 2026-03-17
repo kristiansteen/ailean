@@ -45,7 +45,7 @@
             border-radius: 12px 0 0 12px;
         }
 
-        /* Per-card accent colours — aligned with ailean palette */
+        /* Per-card accent colours */
         .term-card:nth-child(1)  { --card-accent: #65c434; }
         .term-card:nth-child(2)  { --card-accent: #0ea5e9; }
         .term-card:nth-child(3)  { --card-accent: #10b981; }
@@ -64,6 +64,8 @@
         .term-card:nth-child(16) { --card-accent: #fb923c; }
         .term-card:nth-child(17) { --card-accent: #22d3ee; }
         .term-card:nth-child(18) { --card-accent: #a3e635; }
+        .term-card:nth-child(19) { --card-accent: #6366f1; }
+        .term-card:nth-child(20) { --card-accent: #14b8a6; }
 
         /* Number badge */
         .term-number {
@@ -76,7 +78,7 @@
             opacity: 0.85;
         }
 
-        /* Danish title */
+        /* Danish / English title */
         .term-title {
             font-size: 1.05rem;
             font-weight: 700;
@@ -137,7 +139,7 @@
             }
         }
 
-        /* ── Sticky nav override (non-hero page) ─────────────────────────── */
+        /* ── Sticky nav (non-hero page) ──────────────────────────────────── */
         nav.sticky {
             position: sticky;
             top: 0;
@@ -195,7 +197,7 @@
         </div>
     </div>
 
-    <!-- Page header section -->
+    <!-- Page header -->
     <section style="padding: 5rem 0 4rem; background: #080b07; border-bottom: 1px solid rgba(101,196,52,0.12);">
         <div class="container">
             <div style="border-left: 6px solid var(--primary); padding-left: 2rem; max-width: 860px;">
@@ -207,181 +209,245 @@
                     <span data-lang="en">AI Terms<br>&amp; Concepts</span>
                 </h1>
                 <p style="font-size: 1.1rem; color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="da">
-                    18 centrale begreber fra AI og machine learning — forklaret på dansk med kontekst og nøglesætninger. Uanset om du er nybegynder eller ønsker at opfriske dit ordforråd.
+                    20 centrale begreber fra AI og machine learning — forklaret med kontekst og nøglesætninger. Uanset om du er nybegynder eller ønsker at opfriske dit ordforråd.
                 </p>
                 <p style="font-size: 1.1rem; color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="en">
-                    18 central concepts from AI and machine learning — explained in Danish with context and key phrases. Whether you are new to the field or want to refresh your vocabulary.
+                    20 central concepts from AI and machine learning — explained with context and key phrases. Whether you are new to the field or want to refresh your vocabulary.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Cards section -->
+    <!-- Cards -->
     <section style="padding: 4rem 0 6rem; background: #07090a;">
         <div class="container">
-
             <div class="terms-grid">
 
-                <!-- 01 -->
+                <!-- 01 Machine Learning -->
                 <div class="term-card">
                     <div class="term-number">01</div>
                     <div class="term-title">Machine Learning</div>
                     <div class="term-en">ML</div>
-                    <div class="term-body">Den grundlæggende disciplin hvor algoritmer <strong>lærer af data</strong> frem for at følge eksplicitte regler. Fundamentet for næsten al moderne AI.</div>
-                    <div class="term-phrase">"ML er det der sker når vi lader data tale i stedet for at programmere svarene."</div>
+                    <div class="term-body" data-lang="da">Den grundlæggende disciplin hvor algoritmer <strong>lærer af data</strong> frem for at følge eksplicitte regler. Fundamentet for næsten al moderne AI.</div>
+                    <div class="term-body" data-lang="en">The foundational discipline where algorithms <strong>learn from data</strong> rather than following explicit rules. The foundation for almost all modern AI.</div>
+                    <div class="term-phrase" data-lang="da">"ML er det der sker når vi lader data tale i stedet for at programmere svarene."</div>
+                    <div class="term-phrase" data-lang="en">"ML is what happens when we let the data speak instead of programming the answers."</div>
                 </div>
 
-                <!-- 02 -->
+                <!-- 02 LLM -->
                 <div class="term-card">
                     <div class="term-number">02</div>
                     <div class="term-title">Large Language Model</div>
                     <div class="term-en">LLM</div>
-                    <div class="term-body">En meget stor sprogmodel trænet på enorme mængder tekst. <strong>GPT-4 og Claude</strong> er eksempler. Kernen i moderne generativ AI.</div>
-                    <div class="term-phrase">"En LLM er i bund og grund en meget sofistikeret mønstergenkender for sprog."</div>
+                    <div class="term-body" data-lang="da">En meget stor sprogmodel trænet på enorme mængder tekst. <strong>GPT-4 og Claude</strong> er eksempler. Kernen i moderne generativ AI.</div>
+                    <div class="term-body" data-lang="en">A very large language model trained on enormous amounts of text. <strong>GPT-4 and Claude</strong> are examples. The core of modern generative AI.</div>
+                    <div class="term-phrase" data-lang="da">"En LLM er i bund og grund en meget sofistikeret mønstergenkender for sprog."</div>
+                    <div class="term-phrase" data-lang="en">"An LLM is essentially a very sophisticated pattern recogniser for language."</div>
                 </div>
 
-                <!-- 03 -->
+                <!-- 03 Generativ AI -->
                 <div class="term-card">
                     <div class="term-number">03</div>
-                    <div class="term-title">Generativ AI</div>
+                    <div class="term-title" data-lang="da">Generativ AI</div>
+                    <div class="term-title" data-lang="en">Generative AI</div>
                     <div class="term-en">GenAI</div>
-                    <div class="term-body">AI der kan <strong>skabe nyt indhold</strong> — tekst, billeder, kode, lyd — frem for blot at klassificere eller forudsige. ChatGPT og Midjourney er eksempler.</div>
-                    <div class="term-phrase">"Generativ AI skaber — ikke bare genkender."</div>
+                    <div class="term-body" data-lang="da">AI der kan <strong>skabe nyt indhold</strong> — tekst, billeder, kode, lyd — frem for blot at klassificere eller forudsige. ChatGPT og Midjourney er eksempler.</div>
+                    <div class="term-body" data-lang="en">AI that can <strong>create new content</strong> — text, images, code, audio — rather than just classifying or predicting. ChatGPT and Midjourney are examples.</div>
+                    <div class="term-phrase" data-lang="da">"Generativ AI skaber — ikke bare genkender."</div>
+                    <div class="term-phrase" data-lang="en">"Generative AI creates — it doesn't just recognise."</div>
                 </div>
 
-                <!-- 04 -->
+                <!-- 04 RAG -->
                 <div class="term-card">
                     <div class="term-number">04</div>
                     <div class="term-title">RAG</div>
                     <div class="term-en">Retrieval Augmented Generation</div>
-                    <div class="term-body">En teknik hvor LLM'en suppleres med et <strong>eksternt vidensindeks</strong> — f.eks. virksomhedens egne dokumenter — så modellen svarer baseret på opdateret og kontekstrelevant information.</div>
-                    <div class="term-phrase">"RAG giver LLM'en hukommelse og adgang til din virksomheds viden."</div>
+                    <div class="term-body" data-lang="da">En teknik hvor LLM'en suppleres med et <strong>eksternt vidensindeks</strong> — f.eks. virksomhedens egne dokumenter — så modellen svarer baseret på opdateret og kontekstrelevant information.</div>
+                    <div class="term-body" data-lang="en">A technique where the LLM is supplemented with an <strong>external knowledge index</strong> — e.g. the company's own documents — so the model responds based on up-to-date and context-relevant information.</div>
+                    <div class="term-phrase" data-lang="da">"RAG giver LLM'en hukommelse og adgang til din virksomheds viden."</div>
+                    <div class="term-phrase" data-lang="en">"RAG gives the LLM memory and access to your company's knowledge."</div>
                 </div>
 
-                <!-- 05 -->
+                <!-- 05 AI Agenter -->
                 <div class="term-card">
                     <div class="term-number">05</div>
-                    <div class="term-title">AI Agenter</div>
+                    <div class="term-title" data-lang="da">AI Agenter</div>
+                    <div class="term-title" data-lang="en">AI Agents</div>
                     <div class="term-en">Agents</div>
-                    <div class="term-body">Selvstændigt opererende AI-systemer der kan <strong>planlægge, beslutte og handle</strong> over flere trin uden menneskelig indgriben — f.eks. søge, skrive kode og sende email.</div>
-                    <div class="term-phrase">"En agent er AI der ikke bare svarer — den handler."</div>
+                    <div class="term-body" data-lang="da">Selvstændigt opererende AI-systemer der kan <strong>planlægge, beslutte og handle</strong> over flere trin uden menneskelig indgriben — f.eks. søge, skrive kode og sende email.</div>
+                    <div class="term-body" data-lang="en">Independently operating AI systems that can <strong>plan, decide and act</strong> across multiple steps without human intervention — e.g. searching, writing code and sending emails.</div>
+                    <div class="term-phrase" data-lang="da">"En agent er AI der ikke bare svarer — den handler."</div>
+                    <div class="term-phrase" data-lang="en">"An agent is AI that doesn't just answer — it acts."</div>
                 </div>
 
-                <!-- 06 -->
+                <!-- 06 Prompt Engineering -->
                 <div class="term-card">
                     <div class="term-number">06</div>
                     <div class="term-title">Prompt Engineering</div>
                     <div class="term-en">Prompt Engineering</div>
-                    <div class="term-body">Kunsten at formulere instruktioner til en LLM så man får de <strong>bedste og mest præcise svar</strong>. En kritisk kompetence i arbejdet med generativ AI.</div>
-                    <div class="term-phrase">"Garbage in, garbage out — prompt engineering er kvalitetssikring af input."</div>
+                    <div class="term-body" data-lang="da">Kunsten at formulere instruktioner til en LLM så man får de <strong>bedste og mest præcise svar</strong>. En kritisk kompetence i arbejdet med generativ AI.</div>
+                    <div class="term-body" data-lang="en">The art of formulating instructions to an LLM to get the <strong>best and most precise answers</strong>. A critical skill when working with generative AI.</div>
+                    <div class="term-phrase" data-lang="da">"Garbage in, garbage out — prompt engineering er kvalitetssikring af input."</div>
+                    <div class="term-phrase" data-lang="en">"Garbage in, garbage out — prompt engineering is quality assurance of input."</div>
                 </div>
 
-                <!-- 07 -->
+                <!-- 07 Fine-tuning -->
                 <div class="term-card">
                     <div class="term-number">07</div>
                     <div class="term-title">Fine-tuning</div>
                     <div class="term-en">Fine-tuning</div>
-                    <div class="term-body">Processen hvor en generel LLM <strong>trænes videre</strong> på et specifikt datasæt — f.eks. juridiske dokumenter — så den bliver specialiseret inden for et domæne.</div>
-                    <div class="term-phrase">"Fine-tuning er forskellen på en generalist og en specialist."</div>
+                    <div class="term-body" data-lang="da">Processen hvor en generel LLM <strong>trænes videre</strong> på et specifikt datasæt — f.eks. juridiske dokumenter — så den bliver specialiseret inden for et domæne.</div>
+                    <div class="term-body" data-lang="en">The process where a general LLM is <strong>further trained</strong> on a specific dataset — e.g. legal documents — so it becomes specialised within a domain.</div>
+                    <div class="term-phrase" data-lang="da">"Fine-tuning er forskellen på en generalist og en specialist."</div>
+                    <div class="term-phrase" data-lang="en">"Fine-tuning is the difference between a generalist and a specialist."</div>
                 </div>
 
-                <!-- 08 -->
+                <!-- 08 Neuralt Netværk -->
                 <div class="term-card">
                     <div class="term-number">08</div>
-                    <div class="term-title">Neuralt Netværk</div>
+                    <div class="term-title" data-lang="da">Neuralt Netværk</div>
+                    <div class="term-title" data-lang="en">Neural Network</div>
                     <div class="term-en">Neural Network</div>
-                    <div class="term-body">Den grundlæggende computerstruktur bag moderne AI — løst inspireret af den menneskelige hjerne. Består af <strong>lag af matematiske funktioner</strong> der bearbejder data.</div>
-                    <div class="term-phrase">"Tænk på det som lag af filtre der hver især finder mønstre i data."</div>
+                    <div class="term-body" data-lang="da">Den grundlæggende computerstruktur bag moderne AI — løst inspireret af den menneskelige hjerne. Består af <strong>lag af matematiske funktioner</strong> der bearbejder data.</div>
+                    <div class="term-body" data-lang="en">The fundamental computing structure behind modern AI — loosely inspired by the human brain. Consists of <strong>layers of mathematical functions</strong> that process data.</div>
+                    <div class="term-phrase" data-lang="da">"Tænk på det som lag af filtre der hver især finder mønstre i data."</div>
+                    <div class="term-phrase" data-lang="en">"Think of it as layers of filters that each find patterns in data."</div>
                 </div>
 
-                <!-- 09 -->
+                <!-- 09 Transformer -->
                 <div class="term-card">
                     <div class="term-number">09</div>
                     <div class="term-title">Transformer</div>
                     <div class="term-en">Transformer Architecture (2017)</div>
-                    <div class="term-body">Arkitekturen fra 2017 der erstattede sekventiel læsning med <strong>parallel "self-attention"</strong> — modellen ser hele teksten på én gang og kortlægger relationer. Fundamentet for alle LLM'er.</div>
-                    <div class="term-phrase">"Som at lægge en hel roman på et bord i stedet for at læse ét ord ad gangen."</div>
+                    <div class="term-body" data-lang="da">Arkitekturen fra 2017 der erstattede sekventiel læsning med <strong>parallel "self-attention"</strong> — modellen ser hele teksten på én gang og kortlægger relationer. Fundamentet for alle LLM'er.</div>
+                    <div class="term-body" data-lang="en">The architecture from 2017 that replaced sequential reading with <strong>parallel "self-attention"</strong> — the model sees the entire text at once and maps relationships. The foundation for all LLMs.</div>
+                    <div class="term-phrase" data-lang="da">"Som at lægge en hel roman på et bord i stedet for at læse ét ord ad gangen."</div>
+                    <div class="term-phrase" data-lang="en">"Like laying an entire novel on a table instead of reading one word at a time."</div>
                 </div>
 
-                <!-- 10 -->
+                <!-- 10 Inferens -->
                 <div class="term-card">
                     <div class="term-number">10</div>
-                    <div class="term-title">Inferens</div>
+                    <div class="term-title" data-lang="da">Inferens</div>
+                    <div class="term-title" data-lang="en">Inference</div>
                     <div class="term-en">Inference</div>
-                    <div class="term-body">Det øjeblik hvor en trænet model <strong>bruges i praksis</strong> — altså når den "tænker" og genererer et svar. Modsat træning, som er den forudgående læringsproces.</div>
-                    <div class="term-phrase">"Træning er at lære. Inferens er at bruge det man har lært."</div>
+                    <div class="term-body" data-lang="da">Det øjeblik hvor en trænet model <strong>bruges i praksis</strong> — altså når den "tænker" og genererer et svar. Modsat træning, som er den forudgående læringsproces.</div>
+                    <div class="term-body" data-lang="en">The moment when a trained model <strong>is used in practice</strong> — when it "thinks" and generates an answer. The opposite of training, which is the preceding learning process.</div>
+                    <div class="term-phrase" data-lang="da">"Træning er at lære. Inferens er at bruge det man har lært."</div>
+                    <div class="term-phrase" data-lang="en">"Training is learning. Inference is applying what you've learned."</div>
                 </div>
 
-                <!-- 11 -->
+                <!-- 11 Hallucination -->
                 <div class="term-card">
                     <div class="term-number">11</div>
                     <div class="term-title">Hallucination</div>
                     <div class="term-en">Hallucination</div>
-                    <div class="term-body">Når en LLM producerer <strong>overbevisende men faktisk forkert information</strong>. En af de vigtigste udfordringer ved deployment af AI i forretningskritiske sammenhænge.</div>
-                    <div class="term-phrase">"Derfor er menneskelig validering og gode processer aldrig blevet vigtigere."</div>
+                    <div class="term-body" data-lang="da">Når en LLM producerer <strong>overbevisende men faktisk forkert information</strong>. En af de vigtigste udfordringer ved deployment af AI i forretningskritiske sammenhænge.</div>
+                    <div class="term-body" data-lang="en">When an LLM produces <strong>convincing but factually incorrect information</strong>. One of the most important challenges in deploying AI in business-critical contexts.</div>
+                    <div class="term-phrase" data-lang="da">"Derfor er menneskelig validering og gode processer aldrig blevet vigtigere."</div>
+                    <div class="term-phrase" data-lang="en">"That is exactly why human validation and good processes have never been more important."</div>
                 </div>
 
-                <!-- 12 -->
+                <!-- 12 Embeddings -->
                 <div class="term-card">
                     <div class="term-number">12</div>
                     <div class="term-title">Embeddings</div>
                     <div class="term-en">Embeddings / Vector Search</div>
-                    <div class="term-body">Tekst eller data repræsenteret som <strong>matematiske vektorer</strong> — så AI kan forstå og sammenligne betydning og lighed mellem begreber. Fundamentet for RAG og semantisk søgning.</div>
-                    <div class="term-phrase">"Embeddings er det der giver AI forståelse for betydning, ikke bare stavning."</div>
+                    <div class="term-body" data-lang="da">Tekst eller data repræsenteret som <strong>matematiske vektorer</strong> — så AI kan forstå og sammenligne betydning og lighed mellem begreber. Fundamentet for RAG og semantisk søgning.</div>
+                    <div class="term-body" data-lang="en">Text or data represented as <strong>mathematical vectors</strong> — so AI can understand and compare meaning and similarity between concepts. The foundation for RAG and semantic search.</div>
+                    <div class="term-phrase" data-lang="da">"Embeddings er det der giver AI forståelse for betydning, ikke bare stavning."</div>
+                    <div class="term-phrase" data-lang="en">"Embeddings are what give AI an understanding of meaning, not just spelling."</div>
                 </div>
 
-                <!-- 13 -->
+                <!-- 13 Supervised Learning -->
                 <div class="term-card">
                     <div class="term-number">13</div>
                     <div class="term-title">Supervised Learning</div>
                     <div class="term-en">Supervised vs Unsupervised Learning</div>
-                    <div class="term-body"><strong>Supervised:</strong> Modellen trænes på data med kendte svar — f.eks. "disse emails er spam, disse er ikke". <strong>Unsupervised:</strong> Modellen finder selv mønstre i data uden facit — f.eks. segmentering af kunder i grupper den selv opdager.</div>
-                    <div class="term-phrase">"Supervised er at lære med en lærer. Unsupervised er at udforske uden kort."</div>
+                    <div class="term-body" data-lang="da"><strong>Supervised:</strong> Modellen trænes på data med kendte svar — f.eks. "disse emails er spam, disse er ikke". Den lærer ved at se eksempler med facit. <strong>Unsupervised:</strong> Modellen finder selv mønstre i data uden facit — f.eks. segmentering af kunder i grupper den selv opdager.</div>
+                    <div class="term-body" data-lang="en"><strong>Supervised:</strong> The model is trained on data with known answers — e.g. "these emails are spam, these are not". It learns by seeing labelled examples. <strong>Unsupervised:</strong> The model finds patterns in data on its own without labels — e.g. segmenting customers into groups it discovers itself.</div>
+                    <div class="term-phrase" data-lang="da">"Supervised er at lære med en lærer. Unsupervised er at udforske uden kort."</div>
+                    <div class="term-phrase" data-lang="en">"Supervised is learning with a teacher. Unsupervised is exploring without a map."</div>
                 </div>
 
-                <!-- 14 -->
+                <!-- 14 Lineær Regression -->
                 <div class="term-card">
                     <div class="term-number">14</div>
-                    <div class="term-title">Lineær Regression</div>
+                    <div class="term-title" data-lang="da">Lineær Regression</div>
+                    <div class="term-title" data-lang="en">Linear Regression</div>
                     <div class="term-en">Linear Regression</div>
-                    <div class="term-body">En af de enkleste ML-modeller — finder den <strong>bedste rette linje</strong> gennem datapunkter for at forudsige en numerisk værdi. F.eks. forudsige en salgspris baseret på historiske data.</div>
-                    <div class="term-phrase">"Lineær regression er ML's svar på en simpel, men kraftfuld tommelfingerregel."</div>
+                    <div class="term-body" data-lang="da">En af de enkleste ML-modeller — finder den <strong>bedste rette linje</strong> gennem datapunkter for at forudsige en numerisk værdi. F.eks. forudsige en salgspris baseret på historiske data.</div>
+                    <div class="term-body" data-lang="en">One of the simplest ML models — finds the <strong>best straight line</strong> through data points to predict a numerical value. E.g. predicting a sales price based on historical data.</div>
+                    <div class="term-phrase" data-lang="da">"Lineær regression er ML's svar på en simpel, men kraftfuld tommelfingerregel."</div>
+                    <div class="term-phrase" data-lang="en">"Linear regression is ML's answer to a simple but powerful rule of thumb."</div>
                 </div>
 
-                <!-- 15 -->
+                <!-- 15 Logistisk Regression -->
                 <div class="term-card">
                     <div class="term-number">15</div>
-                    <div class="term-title">Logistisk Regression</div>
+                    <div class="term-title" data-lang="da">Logistisk Regression</div>
+                    <div class="term-title" data-lang="en">Logistic Regression</div>
                     <div class="term-en">Logistic Regression</div>
-                    <div class="term-body">På trods af navnet er det en <strong>klassifikationsmodel</strong>, ikke en regressionsmodel. Den forudsiger sandsynligheden for et udfald med to muligheder — f.eks. "vil kunden churne: ja eller nej?"</div>
-                    <div class="term-phrase">"Logistisk regression svarer ikke med et tal — den svarer med en sandsynlighed."</div>
+                    <div class="term-body" data-lang="da">På trods af navnet er det en <strong>klassifikationsmodel</strong>, ikke en regressionsmodel. Den forudsiger sandsynligheden for et udfald med to muligheder — f.eks. "vil kunden churne: ja eller nej?"</div>
+                    <div class="term-body" data-lang="en">Despite the name, it is a <strong>classification model</strong>, not a regression model. It predicts the probability of an outcome with two options — e.g. "will the customer churn: yes or no?"</div>
+                    <div class="term-phrase" data-lang="da">"Logistisk regression svarer ikke med et tal — den svarer med en sandsynlighed."</div>
+                    <div class="term-phrase" data-lang="en">"Logistic regression doesn't answer with a number — it answers with a probability."</div>
                 </div>
 
-                <!-- 16 -->
+                <!-- 16 KNN -->
                 <div class="term-card">
                     <div class="term-number">16</div>
                     <div class="term-title">K-Nearest Neighbour</div>
                     <div class="term-en">KNN</div>
-                    <div class="term-body">En simpel men intuitiv algoritme: <strong>klassificer et datapunkt ved at se på de K nærmeste naboer</strong> i datasættet. Flertallet bestemmer. Bruges til anbefalingssystemer og klassifikation.</div>
-                    <div class="term-phrase">"Du er summen af dine nærmeste naboer — KNN tager det helt bogstaveligt."</div>
+                    <div class="term-body" data-lang="da">En simpel men intuitiv algoritme: <strong>klassificer et datapunkt ved at se på de K nærmeste naboer</strong> i datasættet. Flertallet bestemmer. Bruges til anbefalingssystemer og klassifikation.</div>
+                    <div class="term-body" data-lang="en">A simple but intuitive algorithm: <strong>classify a data point by looking at the K nearest neighbours</strong> in the dataset. The majority decides. Used for recommendation systems and classification.</div>
+                    <div class="term-phrase" data-lang="da">"Du er summen af dine nærmeste naboer — KNN tager det helt bogstaveligt."</div>
+                    <div class="term-phrase" data-lang="en">"You are the sum of your nearest neighbours — KNN takes that completely literally."</div>
                 </div>
 
-                <!-- 17 -->
+                <!-- 17 SVM -->
                 <div class="term-card">
                     <div class="term-number">17</div>
                     <div class="term-title">Support Vector Machine</div>
                     <div class="term-en">SVM</div>
-                    <div class="term-body">En klassifikationsalgoritme der finder den <strong>optimale grænse</strong> mellem to klasser i data — med størst mulig margin til begge sider. Særligt effektiv ved komplekse data med få eksempler.</div>
-                    <div class="term-phrase">"SVM finder den vejlinje der holder to grupper så langt fra hinanden som muligt."</div>
+                    <div class="term-body" data-lang="da">En klassifikationsalgoritme der finder den <strong>optimale grænse</strong> mellem to klasser i data — med størst mulig margin til begge sider. Særligt effektiv ved komplekse data med få eksempler.</div>
+                    <div class="term-body" data-lang="en">A classification algorithm that finds the <strong>optimal boundary</strong> between two classes in data — with the largest possible margin on both sides. Particularly effective for complex data with few examples.</div>
+                    <div class="term-phrase" data-lang="da">"SVM finder den vejlinje der holder to grupper så langt fra hinanden som muligt."</div>
+                    <div class="term-phrase" data-lang="en">"SVM finds the dividing line that keeps two groups as far apart as possible."</div>
                 </div>
 
-                <!-- 18 -->
+                <!-- 18 Vektordimensioner -->
                 <div class="term-card">
                     <div class="term-number">18</div>
-                    <div class="term-title">Vektordimensioner</div>
+                    <div class="term-title" data-lang="da">Vektordimensioner</div>
+                    <div class="term-title" data-lang="en">Vector Dimensions</div>
                     <div class="term-en">Vector Dimensions</div>
-                    <div class="term-body">Når AI konverterer tekst til embeddings, repræsenteres hvert begreb som et punkt i et <strong>rum med hundredvis eller tusindvis af dimensioner</strong>. Jo tættere to punkter er, jo mere ens er deres betydning. Fundamentet for semantisk søgning og RAG.</div>
-                    <div class="term-phrase">"Forestil dig et 1.536-dimensionelt rum hvor 'konge' og 'dronning' ligger tæt på hinanden."</div>
+                    <div class="term-body" data-lang="da">Når AI konverterer tekst til embeddings, repræsenteres hvert begreb som et punkt i et <strong>rum med hundredvis eller tusindvis af dimensioner</strong>. Jo tættere to punkter er, jo mere ens er deres betydning. Det er fundamentet for semantisk søgning og RAG.</div>
+                    <div class="term-body" data-lang="en">When AI converts text to embeddings, each concept is represented as a point in a <strong>space with hundreds or thousands of dimensions</strong>. The closer two points are, the more similar their meaning. The foundation for semantic search and RAG.</div>
+                    <div class="term-phrase" data-lang="da">"Forestil dig et 1.536-dimensionelt rum hvor 'konge' og 'dronning' ligger tæt på hinanden."</div>
+                    <div class="term-phrase" data-lang="en">"Imagine a 1,536-dimensional space where 'king' and 'queen' sit close to each other."</div>
+                </div>
+
+                <!-- 19 LangChain -->
+                <div class="term-card">
+                    <div class="term-number">19</div>
+                    <div class="term-title">LangChain</div>
+                    <div class="term-en">LangChain Framework</div>
+                    <div class="term-body" data-lang="da">Et open source Python-framework der gør det enkelt at <strong>bygge applikationer med LLM'er som kerne</strong>. LangChain forbinder modeller, databaser, API'er og agenter i en sammenhængende pipeline — og er blevet standardinfrastruktur for AI-udviklere verden over.</div>
+                    <div class="term-body" data-lang="en">An open source Python framework that makes it straightforward to <strong>build applications with LLMs at the core</strong>. LangChain connects models, databases, APIs and agents in a coherent pipeline — and has become standard infrastructure for AI developers worldwide.</div>
+                    <div class="term-phrase" data-lang="da">"LangChain er det lim der holder en AI-applikations komponenter sammen."</div>
+                    <div class="term-phrase" data-lang="en">"LangChain is the glue that holds an AI application's components together."</div>
+                </div>
+
+                <!-- 20 LangSmith -->
+                <div class="term-card">
+                    <div class="term-number">20</div>
+                    <div class="term-title">LangSmith</div>
+                    <div class="term-en">Observability & Evaluation Platform</div>
+                    <div class="term-body" data-lang="da">En <strong>observabilitets- og evalueringsplatform</strong> til LLM-applikationer, udviklet af LangChain-teamet. Med LangSmith kan man tracke, debugge og evaluere sine AI-pipelines — et uundværligt værktøj når man bevæger sig fra prototype til produktion.</div>
+                    <div class="term-body" data-lang="en">An <strong>observability and evaluation platform</strong> for LLM applications, developed by the LangChain team. LangSmith lets you trace, debug and evaluate your AI pipelines — an indispensable tool when moving from prototype to production.</div>
+                    <div class="term-phrase" data-lang="da">"LangSmith er dit kontroltårn: du kan se præcis hvad din AI gør — og hvorfor."</div>
+                    <div class="term-phrase" data-lang="en">"LangSmith is your control tower: you can see exactly what your AI is doing — and why."</div>
                 </div>
 
             </div>

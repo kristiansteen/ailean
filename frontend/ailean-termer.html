@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AILEAN - AI Termer & Begreber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="assets/css/ailean.css" rel="stylesheet">
+    <style>
+        /* ── Page-level card grid ───────────────────────────────────────── */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+
+        /* ── Individual term card ───────────────────────────────────────── */
+        .term-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem 1.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.25s, background 0.25s;
+        }
+
+        .term-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.14);
+        }
+
+        /* Coloured left-border accent */
+        .term-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--card-accent);
+            border-radius: 12px 0 0 12px;
+        }
+
+        /* Per-card accent colours — aligned with ailean palette */
+        .term-card:nth-child(1)  { --card-accent: #65c434; }
+        .term-card:nth-child(2)  { --card-accent: #0ea5e9; }
+        .term-card:nth-child(3)  { --card-accent: #10b981; }
+        .term-card:nth-child(4)  { --card-accent: #f59e0b; }
+        .term-card:nth-child(5)  { --card-accent: #ef4444; }
+        .term-card:nth-child(6)  { --card-accent: #8b5cf6; }
+        .term-card:nth-child(7)  { --card-accent: #06b6d4; }
+        .term-card:nth-child(8)  { --card-accent: #84cc16; }
+        .term-card:nth-child(9)  { --card-accent: #f97316; }
+        .term-card:nth-child(10) { --card-accent: #ec4899; }
+        .term-card:nth-child(11) { --card-accent: #a78bfa; }
+        .term-card:nth-child(12) { --card-accent: #34d399; }
+        .term-card:nth-child(13) { --card-accent: #f43f5e; }
+        .term-card:nth-child(14) { --card-accent: #3b82f6; }
+        .term-card:nth-child(15) { --card-accent: #d946ef; }
+        .term-card:nth-child(16) { --card-accent: #fb923c; }
+        .term-card:nth-child(17) { --card-accent: #22d3ee; }
+        .term-card:nth-child(18) { --card-accent: #a3e635; }
+
+        /* Number badge */
+        .term-number {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--card-accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+            opacity: 0.85;
+        }
+
+        /* Danish title */
+        .term-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+            line-height: 1.2;
+        }
+
+        /* English subtitle */
+        .term-en {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--card-accent);
+            opacity: 0.65;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Body explanation */
+        .term-body {
+            font-size: 0.85rem;
+            color: rgba(236, 239, 241, 0.65);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .term-body strong {
+            color: rgba(236, 239, 241, 0.9);
+            font-weight: 600;
+        }
+
+        /* Key phrase box */
+        .term-phrase {
+            margin-top: 0.85rem;
+            padding: 0.6rem 0.85rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            border-left: 2px solid var(--card-accent);
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--card-accent);
+            line-height: 1.55;
+            opacity: 0.88;
+        }
+
+        /* ── Responsive ─────────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .terms-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .term-card {
+                padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+            }
+        }
+
+        /* ── Sticky nav override (non-hero page) ─────────────────────────── */
+        nav.sticky {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(101, 196, 52, 0.15);
+            padding: 1.25rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="sticky">
+        <div class="container">
+            <a href="index.html" class="logo" style="text-decoration:none;">AILEAN</a>
+            <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang-switch="da">DA</button>
+                    <button class="lang-btn" data-lang-switch="en">EN</button>
+                </div>
+                <button class="nav-burger" id="navBurger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile nav overlay -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-item">
+            <span data-lang="da">Hjem</span>
+            <span data-lang="en">Home</span>
+        </a>
+        <a href="ailean-philosophy.html" class="mobile-nav-item">
+            <span data-lang="da">AI-filosofi</span>
+            <span data-lang="en">AI philosophy</span>
+        </a>
+        <a href="ailean-background.html" class="mobile-nav-item">
+            <span data-lang="da">Baggrund</span>
+            <span data-lang="en">Background</span>
+        </a>
+        <a href="ailean-cases.html" class="mobile-nav-item">
+            <span data-lang="da">Cases</span>
+            <span data-lang="en">Cases</span>
+        </a>
+        <a href="ailean-termer.html" class="mobile-nav-item active">
+            <span data-lang="da">AI Termer</span>
+            <span data-lang="en">AI Terms</span>
+        </a>
+        <div class="mobile-nav-lang">
+            <button class="lang-btn" data-lang-switch="da">DA</button>
+            <button class="lang-btn" data-lang-switch="en">EN</button>
+        </div>
+    </div>
+
+    <!-- Page header section -->
+    <section style="padding: 5rem 0 4rem; background: #080b07; border-bottom: 1px solid rgba(101,196,52,0.12);">
+        <div class="container">
+            <div style="border-left: 6px solid var(--primary); padding-left: 2rem; max-width: 860px;">
+                <div style="font-size: 0.85rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.25rem;">
+                    AI ORDFORRÅD
+                </div>
+                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.25rem;">
+                    <span data-lang="da">AI Termer<br>&amp; Begreber</span>
+                    <span data-lang="en">AI Terms<br>&amp; Concepts</span>
+                </h1>
+                <p style="font-size: 1.1rem; color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="da">
+                    18 centrale begreber fra AI og machine learning — forklaret på dansk med kontekst og nøglesætninger. Uanset om du er nybegynder eller ønsker at opfriske dit ordforråd.
+                </p>
+                <p style="font-size: 1.1rem; color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="en">
+                    18 central concepts from AI and machine learning — explained in Danish with context and key phrases. Whether you are new to the field or want to refresh your vocabulary.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards section -->
+    <section style="padding: 4rem 0 6rem; background: #07090a;">
+        <div class="container">
+
+            <div class="terms-grid">
+
+                <!-- 01 -->
+                <div class="term-card">
+                    <div class="term-number">01</div>
+                    <div class="term-title">Machine Learning</div>
+                    <div class="term-en">ML</div>
+                    <div class="term-body">Den grundlæggende disciplin hvor algoritmer <strong>lærer af data</strong> frem for at følge eksplicitte regler. Fundamentet for næsten al moderne AI.</div>
+                    <div class="term-phrase">"ML er det der sker når vi lader data tale i stedet for at programmere svarene."</div>
+                </div>
+
+                <!-- 02 -->
+                <div class="term-card">
+                    <div class="term-number">02</div>
+                    <div class="term-title">Large Language Model</div>
+                    <div class="term-en">LLM</div>
+                    <div class="term-body">En meget stor sprogmodel trænet på enorme mængder tekst. <strong>GPT-4 og Claude</strong> er eksempler. Kernen i moderne generativ AI.</div>
+                    <div class="term-phrase">"En LLM er i bund og grund en meget sofistikeret mønstergenkender for sprog."</div>
+                </div>
+
+                <!-- 03 -->
+                <div class="term-card">
+                    <div class="term-number">03</div>
+                    <div class="term-title">Generativ AI</div>
+                    <div class="term-en">GenAI</div>
+                    <div class="term-body">AI der kan <strong>skabe nyt indhold</strong> — tekst, billeder, kode, lyd — frem for blot at klassificere eller forudsige. ChatGPT og Midjourney er eksempler.</div>
+                    <div class="term-phrase">"Generativ AI skaber — ikke bare genkender."</div>
+                </div>
+
+                <!-- 04 -->
+                <div class="term-card">
+                    <div class="term-number">04</div>
+                    <div class="term-title">RAG</div>
+                    <div class="term-en">Retrieval Augmented Generation</div>
+                    <div class="term-body">En teknik hvor LLM'en suppleres med et <strong>eksternt vidensindeks</strong> — f.eks. virksomhedens egne dokumenter — så modellen svarer baseret på opdateret og kontekstrelevant information.</div>
+                    <div class="term-phrase">"RAG giver LLM'en hukommelse og adgang til din virksomheds viden."</div>
+                </div>
+
+                <!-- 05 -->
+                <div class="term-card">
+                    <div class="term-number">05</div>
+                    <div class="term-title">AI Agenter</div>
+                    <div class="term-en">Agents</div>
+                    <div class="term-body">Selvstændigt opererende AI-systemer der kan <strong>planlægge, beslutte og handle</strong> over flere trin uden menneskelig indgriben — f.eks. søge, skrive kode og sende email.</div>
+                    <div class="term-phrase">"En agent er AI der ikke bare svarer — den handler."</div>
+                </div>
+
+                <!-- 06 -->
+                <div class="term-card">
+                    <div class="term-number">06</div>
+                    <div class="term-title">Prompt Engineering</div>
+                    <div class="term-en">Prompt Engineering</div>
+                    <div class="term-body">Kunsten at formulere instruktioner til en LLM så man får de <strong>bedste og mest præcise svar</strong>. En kritisk kompetence i arbejdet med generativ AI.</div>
+                    <div class="term-phrase">"Garbage in, garbage out — prompt engineering er kvalitetssikring af input."</div>
+                </div>
+
+                <!-- 07 -->
+                <div class="term-card">
+                    <div class="term-number">07</div>
+                    <div class="term-title">Fine-tuning</div>
+                    <div class="term-en">Fine-tuning</div>
+                    <div class="term-body">Processen hvor en generel LLM <strong>trænes videre</strong> på et specifikt datasæt — f.eks. juridiske dokumenter — så den bliver specialiseret inden for et domæne.</div>
+                    <div class="term-phrase">"Fine-tuning er forskellen på en generalist og en specialist."</div>
+                </div>
+
+                <!-- 08 -->
+                <div class="term-card">
+                    <div class="term-number">08</div>
+                    <div class="term-title">Neuralt Netværk</div>
+                    <div class="term-en">Neural Network</div>
+                    <div class="term-body">Den grundlæggende computerstruktur bag moderne AI — løst inspireret af den menneskelige hjerne. Består af <strong>lag af matematiske funktioner</strong> der bearbejder data.</div>
+                    <div class="term-phrase">"Tænk på det som lag af filtre der hver især finder mønstre i data."</div>
+                </div>
+
+                <!-- 09 -->
+                <div class="term-card">
+                    <div class="term-number">09</div>
+                    <div class="term-title">Transformer</div>
+                    <div class="term-en">Transformer Architecture (2017)</div>
+                    <div class="term-body">Arkitekturen fra 2017 der erstattede sekventiel læsning med <strong>parallel "self-attention"</strong> — modellen ser hele teksten på én gang og kortlægger relationer. Fundamentet for alle LLM'er.</div>
+                    <div class="term-phrase">"Som at lægge en hel roman på et bord i stedet for at læse ét ord ad gangen."</div>
+                </div>
+
+                <!-- 10 -->
+                <div class="term-card">
+                    <div class="term-number">10</div>
+                    <div class="term-title">Inferens</div>
+                    <div class="term-en">Inference</div>
+                    <div class="term-body">Det øjeblik hvor en trænet model <strong>bruges i praksis</strong> — altså når den "tænker" og genererer et svar. Modsat træning, som er den forudgående læringsproces.</div>
+                    <div class="term-phrase">"Træning er at lære. Inferens er at bruge det man har lært."</div>
+                </div>
+
+                <!-- 11 -->
+                <div class="term-card">
+                    <div class="term-number">11</div>
+                    <div class="term-title">Hallucination</div>
+                    <div class="term-en">Hallucination</div>
+                    <div class="term-body">Når en LLM producerer <strong>overbevisende men faktisk forkert information</strong>. En af de vigtigste udfordringer ved deployment af AI i forretningskritiske sammenhænge.</div>
+                    <div class="term-phrase">"Derfor er menneskelig validering og gode processer aldrig blevet vigtigere."</div>
+                </div>
+
+                <!-- 12 -->
+                <div class="term-card">
+                    <div class="term-number">12</div>
+                    <div class="term-title">Embeddings</div>
+                    <div class="term-en">Embeddings / Vector Search</div>
+                    <div class="term-body">Tekst eller data repræsenteret som <strong>matematiske vektorer</strong> — så AI kan forstå og sammenligne betydning og lighed mellem begreber. Fundamentet for RAG og semantisk søgning.</div>
+                    <div class="term-phrase">"Embeddings er det der giver AI forståelse for betydning, ikke bare stavning."</div>
+                </div>
+
+                <!-- 13 -->
+                <div class="term-card">
+                    <div class="term-number">13</div>
+                    <div class="term-title">Supervised Learning</div>
+                    <div class="term-en">Supervised vs Unsupervised Learning</div>
+                    <div class="term-body"><strong>Supervised:</strong> Modellen trænes på data med kendte svar — f.eks. "disse emails er spam, disse er ikke". <strong>Unsupervised:</strong> Modellen finder selv mønstre i data uden facit — f.eks. segmentering af kunder i grupper den selv opdager.</div>
+                    <div class="term-phrase">"Supervised er at lære med en lærer. Unsupervised er at udforske uden kort."</div>
+                </div>
+
+                <!-- 14 -->
+                <div class="term-card">
+                    <div class="term-number">14</div>
+                    <div class="term-title">Lineær Regression</div>
+                    <div class="term-en">Linear Regression</div>
+                    <div class="term-body">En af de enkleste ML-modeller — finder den <strong>bedste rette linje</strong> gennem datapunkter for at forudsige en numerisk værdi. F.eks. forudsige en salgspris baseret på historiske data.</div>
+                    <div class="term-phrase">"Lineær regression er ML's svar på en simpel, men kraftfuld tommelfingerregel."</div>
+                </div>
+
+                <!-- 15 -->
+                <div class="term-card">
+                    <div class="term-number">15</div>
+                    <div class="term-title">Logistisk Regression</div>
+                    <div class="term-en">Logistic Regression</div>
+                    <div class="term-body">På trods af navnet er det en <strong>klassifikationsmodel</strong>, ikke en regressionsmodel. Den forudsiger sandsynligheden for et udfald med to muligheder — f.eks. "vil kunden churne: ja eller nej?"</div>
+                    <div class="term-phrase">"Logistisk regression svarer ikke med et tal — den svarer med en sandsynlighed."</div>
+                </div>
+
+                <!-- 16 -->
+                <div class="term-card">
+                    <div class="term-number">16</div>
+                    <div class="term-title">K-Nearest Neighbour</div>
+                    <div class="term-en">KNN</div>
+                    <div class="term-body">En simpel men intuitiv algoritme: <strong>klassificer et datapunkt ved at se på de K nærmeste naboer</strong> i datasættet. Flertallet bestemmer. Bruges til anbefalingssystemer og klassifikation.</div>
+                    <div class="term-phrase">"Du er summen af dine nærmeste naboer — KNN tager det helt bogstaveligt."</div>
+                </div>
+
+                <!-- 17 -->
+                <div class="term-card">
+                    <div class="term-number">17</div>
+                    <div class="term-title">Support Vector Machine</div>
+                    <div class="term-en">SVM</div>
+                    <div class="term-body">En klassifikationsalgoritme der finder den <strong>optimale grænse</strong> mellem to klasser i data — med størst mulig margin til begge sider. Særligt effektiv ved komplekse data med få eksempler.</div>
+                    <div class="term-phrase">"SVM finder den vejlinje der holder to grupper så langt fra hinanden som muligt."</div>
+                </div>
+
+                <!-- 18 -->
+                <div class="term-card">
+                    <div class="term-number">18</div>
+                    <div class="term-title">Vektordimensioner</div>
+                    <div class="term-en">Vector Dimensions</div>
+                    <div class="term-body">Når AI konverterer tekst til embeddings, repræsenteres hvert begreb som et punkt i et <strong>rum med hundredvis eller tusindvis af dimensioner</strong>. Jo tættere to punkter er, jo mere ens er deres betydning. Fundamentet for semantisk søgning og RAG.</div>
+                    <div class="term-phrase">"Forestil dig et 1.536-dimensionelt rum hvor 'konge' og 'dronning' ligger tæt på hinanden."</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AILEAN.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile burger menu
+        const burger = document.getElementById('navBurger');
+        const mobileNav = document.getElementById('mobileNav');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileNav.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                burger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Language switching
+        const htmlElement = document.documentElement;
+        const langButtons = document.querySelectorAll('.lang-btn');
+        htmlElement.setAttribute('lang', 'da');
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang-switch');
+                htmlElement.setAttribute('lang', lang);
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll(`.lang-btn[data-lang-switch="${lang}"]`).forEach(b => b.classList.add('active'));
+                document.title = lang === 'da'
+                    ? 'AILEAN - AI Termer & Begreber'
+                    : 'AILEAN - AI Terms & Concepts';
+            });
+        });
+
+        // Mobile nav lang buttons
+        mobileNav.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang-switch');
+                htmlElement.setAttribute('lang', lang);
+                langButtons.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll(`.lang-btn[data-lang-switch="${lang}"]`).forEach(b => b.classList.add('active'));
+            });
+        });
+    </script>
+</body>
+</html>

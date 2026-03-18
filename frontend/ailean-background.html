@@ -8,6 +8,47 @@
     <title>AILEAN - Our background</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="assets/css/ailean.css" rel="stylesheet">
+    <style>
+        /* ── Background page — mobile overrides ─────────────────── */
+        @media (max-width: 768px) {
+            /* Section intro margin */
+            .section-header {
+                margin-bottom: 3rem !important;
+            }
+
+            /* Expertise/death section padding */
+            .expertise-section[style*="padding: 8rem"],
+            .death-section,
+            .value-section {
+                padding: 4rem 0 !important;
+            }
+
+            /* Comparison column padding */
+            .comparison-column {
+                padding: 1.5rem !important;
+            }
+
+            /* Value card */
+            .value-card {
+                padding: 1.75rem !important;
+            }
+
+            /* h2 inline */
+            .expertise-section h2[style],
+            .death-section h2[style] {
+                font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-header {
+                margin-bottom: 2rem !important;
+            }
+            .comparison-column {
+                padding: 1.25rem !important;
+            }
+        }
+    </style>
 </head>
 
 <body>

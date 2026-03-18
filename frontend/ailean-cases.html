@@ -8,6 +8,52 @@
     <title>AILEAN - Our Cases</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="assets/css/ailean.css" rel="stylesheet">
+    <style>
+        /* ── Cases page — mobile overrides ──────────────────────── */
+
+        /* Case article cards */
+        .case-study {
+            padding: 3rem;
+        }
+
+        /* Case h3 titles */
+        .case-study h3 {
+            font-size: clamp(1.3rem, 5vw, 2rem);
+            line-height: 1.2;
+            display: block !important; /* override inline-block so border spans full width */
+        }
+
+        @media (max-width: 768px) {
+            .case-study {
+                padding: 1.75rem !important;
+            }
+            .case-studies {
+                gap: 3rem !important;
+            }
+            .testimonial {
+                padding: 1.25rem !important;
+            }
+            .testimonial p[style] {
+                font-size: 1rem !important;
+            }
+            .section-header {
+                margin-bottom: 3rem !important;
+            }
+            /* Cases section padding */
+            .cases-section[style*="padding: 8rem"] {
+                padding: 4rem 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-study {
+                padding: 1.25rem !important;
+            }
+            .case-studies {
+                gap: 2rem !important;
+            }
+        }
+    </style>
 </head>
 
 <body>

@@ -20,6 +20,13 @@
     --light-grey: #ECEFF1;
     --white: #FFFFFF;
     --red: #EF4444;
+    /* Spacing scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
 }
 
 /* =========================================
@@ -82,7 +89,8 @@ nav .container {
 }
 
 .lang-btn {
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 0.9rem;
+    min-height: 40px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--white);
@@ -91,6 +99,7 @@ nav .container {
     font-size: 0.8rem;
     font-weight: 700;
     transition: all 0.3s ease;
+    line-height: 1;
 }
 
 .lang-btn:hover {
@@ -113,9 +122,8 @@ nav .container {
    4. Hero Section
    ========================================= */
 .hero {
-    height: 100vh;
-    min-height: 100dvh;
-    /* Mobile fix */
+    height: 100svh;
+    min-height: 560px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -208,7 +216,7 @@ nav .container {
 }
 
 .hero-description {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
     color: rgba(255, 255, 255, 0.8);
     max-width: 700px;
     margin-bottom: 3rem;
@@ -285,7 +293,7 @@ nav .container {
 
 .mobile-nav-item {
     color: rgba(255,255,255,0.55);
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -293,7 +301,7 @@ nav .container {
     padding: 0.9rem 2rem;
     border-radius: 8px;
     transition: color 0.2s, background 0.2s;
-    width: 280px;
+    width: min(280px, 85vw);
     text-align: center;
 }
 .mobile-nav-item:hover,
@@ -313,7 +321,7 @@ nav .container {
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(255,255,255,0.1);
-    width: 280px;
+    width: min(280px, 85vw);
     justify-content: center;
 }
 
@@ -611,8 +619,8 @@ nav .container {
 
 .visual-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3rem;
     align-items: center;
 }
 
@@ -941,7 +949,43 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
 
 
 /* =========================================
-   11. Responsiveness
+   11. Utility Classes
+   ========================================= */
+
+/* Hero CTA button group — stacks vertically on small screens */
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+/* Generic auto-fit grid — safe on all screen widths */
+.grid-auto {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+}
+
+@media (min-width: 560px) {
+    .grid-auto {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
+/* Section padding utility */
+.section-pad {
+    padding: var(--space-lg) 0;
+}
+
+@media (min-width: 768px) {
+    .section-pad {
+        padding: var(--space-2xl) 0;
+    }
+}
+
+/* =========================================
+   12. Responsiveness
    ========================================= */
 @media (max-width: 1024px) {
     .container {
@@ -976,6 +1020,7 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
 
     /* ── Hero ───────────────────────────── */
     .hero {
+        height: auto;
         min-height: 100svh;
         padding-bottom: 110px;
         justify-content: center;
@@ -1013,6 +1058,17 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
         line-height: 1.65;
         margin-bottom: 2rem;
         max-width: 100%;
+    }
+
+    /* Hero CTA buttons — full width and stacked on mobile */
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .hero-actions > * {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 
     .cta-button {
@@ -1079,7 +1135,7 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
 
     /* ── Hero ───────────────────────────── */
     .hero {
-        padding-bottom: 100px;
+        padding-bottom: 90px;
     }
 
     .hero-category {
@@ -1088,7 +1144,7 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
     }
 
     .hero h1 {
-        font-size: clamp(2.1rem, 10vw, 2.8rem);
+        font-size: clamp(1.9rem, 10vw, 2.8rem);
         line-height: 1.1;
         margin-bottom: 1rem;
     }
@@ -1153,6 +1209,22 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
     .form-container { padding: 1.25rem; }
 
     footer { padding: 2rem 0; }
+
+    /* ── Timeline (extra narrow) ─────────── */
+    .timeline-container {
+        padding-left: 1.5rem !important;
+    }
+    .timeline-line {
+        left: 0.5rem !important;
+    }
+    .timeline-dot {
+        left: 0.5rem !important;
+    }
+
+    /* ── Hero actions — explicit small screen ── */
+    .hero-actions {
+        gap: 0.75rem;
+    }
 }
 
 /* =========================================
@@ -1213,7 +1285,7 @@ footer p {
    ========================================= */
 .powered-by-badge {
     position: fixed;
-    top: 40px;
+    top: 12px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2000;
@@ -1228,6 +1300,8 @@ footer p {
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: min(300px, 90vw);
+    white-space: nowrap;
 }
 
 .powered-by-badge:hover {
@@ -1277,7 +1351,7 @@ footer p {
 
 @media (max-width: 768px) {
     .timeline-container {
-        padding-left: 3rem !important;
+        padding-left: 2rem !important;
         max-width: 100% !important;
     }
 
@@ -1346,6 +1420,46 @@ footer p {
 }
 
 /* =========================================
-   16. Extra Small Devices (480px)
+   16. Page header (non-hero pages)
    ========================================= */
-/* duplicate block removed — 480px rules consolidated above */
+.page-header {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid rgba(101, 196, 52, 0.12);
+}
+
+.page-header-inner {
+    border-left: 6px solid var(--primary);
+    padding-left: 2rem;
+    max-width: 860px;
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 3.5rem 0 2.5rem;
+    }
+    .page-header-inner {
+        border-left: 4px solid var(--primary);
+        padding-left: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 2.5rem 0 2rem;
+    }
+    .page-header-inner {
+        border-left: none;
+        padding-left: 0;
+        border-top: 4px solid var(--primary);
+        padding-top: 1rem;
+    }
+}
+
+/* =========================================
+   17. Global stat card label size
+   ========================================= */
+.stat-card p,
+.stat-label {
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    line-height: 1.55;
+}

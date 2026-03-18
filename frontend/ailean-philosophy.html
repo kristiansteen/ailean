@@ -8,6 +8,51 @@
     <title>AILEAN - Our AI philosophy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="assets/css/ailean.css" rel="stylesheet">
+    <style>
+        /* ── Philosophy page — mobile overrides ─────────────────── */
+        @media (max-width: 768px) {
+            /* Intro text box */
+            [style*="max-width: 860px; margin: 0 auto 3.5rem"] {
+                padding: 1.5rem !important;
+            }
+
+            /* Accordion header — tighten left indent */
+            .phil-header {
+                padding: 1.25rem 1.25rem !important;
+                gap: 0.85rem !important;
+            }
+
+            /* Accordion body — remove the 5.25rem left offset */
+            .phil-body > div {
+                padding: 0 1.25rem 1.5rem 1.25rem !important;
+            }
+
+            /* Section padding */
+            .text-section[style*="padding: 8rem"] {
+                padding: 4rem 0 !important;
+            }
+
+            /* h2 inside sections */
+            .text-section h2[style] {
+                font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+                margin-bottom: 1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .phil-header {
+                padding: 1rem !important;
+                gap: 0.65rem !important;
+            }
+            .phil-body > div {
+                padding: 0 1rem 1.25rem 1rem !important;
+            }
+            /* The example quote box inside accordion */
+            [style*="border-left: 3px solid var(--primary)"] {
+                padding: 1rem !important;
+            }
+        }
+    </style>
 </head>
 
 <body>

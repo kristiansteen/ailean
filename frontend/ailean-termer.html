@@ -100,9 +100,9 @@
 
         /* Body explanation */
         .term-body {
-            font-size: 0.85rem;
+            font-size: clamp(0.875rem, 2vw, 0.9rem);
             color: rgba(236, 239, 241, 0.65);
-            line-height: 1.7;
+            line-height: 1.75;
             font-weight: 300;
         }
 
@@ -198,20 +198,20 @@
     </div>
 
     <!-- Page header -->
-    <section style="padding: 5rem 0 4rem; background: #080b07; border-bottom: 1px solid rgba(101,196,52,0.12);">
+    <section class="page-header" style="background: #080b07;">
         <div class="container">
-            <div style="border-left: 6px solid var(--primary); padding-left: 2rem; max-width: 860px;">
-                <div style="font-size: 0.85rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.25rem;">
+            <div class="page-header-inner">
+                <div style="font-size: 0.8rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.25rem;">
                     AI ORDFORRÅD
                 </div>
-                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.25rem;">
+                <h1 style="font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.25rem;">
                     <span data-lang="da">AI Termer<br>&amp; Begreber</span>
                     <span data-lang="en">AI Terms<br>&amp; Concepts</span>
                 </h1>
-                <p style="font-size: 1.1rem; color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="da">
+                <p style="font-size: clamp(0.95rem, 2.5vw, 1.1rem); color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="da">
                     20 centrale begreber fra AI og machine learning — forklaret med kontekst og nøglesætninger. Uanset om du er nybegynder eller ønsker at opfriske dit ordforråd.
                 </p>
-                <p style="font-size: 1.1rem; color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="en">
+                <p style="font-size: clamp(0.95rem, 2.5vw, 1.1rem); color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="en">
                     20 central concepts from AI and machine learning — explained with context and key phrases. Whether you are new to the field or want to refresh your vocabulary.
                 </p>
             </div>

@@ -139,24 +139,14 @@
             }
         }
 
-        /* ── Sticky nav (non-hero page) ──────────────────────────────────── */
-        nav.sticky {
-            position: sticky;
-            top: 0;
-            background: rgba(0, 0, 0, 0.96);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(101, 196, 52, 0.15);
-            padding: 1.25rem 0;
-        }
     </style>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="sticky">
+    <nav>
         <div class="container">
-            <a href="index.html" class="logo" style="text-decoration:none;">AILEAN</a>
+            <div class="logo">AILEAN</div>
             <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
                 <div class="language-switcher">
                     <button class="lang-btn active" data-lang-switch="da">DA</button>
@@ -197,24 +187,54 @@
         </div>
     </div>
 
-    <!-- Page header -->
-    <section class="page-header" style="background: #080b07;">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background-wrapper">
+            <img src="assets/images/ailean-burst-complexity.jpg" alt="AI Terms backdrop" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+
         <div class="container">
-            <div class="page-header-inner">
-                <div style="font-size: 0.8rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.25rem;">
-                    AI ORDFORRÅD
+            <div class="hero-content">
+                <div class="hero-category" data-lang="da">AI ORDFORRÅD</div>
+                <div class="hero-category" data-lang="en">AI VOCABULARY</div>
+
+                <h1 data-lang="da">AI Termer<br>&amp; Begreber</h1>
+                <h1 data-lang="en">AI Terms<br>&amp; Concepts</h1>
+
+                <div class="hero-description">
+                    <p data-lang="da">20 centrale begreber fra AI og machine learning — forklaret med kontekst og nøglesætninger. Uanset om du er nybegynder eller ønsker at opfriske dit ordforråd.</p>
+                    <p data-lang="en">20 central concepts from AI and machine learning — explained with context and key phrases. Whether you are new to the field or want to refresh your vocabulary.</p>
                 </div>
-                <h1 style="font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.25rem;">
-                    <span data-lang="da">AI Termer<br>&amp; Begreber</span>
-                    <span data-lang="en">AI Terms<br>&amp; Concepts</span>
-                </h1>
-                <p style="font-size: clamp(0.95rem, 2.5vw, 1.1rem); color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="da">
-                    20 centrale begreber fra AI og machine learning — forklaret med kontekst og nøglesætninger. Uanset om du er nybegynder eller ønsker at opfriske dit ordforråd.
-                </p>
-                <p style="font-size: clamp(0.95rem, 2.5vw, 1.1rem); color: rgba(236,239,241,0.7); line-height: 1.7; font-weight: 300; max-width: 640px; margin: 0;" data-lang="en">
-                    20 central concepts from AI and machine learning — explained with context and key phrases. Whether you are new to the field or want to refresh your vocabulary.
-                </p>
             </div>
+        </div>
+
+        <div class="hero-tabs">
+            <a href="index.html" class="tab-item">
+                <span data-lang="da">Hjem</span>
+                <span data-lang="en">Home</span>
+            </a>
+            <a href="ailean-philosophy.html" class="tab-item">
+                <span data-lang="da">AI-filosofi</span>
+                <span data-lang="en">AI philosophy</span>
+            </a>
+            <a href="ailean-background.html" class="tab-item">
+                <span data-lang="da">Baggrund</span>
+                <span data-lang="en">Background</span>
+            </a>
+            <a href="ailean-cases.html" class="tab-item">
+                <span data-lang="da">Cases</span>
+                <span data-lang="en">Cases</span>
+            </a>
+            <a href="ailean-termer.html" class="tab-item active">
+                <span data-lang="da">AI Termer</span>
+                <span data-lang="en">AI Terms</span>
+            </a>
+        </div>
+
+        <div class="playback-controls">
+            <div class="control-btn">←</div>
+            <div class="control-btn">→</div>
         </div>
     </section>
 

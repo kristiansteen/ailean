@@ -12,9 +12,16 @@
         /* ── Page-level card grid ───────────────────────────────────────── */
         .terms-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
             margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .terms-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem;
+            }
         }
 
         /* ── Individual term card ───────────────────────────────────────── */
@@ -126,13 +133,6 @@
         }
 
         /* ── Responsive ─────────────────────────────────────────────────── */
-        @media (max-width: 768px) {
-            .terms-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
         @media (max-width: 480px) {
             .term-card {
                 padding: 1.25rem 1.25rem 1.25rem 1.5rem;

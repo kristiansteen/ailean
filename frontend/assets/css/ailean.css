@@ -126,9 +126,10 @@ nav .container {
     min-height: 560px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     position: relative;
-    padding-bottom: 12vh;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
     overflow: hidden;
     background: #000;
 }
@@ -186,15 +187,14 @@ nav .container {
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.25em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .hero h1 {
     font-size: clamp(2.5rem, 6vw, 5.5rem);
-    /* Adjusted lower bound for mobile */
     font-weight: 900;
     line-height: 0.95;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     letter-spacing: -0.04em;
     text-transform: none;
 }
@@ -219,7 +219,7 @@ nav .container {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     color: rgba(255, 255, 255, 0.8);
     max-width: 700px;
-    margin-bottom: 3rem;
+    margin-bottom: 1.75rem;
     font-weight: 400;
     line-height: 1.5;
 }
@@ -1022,7 +1022,8 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
     .hero {
         height: auto;
         min-height: 100svh;
-        padding-bottom: 110px;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
         justify-content: center;
     }
 
@@ -1135,12 +1136,12 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
 
     /* ── Hero ───────────────────────────── */
     .hero {
-        padding-bottom: 90px;
+        padding-bottom: 4rem;
     }
 
     .hero-category {
         font-size: 0.65rem;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
     }
 
     .hero h1 {

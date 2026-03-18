@@ -993,7 +993,6 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
     }
 
     .hero-tabs {
-        left: 2rem;
         gap: 2rem;
     }
 
@@ -1079,9 +1078,18 @@ html[lang="en"] .comparison-item p[data-lang="en"] {
         justify-content: center;
     }
 
-    /* ── Hero tabs — hidden on mobile (use burger menu instead) */
-    .hero-tabs { display: none; }
-    .tab-item { font-size: 0.78rem; }
+    /* ── Hero tabs — centered, wrapping on mobile */
+    .hero-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        gap: 0.5rem 1.25rem;
+        bottom: 1.5rem;
+    }
+    .tab-item { font-size: 0.72rem; }
 
     /* ── Hide decorative controls ────────── */
     .playback-controls { display: none; }

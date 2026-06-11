@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - vimpl</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <!-- Stripe Buy Button -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <style>
+        .pricing-hero {
+            padding: 120px 24px 60px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .pricing-hero p {
+            font-size: 20px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .pricing-container {
+            max-width: 1000px;
+            margin: -80px auto 80px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 48px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+            box-shadow: 0 20px 60px rgba(101, 196, 52, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 40px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .pricing-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .pricing-amount {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .pricing-currency {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-right: 4px;
+        }
+
+        .pricing-period {
+            font-size: 18px;
+            color: var(--gray-500);
+            margin-left: 8px;
+        }
+
+        .pricing-description {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-top: 8px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            color: var(--dark);
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+            margin-right: 12px;
+            font-size: 18px;
+            min-width: 20px;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .pricing-cta.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .pricing-cta.primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(101, 196, 52, 0.3);
+        }
+
+        .pricing-cta.secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .pricing-cta.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .pricing-note {
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .price-beta-tag {
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            opacity: 0.6;
+            margin-right: 8px;
+        }
+
+        .pricing-container {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1200px;
+        }
+
+        .comparison-section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: var(--dark);
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: var(--gray-100);
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-check {
+            color: var(--success);
+            font-size: 20px;
+        }
+
+        .comparison-cross {
+            color: var(--gray-400);
+            font-size: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+                margin: -40px auto 40px;
+            }
+
+            .pricing-hero {
+                padding: 100px 20px 40px;
+            }
+
+            .pricing-hero h1 {
+                font-size: 32px;
+            }
+
+            .pricing-hero p {
+                font-size: 16px;
+            }
+
+            .pricing-card {
+                padding: 32px 24px;
+            }
+
+            .pricing-amount {
+                font-size: 48px;
+            }
+
+            .pricing-currency {
+                font-size: 24px;
+            }
+
+            .comparison-section {
+                padding: 0 16px;
+                margin: 60px auto;
+            }
+
+            .comparison-title {
+                font-size: 24px;
+                margin-bottom: 32px;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            .comparison-table table {
+                min-width: 500px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px;
+                font-size: 13px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+
+            .cta p {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-hero h1 {
+                font-size: 28px;
+            }
+
+            .pricing-card {
+                padding: 24px 20px;
+            }
+
+            .pricing-amount {
+                font-size: 40px;
+            }
+
+            .pricing-features li {
+                font-size: 14px;
+            }
+
+            .comparison-title {
+                font-size: 20px;
+            }
+
+            .cta h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="logo">vimpl<span>.com</span></a>
+            <div class="nav-links">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <div class="nav-auth">
+                <a href="board.html" class="nav-cta">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <h1>Simple, transparent pricing</h1>
+        <p>Choose the plan that's right for you. Start free as a student, upgrade when you need more.</p>
+    </section>
+
+    <!-- Pricing Cards -->
+    <div class="pricing-container">
+        <!-- Student Plan -->
+        <div class="pricing-card">
+            <div class="pricing-header">
+                <div class="pricing-name">Student</div>
+                <div class="pricing-price">
+                    <span class="pricing-currency">£</span>
+                    <span class="pricing-amount">0</span>
+                    <span class="pricing-period">/month</span>
+                </div>
+                <div class="pricing-description">Perfect for learning and personal projects</div>
+            </div>
+
+            <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> 1 planning board</li>
+                <li><i class="fas fa-check-circle"></i> All section types</li>
+                <li><i class="fas fa-check-circle"></i> Unlimited post-its</li>
+                <li><i class="fas fa-check-circle"></i> Export to JSON</li>
+                <li><i class="fas fa-check-circle"></i> Basic support</li>
+            </ul>
+
+            <a href="board.html?new=true" class="pricing-cta secondary">
+                Start Free
+            </a>
+            <p class="pricing-note">No credit card required</p>
+        </div>
+
+        <!-- Commercial Plan -->
+        <div class="pricing-card featured">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-header">
+                <div class="pricing-name">Commercial</div>
+                <div class="pricing-price">
+                    <span class="pricing-currency price-original">£</span>
+                    <span class="pricing-amount price-original">2</span>
+                    <span class="pricing-currency">£</span>
+                    <span class="pricing-amount">0</span>
+                    <span class="price-beta-tag">Beta</span>
+                    <span class="pricing-period">/month</span>
+                </div>
+                <div class="pricing-description">For professionals and teams. Free during Beta!</div>
+            </div>
+
+            <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> <strong>Unlimited boards</strong></li>
+                <li><i class="fas fa-check-circle"></i> <strong>Portfolio dashboard</strong></li>
+                <li><i class="fas fa-check-circle"></i> All section types</li>
+                <li><i class="fas fa-check-circle"></i> Unlimited post-its</li>
+                <li><i class="fas fa-check-circle"></i> Export to JSON</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Board sharing</strong></li>
+                <li><i class="fas fa-check-circle"></i> <strong>Priority support</strong></li>
+                <li><i class="fas fa-check-circle"></i> <strong>Advanced analytics</strong></li>
+            </ul>
+
+            <div style="margin: 20px 0;">
+                <stripe-buy-button buy-button-id="buy_btn_1SzGBvQaI3WUOKaCMHaM4PHe"
+                    publishable-key="pk_test_51SzFITQaI3WUOKaCsS0FQ5kyiyDH7b8yWGrTTHyGtiA8fQ47dsVRiFWgAzS7tUZKfyPUDLQ7Mnx4iRMYpSan3VAy00H1dp9EnD">
+                </stripe-buy-button>
+            </div>
+            <p class="pricing-note">Cancel anytime</p>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card">
+            <div class="pricing-header">
+                <div class="pricing-name">Enterprise</div>
+                <div class="pricing-price">
+                    <span class="pricing-amount" style="font-size: 36px;">Let's talk</span>
+                </div>
+                <div class="pricing-description">For large organizations with custom needs</div>
+            </div>
+
+            <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> Everything in Commercial</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Advanced Reporting</strong></li>
+                <li><i class="fas fa-check-circle"></i> <strong>API Integration</strong></li>
+                <li><i class="fas fa-check-circle"></i> SSRS & Custom Dashboards</li>
+                <li><i class="fas fa-check-circle"></i> SSO & SAML Authentication</li>
+                <li><i class="fas fa-check-circle"></i> Dedicated Account Manager</li>
+                <li><i class="fas fa-check-circle"></i> 24/7 Phone Support</li>
+                <li><i class="fas fa-check-circle"></i> Custom SLA</li>
+            </ul>
+
+            <a href="mailto:sales@vimpl.com" class="pricing-cta secondary">
+                Contact Sales
+            </a>
+            <p class="pricing-note">Custom onboarding included</p>
+        </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <h2 class="comparison-title">Feature Comparison</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th style="text-align: center;">Student</th>
+                        <th style="text-align: center;">Commercial</th>
+                        <th style="text-align: center;">Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Number of boards</strong></td>
+                        <td style="text-align: center;">1</td>
+                        <td style="text-align: center;">Unlimited</td>
+                        <td style="text-align: center;">Unlimited</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Portfolio dashboard</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-times comparison-cross"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>All section types</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unlimited post-its</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risk matrices</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Week planner</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Board sharing</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-times comparison-cross"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Export to JSON</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advanced analytics</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-times comparison-cross"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advanced Reporting</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-times comparison-cross"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-times comparison-cross"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>API Integration</strong></td>
+                        <td style="text-align: center;"><i class="fas fa-times comparison-cross"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-times comparison-cross"></i></td>
+                        <td style="text-align: center;"><i class="fas fa-check comparison-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Support</strong></td>
+                        <td style="text-align: center;">Basic</td>
+                        <td style="text-align: center;">Priority</td>
+                        <td style="text-align: center;">24/7 Phone</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>Ready to start planning?</h2>
+            <p>Create your first board for free. Upgrade whenever you're ready.</p>
+            <a href="board.html?new=true" class="btn-primary">
+                <i class="fas fa-rocket"></i> Get Started Free
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">vimpl<span>.com</span></div>
+            <div class="footer-links">
+                <a href="privacy.html" class="footer-link">Privacy</a>
+                <a href="terms.html" class="footer-link">Terms</a>
+                <a href="https://github.com/kristiansteen/vimpl" class="footer-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+            <div class="footer-copy">© 2025 vimpl. All rights reserved.</div>
+        </div>
+    </footer>
+</body>
+
+</html>

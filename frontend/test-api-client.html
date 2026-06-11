@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Client Test - vimpl</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #a3e085 0%, #65c434 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #65c434 0%, #3d7a1f 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .test-section-header {
+            background: #f5f5f5;
+            padding: 15px 20px;
+            font-weight: 600;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-section-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: #65c434;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #3d7a1f;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .output.success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .output.error {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status.authenticated {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.unauthenticated {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            margin-bottom: 10px;
+            color: #1976d2;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .info-box code {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 API Client Test Suite</h1>
+            <p>Test all API endpoints and verify the API client is working correctly</p>
+        </div>
+
+        <div class="content">
+            <!-- Status Info -->
+            <div class="info-box">
+                <h3>Backend Status</h3>
+                <p>
+                    Make sure your backend is running: <code>npm run dev</code> in the <code>backend/</code> folder.<br>
+                    Backend should be accessible at: <code>http://localhost:3001</code>
+                </p>
+                <p style="margin-top: 10px;">
+                    Auth Status: <span class="status" id="authStatus">Checking...</span>
+                </p>
+            </div>
+
+            <!-- Authentication Tests -->
+            <div class="test-section">
+                <div class="test-section-header">
+                    <span>🔐 Authentication Tests</span>
+                </div>
+                <div class="test-section-body">
+                    <!-- Register -->
+                    <div class="form-group">
+                        <label>Register New User</label>
+                        <input type="email" id="regEmail" placeholder="Email" value="test@example.com">
+                        <input type="password" id="regPassword" placeholder="Password" value="Test1234"
+                            style="margin-top: 5px;">
+                        <input type="text" id="regName" placeholder="Name" value="Test User" style="margin-top: 5px;">
+                        <button onclick="testRegister()" style="margin-top: 10px;">Register</button>
+                    </div>
+
+                    <!-- Login -->
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label>Login</label>
+                        <input type="email" id="loginEmail" placeholder="Email" value="test@example.com">
+                        <input type="password" id="loginPassword" placeholder="Password" value="Test1234"
+                            style="margin-top: 5px;">
+                        <button onclick="testLogin()" style="margin-top: 10px;">Login</button>
+                    </div>
+
+                    <!-- Get Current User -->
+                    <div class="form-group" style="margin-top: 20px;">
+                        <button onclick="testGetCurrentUser()">Get Current User</button>
+                        <button onclick="testLogout()" class="btn-danger" style="margin-left: 10px;">Logout</button>
+                    </div>
+
+                    <div id="authOutput" class="output" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Board Tests -->
+            <div class="test-section">
+                <div class="test-section-header">
+                    <span>📋 Board Tests</span>
+                </div>
+                <div class="test-section-body">
+                    <!-- Create Board -->
+                    <div class="form-group">
+                        <label>Create Board</label>
+                        <input type="text" id="boardTitle" placeholder="Board Title" value="Test Board">
+                        <input type="text" id="boardDesc" placeholder="Description (optional)" style="margin-top: 5px;">
+                        <button onclick="testCreateBoard()" style="margin-top: 10px;">Create Board</button>
+                    </div>
+
+                    <!-- Get Boards -->
+                    <div class="form-group" style="margin-top: 20px;">
+                        <button onclick="testGetBoards()">Get All Boards</button>
+                        <button onclick="testGetBoard()" style="margin-left: 10px;">Get Board by ID</button>
+                    </div>
+
+                    <!-- Board ID Input -->
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label>Board ID (for update/delete/section/postit tests)</label>
+                        <input type="text" id="boardId" placeholder="Paste board ID here">
+                    </div>
+
+                    <div id="boardOutput" class="output" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Section Tests -->
+            <div class="test-section">
+                <div class="test-section-header">
+                    <span>📦 Section Tests</span>
+                </div>
+                <div class="test-section-body">
+                    <div class="form-group">
+                        <label>Section Type</label>
+                        <select id="sectionType"
+                            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="matrix">Matrix</option>
+                            <option value="text">Text</option>
+                            <option value="team">Team</option>
+                            <option value="kpi">KPI</option>
+                            <option value="weekplanner">Week Planner</option>
+                            <option value="actions">Actions</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Section Title</label>
+                        <input type="text" id="sectionTitle" placeholder="Section Title" value="Test Section">
+                    </div>
+
+                    <button onclick="testCreateSection()">Create Section</button>
+
+                    <div id="sectionOutput" class="output" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Post-it Tests -->
+            <div class="test-section">
+                <div class="test-section-header">
+                    <span>📝 Post-it Tests</span>
+                </div>
+                <div class="test-section-body">
+                    <div class="form-group">
+                        <label>Section ID (from section test above)</label>
+                        <input type="text" id="postitSectionId" placeholder="Paste section ID here">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Post-it Content</label>
+                        <input type="text" id="postitContent" placeholder="Post-it content" value="Test post-it note">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Color</label>
+                        <select id="postitColor"
+                            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="yellow">Yellow</option>
+                            <option value="pink">Pink</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="orange">Orange</option>
+                        </select>
+                    </div>
+
+                    <button onclick="testCreatePostit()">Create Post-it</button>
+
+                    <div id="postitOutput" class="output" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include API Client -->
+    <script src="assets/js/api-client.js"></script>
+
+    <script>
+        // Initialize API Client
+        const apiClient = new ApiClient();
+
+        // Update auth status on page load
+        updateAuthStatus();
+
+        function updateAuthStatus() {
+            const isAuth = apiClient.isAuthenticated();
+            const statusEl = document.getElementById('authStatus');
+
+            if (isAuth) {
+                statusEl.textContent = 'Authenticated ✓';
+                statusEl.className = 'status authenticated';
+            } else {
+                statusEl.textContent = 'Not Authenticated';
+                statusEl.className = 'status unauthenticated';
+            }
+        }
+
+        function showOutput(elementId, message, isError = false) {
+            const output = document.getElementById(elementId);
+            output.style.display = 'block';
+            output.className = 'output ' + (isError ? 'error' : 'success');
+            output.textContent = typeof message === 'object' ? JSON.stringify(message, null, 2) : message;
+        }
+
+        // Authentication Tests
+        async function testRegister() {
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const name = document.getElementById('regName').value;
+
+            try {
+                const result = await apiClient.register(email, password, name);
+                showOutput('authOutput', result);
+                updateAuthStatus();
+                alert('Registration successful! ✓');
+            } catch (error) {
+                showOutput('authOutput', error.message, true);
+            }
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const result = await apiClient.login(email, password);
+                showOutput('authOutput', result);
+                updateAuthStatus();
+                alert('Login successful! ✓');
+            } catch (error) {
+                showOutput('authOutput', error.message, true);
+            }
+        }
+
+        async function testGetCurrentUser() {
+            try {
+                const result = await apiClient.getCurrentUser();
+                showOutput('authOutput', result);
+            } catch (error) {
+                showOutput('authOutput', error.message, true);
+            }
+        }
+
+        async function testLogout() {
+            try {
+                await apiClient.logout();
+                showOutput('authOutput', 'Logged out successfully');
+                updateAuthStatus();
+                alert('Logout successful! ✓');
+            } catch (error) {
+                showOutput('authOutput', error.message, true);
+            }
+        }
+
+        // Board Tests
+        async function testCreateBoard() {
+            const title = document.getElementById('boardTitle').value;
+            const description = document.getElementById('boardDesc').value;
+
+            try {
+                const result = await apiClient.createBoard(title, description);
+                showOutput('boardOutput', result);
+
+                // Auto-fill board ID for convenience
+                if (result.id) {
+                    document.getElementById('boardId').value = result.id;
+                }
+
+                alert('Board created! ✓\nID copied to Board ID field.');
+            } catch (error) {
+                showOutput('boardOutput', error.message, true);
+            }
+        }
+
+        async function testGetBoards() {
+            try {
+                const result = await apiClient.getBoards();
+                showOutput('boardOutput', result);
+            } catch (error) {
+                showOutput('boardOutput', error.message, true);
+            }
+        }
+
+        async function testGetBoard() {
+            const boardId = document.getElementById('boardId').value;
+
+            if (!boardId) {
+                alert('Please enter a Board ID');
+                return;
+            }
+
+            try {
+                const result = await apiClient.getBoard(boardId);
+                showOutput('boardOutput', result);
+            } catch (error) {
+                showOutput('boardOutput', error.message, true);
+            }
+        }
+
+        // Section Tests
+        async function testCreateSection() {
+            const boardId = document.getElementById('boardId').value;
+            const type = document.getElementById('sectionType').value;
+            const title = document.getElementById('sectionTitle').value;
+
+            if (!boardId) {
+                alert('Please enter a Board ID first');
+                return;
+            }
+
+            try {
+                const sectionData = {
+                    type: type,
+                    title: title,
+                    positionX: 0,
+                    positionY: 0,
+                    width: 6,
+                    height: 4,
+                    content: {}
+                };
+
+                const result = await apiClient.createSection(boardId, sectionData);
+                showOutput('sectionOutput', result);
+
+                // Auto-fill section ID for post-it test
+                if (result.id) {
+                    document.getElementById('postitSectionId').value = result.id;
+                }
+
+                alert('Section created! ✓\nID copied to Section ID field for post-it test.');
+            } catch (error) {
+                showOutput('sectionOutput', error.message, true);
+            }
+        }
+
+        // Post-it Tests
+        async function testCreatePostit() {
+            const boardId = document.getElementById('boardId').value;
+            const sectionId = document.getElementById('postitSectionId').value;
+            const content = document.getElementById('postitContent').value;
+            const color = document.getElementById('postitColor').value;
+
+            if (!boardId) {
+                alert('Please enter a Board ID first');
+                return;
+            }
+
+            if (!sectionId) {
+                alert('Please enter a Section ID first (create a section first)');
+                return;
+            }
+
+            try {
+                const postitData = {
+                    sectionId: sectionId,
+                    color: color,
+                    content: content,
+                    status: 'todo',
+                    positionX: 100,
+                    positionY: 100
+                };
+
+                const result = await apiClient.createPostit(boardId, postitData);
+                showOutput('postitOutput', result);
+                alert('Post-it created! ✓');
+            } catch (error) {
+                showOutput('postitOutput', error.message, true);
+            }
+        }
+    </script>
+</body>
+
+</html>

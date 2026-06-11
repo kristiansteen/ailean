@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vimpl - Visual Planning Board</title>
+
+    <!-- GridStack CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/gridstack@10.0.0/dist/gridstack.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/gridstack@10.0.0/dist/gridstack-extra.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/board.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/2.2.0/oidc-client-ts.min.js"></script>
+    <style>
+        /* Auth Loading Overlay */
+        .auth-loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .auth-loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .auth-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .auth-loading-text {
+            margin-top: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Hide main content until auth verified */
+        .page-content {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .page-content.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Auth Loading Overlay -->
+    <div id="authLoadingOverlay" class="auth-loading-overlay">
+        <div class="auth-spinner"></div>
+        <div class="auth-loading-text">Loading board...</div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div id="pageContent" class="page-content">
+        <!-- Header -->
+        <header class="header">
+            <a href="index.html" class="logo-link" title="Back to Home">
+                <div class="logo">vimpl<span>.com</span></div>
+            </a>
+
+            <div class="header-title">
+                <input type="text" id="projectTitle" class="project-title-input" value="Project name"
+                    placeholder="Enter project name..." />
+            </div>
+            <div class="header-controls">
+                <div id="auth-container"></div>
+                <div class="autosave-indicator" id="autosaveIndicator">
+                    <span class="autosave-dot"></span>
+                    <span class="autosave-text" data-i18n="allChangesSaved">All changes saved</span>
+                </div>
+
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang-switch="en">EN</button>
+                    <button class="lang-btn" data-lang-switch="da">DA</button>
+                </div>
+
+                <div class="settings-menu" id="settingsMenu">
+                    <button class="settings-burger" id="settingsBurger" title="Settings">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="settings-dropdown" id="settingsDropdown">
+                        <a href="dashboard.html" class="menu-item" id="goDashboard">
+                            <i class="fas fa-th-large"></i> <span data-i18n="dashboard">Dashboard</span>
+                        </a>
+                        <button class="menu-item" id="newBoard">
+                            <i class="fas fa-file"></i> <span data-i18n="newBoard">New Board</span>
+                        </button>
+                        <button class="menu-item" id="editLayout" style="display:none;">
+                            <i class="fas fa-pen-to-square"></i> <span data-i18n="editLayout">Edit Layout</span>
+                        </button>
+                        <button class="menu-item" id="toggleGrid">
+                            <i class="fas fa-th"></i> <span data-i18n="toggleGrid">Toggle Grid</span>
+                        </button>
+                        <button class="menu-item" id="showBackend">
+                            <i class="fas fa-database"></i> <span data-i18n="eventLog">Event Log</span>
+                        </button>
+                        <button class="menu-item primary" id="exportBoard">
+                            <i class="fas fa-download"></i> <span data-i18n="exportJson">Export JSON</span>
+                        </button>
+                        <button class="menu-item" id="voiceToBpmn" onclick="openVoiceToBpmn()">
+                            <i class="fas fa-microphone-alt"></i> <span data-i18n="voiceToBpmn">Voice to BPMN</span>
+                        </button>
+                        <div class="menu-divider"></div>
+                        <button class="menu-item logout" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> <span data-i18n="logout">Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <button class="sidebar-btn active" id="selectTool" title="Select">
+                    <i class="fas fa-mouse-pointer"></i>
+                </button>
+                <button class="sidebar-btn" id="addSection" title="Add Section">
+                    <i class="fas fa-plus"></i>
+                </button>
+
+                <div class="sidebar-divider"></div>
+
+                <div class="sidebar-label">Notes</div>
+                <div class="postit-palette" id="postitPalette">
+                    <div class="postit-color yellow" data-color="yellow" title="Add Note"></div>
+                </div>
+            </aside>
+
+            <!-- Board Area -->
+            <main class="board-area" id="boardArea">
+                <div class="grid-background" id="gridBackground"></div>
+                <div class="grid-stack" id="board"></div>
+            </main>
+        </div>
+
+        <!-- Post-it Form (appears on double-click) -->
+        <div class="postit-form" id="postitForm" style="display: none;">
+            <button class="close-form" id="closePostitForm">&times;</button>
+            <h4><i class="fas fa-sticky-note"></i> <span id="formTitle">Edit Note</span></h4>
+
+            <div class="form-group">
+                <label>Content</label>
+                <textarea id="formContent" placeholder="Enter note content..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Owner</label>
+                <select id="formOwner">
+                    <option value="">-- Select Owner --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select id="formStatus">
+                    <option value="todo">To Do</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Color</label>
+                <div class="form-color-selector">
+                    <div class="color-opt yellow" data-color="yellow" title="Yellow"></div>
+                    <div class="color-opt red" data-color="red" title="Red"></div>
+                    <div class="color-opt blue" data-color="blue" title="Blue"></div>
+                    <div class="color-opt green" data-color="green" title="Green"></div>
+                    <div class="color-opt grey" data-color="grey" title="Grey"></div>
+                </div>
+                <input type="hidden" id="formColor" value="yellow">
+            </div>
+
+            <!-- Risk Matrix Fields (shown conditionally) -->
+            <div id="riskFields" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label id="xAxisLabel">X Value (1-100)</label>
+                        <input type="number" id="formXValue" min="1" max="100" value="50">
+                    </div>
+                    <div class="form-group">
+                        <label id="yAxisLabel">Y Value (1-100)</label>
+                        <input type="number" id="formYValue" min="1" max="100" value="50">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Risk Score</label>
+                    <div class="score-display" id="scoreDisplay">2500</div>
+                </div>
+                <div class="form-group">
+                    <label>Mitigation (max 255 chars)</label>
+                    <textarea id="formMitigation" maxlength="255"
+                        placeholder="Describe mitigation strategy..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions" id="instructions">
+            <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+            <h4><i class="fas fa-lightbulb"></i> Quick Start</h4>
+            <ul>
+                <li><strong>Add Note:</strong> Click color → click section</li>
+                <li><strong>Edit Note:</strong> Double-click to open form</li>
+                <li><strong>Move Note:</strong> Drag within sections</li>
+                <li><strong>Lock Section:</strong> Click lock icon</li>
+                <li><strong>Auto-save:</strong> Changes save automatically</li>
+            </ul>
+        </div>
+
+        <!-- Backend Event Log Modal -->
+        <div class="modal-overlay" id="backendModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2><i class="fas fa-database"></i> Event Log</h2>
+                    <button class="modal-close" id="closeBackend">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="events">All Events</button>
+                        <button class="tab" data-tab="postits">Post-it Data</button>
+                        <button class="tab" data-tab="matrix">Matrix Positions</button>
+                    </div>
+                    <div id="eventsTab">
+                        <table class="event-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Event</th>
+                                    <th>Element ID</th>
+                                    <th>Type</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eventLogBody"></tbody>
+                        </table>
+                    </div>
+                    <div id="postitsTab" style="display:none;">
+                        <table class="event-table">
+                            <thead>
+                                <tr>
+                                    <th>Color</th>
+                                    <th>Content</th>
+                                    <th>Owner</th>
+                                    <th>Status</th>
+                                    <th>Week / Column</th>
+                                    <th>Track / Row</th>
+                                    <th>ID</th>
+                                    Subtasks:
+                                </tr>
+                            </thead>
+                            <tbody id="postitLogBody"></tbody>
+                        </table>
+                    </div>
+                    <div id="matrixTab" style="display:none;">
+                        <table class="event-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Post-it ID</th>
+                                    <th>Matrix</th>
+                                    <th>X-Axis</th>
+                                    <th>X (0-100)</th>
+                                    <th>Y-Axis</th>
+                                    <th>Y (0-100)</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="matrixLogBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Section Modal -->
+        <div class="modal-overlay" id="addSectionModal">
+            <div class="modal" style="max-width: 700px;">
+                <div class="modal-header">
+                    <h2><i class="fas fa-plus-circle"></i> Add New Section</h2>
+                    <button class="modal-close" id="closeAddSection">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="section-types" id="sectionTypes">
+                        <div class="section-type-card" data-type="text">
+                            <i class="fas fa-align-left"></i>
+                            <h3>Text Section</h3>
+                            <p>Simple text area for notes</p>
+                        </div>
+                        <div class="section-type-card" data-type="team">
+                            <i class="fas fa-users"></i>
+                            <h3>Team Section</h3>
+                            <p>Team members with name & email</p>
+                        </div>
+                        <div class="section-type-card" data-type="kpi">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>KPI Section</h3>
+                            <p>Key performance indicators</p>
+                        </div>
+                        <div class="section-type-card" data-type="matrix">
+                            <i class="fas fa-th-large"></i>
+                            <h3>2x2 Matrix</h3>
+                            <p>Risk/Impact analysis grid</p>
+                        </div>
+                        <div class="section-type-card" data-type="weekplan">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Week Planner</h3>
+                            <p>Weekly schedule with tracks</p>
+                        </div>
+                        <div class="section-type-card" data-type="actions">
+                            <i class="fas fa-tasks"></i>
+                            <h3>Actions Table</h3>
+                            <p>Action items with owners</p>
+                        </div>
+                        <div class="section-type-card" data-type="postit-area">
+                            <i class="fas fa-sticky-note"></i>
+                            <h3>Post-it Area</h3>
+                            <p>Free area for sticky notes</p>
+                        </div>
+                        <div class="section-type-card" data-type="kanban">
+                            <i class="fas fa-columns"></i>
+                            <h3>Kanban Board</h3>
+                            <p>Todo, In Progress, Done columns</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End page-content -->
+
+    <!-- GridStack JS -->
+    <script src="https://cdn.jsdelivr.net/npm/gridstack@10.0.0/dist/gridstack-all.js"></script>
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/board-state.js"></script>
+    <script src="assets/js/board-utils.js"></script>
+    <script src="assets/js/board-autosave.js"></script>
+    <script src="assets/js/board-team.js"></script>
+    <script src="assets/js/board-sections.js"></script>
+    <script src="assets/js/board-postits.js"></script>
+    <script src="assets/js/board-grid.js"></script>
+    <script src="assets/js/board-init.js"></script>
+    <script src="assets/js/lang.js"></script>
+    <script>
+        // ── Voice to BPMN launcher ────────────────────────────────────────
+        // Passes the vimpl JWT as a URL hash fragment (not a query param) so
+        // it never reaches any server logs. voice-2-launch reads it on mount,
+        // stores it as the vimpl-saas credential, then cleans the URL.
+        const VOICE_TO_BPMN_URL = 'https://voice-2-launch.vercel.app';
+        const VIMPL_BACKEND_URL = 'https://backend-eight-rho-46.vercel.app';
+
+        function openVoiceToBpmn() {
+            const token = localStorage.getItem('accessToken') || '';
+            const hash = new URLSearchParams({ token, baseUrl: VIMPL_BACKEND_URL }).toString();
+            window.open(`${VOICE_TO_BPMN_URL}/#${hash}`, '_blank', 'noopener');
+        }
+    </script>
+</body>
+
+</html>

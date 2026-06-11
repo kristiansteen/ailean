@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - vimpl</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .register-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 440px;
+            padding: 48px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-main {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .logo h1 {
+            font-family: 'Birthstone', cursive;
+            font-size: 48px;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            margin-bottom: 0;
+        }
+
+
+        .logo p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #65c434;
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            font-size: 20px;
+            padding: 4px;
+        }
+
+        .password-strength {
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        .password-strength.weak {
+            color: #e74c3c;
+        }
+
+        .password-strength.medium {
+            color: #f39c12;
+        }
+
+        .password-strength.strong {
+            color: #27ae60;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            margin-top: 24px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(101, 196, 52, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 32px 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 16px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .btn-google {
+            background: white;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-google:hover {
+            background: #f8f9fa;
+            border-color: #ccc;
+        }
+
+        .google-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 24px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #65c434;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .success-message {
+            background: #efe;
+            border: 1px solid #cfc;
+            color: #3c3;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .terms {
+            font-size: 12px;
+            color: #666;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        .terms a {
+            color: #65c434;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            .register-container {
+                padding: 32px 24px;
+                max-width: 100%;
+            }
+
+            .logo h1 {
+                font-size: 40px;
+            }
+
+            .logo p {
+                font-size: 13px;
+            }
+
+            .btn {
+                padding: 16px;
+                font-size: 15px;
+            }
+
+            input {
+                padding: 14px 16px;
+                font-size: 16px;
+                /* Prevents zoom on iOS */
+            }
+
+            .toggle-password {
+                font-size: 18px;
+            }
+
+            .password-strength {
+                font-size: 11px;
+            }
+
+            .terms {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .register-container {
+                padding: 24px 20px;
+            }
+
+            .logo h1 {
+                font-size: 36px;
+            }
+
+            .divider {
+                margin: 24px 0;
+            }
+
+            .login-link {
+                font-size: 13px;
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --primary: #65c434;
+            --primary-dark: #3d7a1f;
+            --primary-light: #a3e085;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container" style="position: relative;">
+        <!-- Language switcher -->
+        <div class="lang-switcher light" style="position: absolute; top: 1rem; left: 1rem;">
+            <button class="lang-btn active" data-lang-switch="en">EN</button>
+            <button class="lang-btn" data-lang-switch="da">DA</button>
+        </div>
+        <div class="logo">
+            <div class="logo-main">
+                <h1>vimpl</h1>
+
+            </div>
+            <p data-i18n="createAccount">Create your account and start planning.</p>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="name" data-i18n="fullName">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" data-i18n-placeholder="fullNamePh">
+            </div>
+
+            <div class="form-group">
+                <label for="email" data-i18n="emailLabel">Email</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required
+                    autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password" data-i18n="passwordLabel">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="At least 8 characters" required
+                        autocomplete="new-password" minlength="8" data-i18n-placeholder="passwordPh">
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        👁️
+                    </button>
+                </div>
+                <div id="passwordStrength" class="password-strength"></div>
+            </div>
+
+            <div class="terms">
+                <span data-i18n="agreeTerms">By creating an account, you agree to our</span>
+                <a href="terms.html" data-i18n="termsLink">Terms of Service</a> <span data-i18n="andWord">and</span>
+                <a href="privacy.html" data-i18n="privacyLink">Privacy Policy</a>.
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="registerBtn" data-i18n="createAccountBtn">
+                Create Account
+            </button>
+        </form>
+
+        <div class="divider">
+            <span data-i18n="orDivider">or</span>
+        </div>
+
+        <button type="button" class="btn btn-google" onclick="signUpWithGoogle()">
+            <svg class="google-icon" viewBox="0 0 24 24">
+                <path fill="#4285F4"
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853"
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05"
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                <path fill="#EA4335"
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+            </svg>
+            <span data-i18n="continueGoogle">Continue with Google</span>
+        </button>
+
+        <div class="login-link">
+            <span data-i18n="alreadyAccount">Already have an account?</span> <a href="login.html" data-i18n="logIn">Log in</a>
+        </div>
+    </div>
+
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/lang.js"></script>
+    <script>
+        const apiClient = new ApiClient();
+
+        // Check if already logged in
+        if (apiClient.isAuthenticated()) {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', (e) => {
+            const password = e.target.value;
+            const strengthDiv = document.getElementById('passwordStrength');
+
+            if (password.length === 0) {
+                strengthDiv.textContent = '';
+                return;
+            }
+
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+            if (strength <= 2) {
+                strengthDiv.textContent = '⚠️ Weak password';
+                strengthDiv.className = 'password-strength weak';
+            } else if (strength <= 3) {
+                strengthDiv.textContent = '⚡ Medium password';
+                strengthDiv.className = 'password-strength medium';
+            } else {
+                strengthDiv.textContent = '✓ Strong password';
+                strengthDiv.className = 'password-strength strong';
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const registerBtn = document.getElementById('registerBtn');
+
+            // Validate password length
+            if (password.length < 8) {
+                showError('Password must be at least 8 characters long');
+                return;
+            }
+
+            // Clear previous messages
+            hideMessages();
+
+            // Disable button and show loading
+            registerBtn.disabled = true;
+            registerBtn.innerHTML = '<span class="spinner"></span> Creating account...';
+
+            try {
+                const response = await apiClient.register(email, password, name);
+
+                // Show success message
+                showSuccess('Account created! Redirecting...');
+
+                // Redirect to dashboard after brief delay
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+
+            } catch (error) {
+                console.error('Registration error:', error);
+
+                let errorMessage = 'Registration failed. Please try again.';
+                if (error.message.includes('already exists')) {
+                    errorMessage = 'This email is already registered. Please log in instead.';
+                } else if (error.message) {
+                    errorMessage = error.message;
+                }
+
+                showError(errorMessage);
+
+                // Re-enable button
+                registerBtn.disabled = false;
+                registerBtn.innerHTML = 'Create Account';
+            }
+        });
+
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.toggle-password');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        // Google sign up
+        function signUpWithGoogle() {
+            // Redirect to backend Google OAuth endpoint
+            const baseUrl = apiClient.baseURL.replace('/api/v1', ''); // Get root URL
+            const state = btoa(window.location.origin);
+            window.location.href = `${baseUrl}/api/v1/auth/google?state=${state}`;
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        // Hide all messages
+        function hideMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

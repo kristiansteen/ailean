@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - vimpl</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #a3e085 0%, #65c434 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #65c434 0%, #3d7a1f 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #f5f5f5;
+            padding: 12px 20px;
+            font-weight: 600;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #65c434;
+        }
+
+        button {
+            background: #65c434;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #3d7a1f;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .output.success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .output.error {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status.ok {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .info {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 API Test Suite</h1>
+            <p>Test your vimpl backend API</p>
+        </div>
+
+        <div class="content">
+            <div class="info">
+                <strong>Backend Status:</strong> <span class="status" id="backendStatus">Checking...</span><br>
+                <strong>Auth Status:</strong> <span class="status" id="authStatus">Not Authenticated</span>
+            </div>
+
+            <!-- Register -->
+            <div class="section">
+                <div class="section-header">📝 1. Register New User</div>
+                <div class="section-body">
+                    <div class="form-group">
+                        <input type="email" id="regEmail" placeholder="Email" value="test@example.com">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="regPassword" placeholder="Password" value="Test1234">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="regName" placeholder="Name" value="Test User">
+                    </div>
+                    <button onclick="testRegister()">Register</button>
+                    <div id="regOutput" class="output"></div>
+                </div>
+            </div>
+
+            <!-- Login -->
+            <div class="section">
+                <div class="section-header">🔐 2. Login</div>
+                <div class="section-body">
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Email" value="test@example.com">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Password" value="Test1234">
+                    </div>
+                    <button onclick="testLogin()">Login</button>
+                    <button onclick="testGetUser()">Get Current User</button>
+                    <button onclick="testLogout()" class="btn-danger">Logout</button>
+                    <div id="loginOutput" class="output"></div>
+                </div>
+            </div>
+
+            <!-- Boards -->
+            <div class="section">
+                <div class="section-header">📋 3. Boards</div>
+                <div class="section-body">
+                    <div class="form-group">
+                        <input type="text" id="boardTitle" placeholder="Board Title" value="Test Board">
+                    </div>
+                    <button onclick="testCreateBoard()">Create Board</button>
+                    <button onclick="testGetBoards()">Get All Boards</button>
+                    <div id="boardOutput" class="output"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple API Client (inline)
+        class ApiClient {
+            constructor() {
+                this.baseURL = 'http://localhost:3001/api/v1';
+            }
+
+            async request(endpoint, options = {}) {
+                const url = `${this.baseURL}${endpoint}`;
+                const headers = { 'Content-Type': 'application/json', ...options.headers };
+
+                const token = localStorage.getItem('accessToken');
+                if (token && !options.skipAuth) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+
+                const config = { ...options, headers };
+
+                try {
+                    const response = await fetch(url, config);
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(data.message || data.error || 'Request failed');
+                    }
+
+                    return data;
+                } catch (error) {
+                    throw error;
+                }
+            }
+
+            async register(email, password, name) {
+                const response = await this.request('/auth/register', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password, name }),
+                    credentials: 'include'
+                });
+                if (response.accessToken) {
+                    localStorage.setItem('accessToken', response.accessToken);
+                }
+                return response;
+            }
+
+            async login(email, password) {
+                const response = await this.request('/auth/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                    credentials: 'include'
+                });
+                if (response.accessToken) {
+                    localStorage.setItem('accessToken', response.accessToken);
+                }
+                return response;
+            }
+
+            async logout() {
+                try {
+                    await this.request('/auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                } finally {
+                    localStorage.removeItem('accessToken');
+                }
+            }
+
+            async getCurrentUser() {
+                return await this.request('/auth/me', { method: 'GET' });
+            }
+
+            async getBoards() {
+                const response = await this.request('/boards', { method: 'GET' });
+                return response.boards || [];
+            }
+
+            async createBoard(title, description = '') {
+                const response = await this.request('/boards', {
+                    method: 'POST',
+                    body: JSON.stringify({ title, description, gridData: {} })
+                });
+                return response.board || response;
+            }
+
+            isAuthenticated() {
+                return !!localStorage.getItem('accessToken');
+            }
+        }
+
+        // Initialize
+        const apiClient = new ApiClient();
+
+        // Check backend on load
+        async function checkBackend() {
+            try {
+                const response = await fetch('http://localhost:3001/health');
+                if (response.ok) {
+                    document.getElementById('backendStatus').textContent = 'Online ✓';
+                    document.getElementById('backendStatus').className = 'status ok';
+                } else {
+                    throw new Error('Not responding');
+                }
+            } catch (error) {
+                document.getElementById('backendStatus').textContent = 'Offline ✗';
+                document.getElementById('backendStatus').className = 'status error';
+            }
+            updateAuthStatus();
+        }
+
+        function updateAuthStatus() {
+            const status = document.getElementById('authStatus');
+            if (apiClient.isAuthenticated()) {
+                status.textContent = 'Authenticated ✓';
+                status.className = 'status ok';
+            } else {
+                status.textContent = 'Not Authenticated';
+                status.className = 'status error';
+            }
+        }
+
+        function showOutput(id, message, isError = false) {
+            const output = document.getElementById(id);
+            output.style.display = 'block';
+            output.className = 'output ' + (isError ? 'error' : 'success');
+            output.textContent = typeof message === 'object' ? JSON.stringify(message, null, 2) : message;
+        }
+
+        async function testRegister() {
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const name = document.getElementById('regName').value;
+
+            try {
+                const result = await apiClient.register(email, password, name);
+                showOutput('regOutput', result);
+                updateAuthStatus();
+                alert('✓ Registration successful!');
+            } catch (error) {
+                showOutput('regOutput', error.message, true);
+            }
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const result = await apiClient.login(email, password);
+                showOutput('loginOutput', result);
+                updateAuthStatus();
+                alert('✓ Login successful!');
+            } catch (error) {
+                showOutput('loginOutput', error.message, true);
+            }
+        }
+
+        async function testGetUser() {
+            try {
+                const result = await apiClient.getCurrentUser();
+                showOutput('loginOutput', result);
+            } catch (error) {
+                showOutput('loginOutput', error.message, true);
+            }
+        }
+
+        async function testLogout() {
+            try {
+                await apiClient.logout();
+                showOutput('loginOutput', 'Logged out successfully');
+                updateAuthStatus();
+                alert('✓ Logout successful!');
+            } catch (error) {
+                showOutput('loginOutput', error.message, true);
+            }
+        }
+
+        async function testCreateBoard() {
+            const title = document.getElementById('boardTitle').value;
+
+            try {
+                const result = await apiClient.createBoard(title);
+                showOutput('boardOutput', result);
+                alert('✓ Board created!');
+            } catch (error) {
+                showOutput('boardOutput', error.message, true);
+            }
+        }
+
+        async function testGetBoards() {
+            try {
+                const result = await apiClient.getBoards();
+                showOutput('boardOutput', result);
+            } catch (error) {
+                showOutput('boardOutput', error.message, true);
+            }
+        }
+
+        // Check on load
+        checkBackend();
+    </script>
+</body>
+
+</html>

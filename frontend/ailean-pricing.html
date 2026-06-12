@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AILEAN — Priser / Pricing</title>
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link href="assets/css/ailean.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Pricing cards ───────────────────────────────────────── */
+        .pricing-section {
+            padding: 6rem 0 5rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(101,196,52,0.35);
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 0 40px rgba(101,196,52,0.12);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .plan-name {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .plan-tagline {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 1.75rem;
+            line-height: 1.5;
+        }
+
+        .plan-price {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .price-currency {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        .price-period {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.4);
+            margin-left: 0.25rem;
+        }
+
+        .price-talk {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 0 0 2rem;
+            flex: 1;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .plan-features li:last-child { border-bottom: none; }
+
+        .plan-features li i {
+            color: var(--primary);
+            font-size: 0.85rem;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+
+        .plan-features li.dimmed { color: rgba(255,255,255,0.3); }
+        .plan-features li.dimmed i { color: rgba(255,255,255,0.15); }
+
+        .plan-cta {
+            display: block;
+            width: 100%;
+            padding: 0.9rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .plan-cta.primary {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .plan-cta.primary:hover {
+            background: var(--primary-dark);
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(101,196,52,0.3);
+        }
+
+        .plan-cta.outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid rgba(101,196,52,0.45);
+        }
+
+        .plan-cta.outline:hover {
+            background: rgba(101,196,52,0.1);
+            border-color: var(--primary);
+        }
+
+        .plan-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            margin-top: 0.75rem;
+        }
+
+        /* ── Comparison table ─────────────────────────────────────── */
+        .compare-section {
+            padding: 4rem 0 6rem;
+        }
+
+        .compare-section h2 {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 2.5rem;
+        }
+
+        .compare-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .compare-table th {
+            padding: 1rem 1.25rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--white);
+            background: rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .compare-table th:first-child { text-align: left; }
+
+        .compare-table th.featured-col { color: var(--primary); }
+
+        .compare-table td {
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+        }
+
+        .compare-table td:first-child {
+            text-align: left;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+        .check { color: var(--primary); }
+        .cross { color: rgba(255,255,255,0.2); }
+
+        /* ── Responsive ───────────────────────────────────────────── */
+        @media (max-width: 900px) {
+            .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+            .pricing-card.featured { order: -1; }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-section { padding: 4rem 0 3rem; }
+            .price-amount { font-size: 2.5rem; }
+            .compare-table { min-width: 560px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AILEAN</div>
+            <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang-switch="da">DA</button>
+                    <button class="lang-btn" data-lang-switch="en">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-background-wrapper">
+            <img src="assets/images/ailean-burst-vision.jpg" alt="AILEAN background" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-category" data-lang="da">VIRTUEL LEAN-KONSULENT</div>
+                <div class="hero-category" data-lang="en">VIRTUAL LEAN CONSULTANT</div>
+
+                <h1 data-lang="da">Priser</h1>
+                <h1 data-lang="en">Pricing</h1>
+
+                <div class="hero-description">
+                    <p data-lang="da">Vælg den plan, der passer til din organisation — fra enkeltperson til stor virksomhed.</p>
+                    <p data-lang="en">Choose the plan that fits your organisation — from individual to large enterprise.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-tabs">
+            <a href="index.html" class="tab-item">
+                <span data-lang="da">Hjem</span>
+                <span data-lang="en">Home</span>
+            </a>
+            <a href="ailean-philosophy.html" class="tab-item">
+                <span data-lang="da">AI-filosofi</span>
+                <span data-lang="en">AI philosophy</span>
+            </a>
+            <a href="ailean-cases.html" class="tab-item">
+                <span data-lang="da">Cases</span>
+                <span data-lang="en">Cases</span>
+            </a>
+            <a href="ailean-termer.html" class="tab-item">
+                <span data-lang="da">AI Termer</span>
+                <span data-lang="en">AI Terms</span>
+            </a>
+            <a href="ailean-pricing.html" class="tab-item active">
+                <span data-lang="da">Priser</span>
+                <span data-lang="en">Pricing</span>
+            </a>
+        </div>
+
+        <div class="playback-controls">
+            <div class="control-btn">←</div>
+            <div class="control-btn">→</div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="pricing-section bg-alt-2">
+        <div class="container">
+            <div class="pricing-grid">
+
+                <!-- Starter -->
+                <div class="pricing-card">
+                    <div class="plan-name" data-lang="da">Starter</div>
+                    <div class="plan-name" data-lang="en">Starter</div>
+                    <div class="plan-tagline" data-lang="da">Kom godt i gang med AI-drevet lean. Gratis at prøve.</div>
+                    <div class="plan-tagline" data-lang="en">Get started with AI-driven lean. Free to try.</div>
+                    <div class="plan-price">
+                        <div>
+                            <span class="price-currency">DKK</span>
+                            <span class="price-amount">0</span>
+                            <span class="price-period" data-lang="da">/md.</span>
+                            <span class="price-period" data-lang="en">/mo.</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> <span data-lang="da">1 procesanalyse om måneden</span><span data-lang="en">1 process analysis per month</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">BPMN-diagram generering</span><span data-lang="en">BPMN diagram generation</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Stem-til-diagram (Voice-to-Launch)</span><span data-lang="en">Voice-to-diagram (Voice-to-Launch)</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Eksport til XML</span><span data-lang="en">Export to XML</span></li>
+                        <li class="dimmed"><i class="fas fa-times"></i> <span data-lang="da">AI-forbedringsforslag</span><span data-lang="en">AI improvement suggestions</span></li>
+                        <li class="dimmed"><i class="fas fa-times"></i> <span data-lang="da">SOP-generering</span><span data-lang="en">SOP generation</span></li>
+                        <li class="dimmed"><i class="fas fa-times"></i> <span data-lang="da">Projektplan</span><span data-lang="en">Project plan</span></li>
+                        <li class="dimmed"><i class="fas fa-times"></i> <span data-lang="da">Dedikeret support</span><span data-lang="en">Dedicated support</span></li>
+                    </ul>
+                    <a href="https://voice-2-launch.vercel.app/" class="plan-cta outline">
+                        <span data-lang="da">Prøv gratis</span>
+                        <span data-lang="en">Try for free</span>
+                    </a>
+                    <p class="plan-note" data-lang="da">Intet kreditkort kræves</p>
+                    <p class="plan-note" data-lang="en">No credit card required</p>
+                </div>
+
+                <!-- Commercial -->
+                <div class="pricing-card featured">
+                    <div class="featured-badge" data-lang="da">Mest populær</div>
+                    <div class="featured-badge" data-lang="en">Most popular</div>
+                    <div class="plan-name" data-lang="da">Commercial</div>
+                    <div class="plan-name" data-lang="en">Commercial</div>
+                    <div class="plan-tagline" data-lang="da">For konsulenter og teams der bruger AILEAN dagligt.</div>
+                    <div class="plan-tagline" data-lang="en">For consultants and teams using AILEAN daily.</div>
+                    <div class="plan-price">
+                        <div>
+                            <span class="price-currency">DKK</span>
+                            <span class="price-amount">499</span>
+                            <span class="price-period" data-lang="da">/md.</span>
+                            <span class="price-period" data-lang="en">/mo.</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> <strong data-lang="da">Ubegrænsede procesanalyser</strong><strong data-lang="en">Unlimited process analyses</strong></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">BPMN-diagram generering</span><span data-lang="en">BPMN diagram generation</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Stem-til-diagram (Voice-to-Launch)</span><span data-lang="en">Voice-to-diagram (Voice-to-Launch)</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Eksport til XML</span><span data-lang="en">Export to XML</span></li>
+                        <li><i class="fas fa-check"></i> <strong data-lang="da">AI-forbedringsforslag</strong><strong data-lang="en">AI improvement suggestions</strong></li>
+                        <li><i class="fas fa-check"></i> <strong data-lang="da">SOP-generering</strong><strong data-lang="en">SOP generation</strong></li>
+                        <li><i class="fas fa-check"></i> <strong data-lang="da">Projektplan</strong><strong data-lang="en">Project plan</strong></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">E-mail support</span><span data-lang="en">Email support</span></li>
+                    </ul>
+                    <a href="https://voice-2-launch.vercel.app/" class="plan-cta primary">
+                        <span data-lang="da">Book møde med en AILEAN konsulent</span>
+                        <span data-lang="en">Book a meeting with an AILEAN consultant</span>
+                    </a>
+                    <p class="plan-note" data-lang="da">Opsig når som helst</p>
+                    <p class="plan-note" data-lang="en">Cancel anytime</p>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="pricing-card">
+                    <div class="plan-name" data-lang="da">Enterprise</div>
+                    <div class="plan-name" data-lang="en">Enterprise</div>
+                    <div class="plan-tagline" data-lang="da">Til større organisationer med særlige behov og SLA-krav.</div>
+                    <div class="plan-tagline" data-lang="en">For larger organisations with custom needs and SLA requirements.</div>
+                    <div class="plan-price">
+                        <div class="price-talk" data-lang="da">Lad os tale</div>
+                        <div class="price-talk" data-lang="en">Let's talk</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Alt i Commercial</span><span data-lang="en">Everything in Commercial</span></li>
+                        <li><i class="fas fa-check"></i> <strong data-lang="da">API-integration</strong><strong data-lang="en">API integration</strong></li>
+                        <li><i class="fas fa-check"></i> <strong data-lang="da">SSO &amp; SAML</strong><strong data-lang="en">SSO &amp; SAML</strong></li>
+                        <li><i class="fas fa-check"></i> <strong data-lang="da">Tilpassede rapporter</strong><strong data-lang="en">Custom reporting</strong></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Dedikeret account manager</span><span data-lang="en">Dedicated account manager</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Onboarding &amp; træning</span><span data-lang="en">Onboarding &amp; training</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">24/7 telefonsupport</span><span data-lang="en">24/7 phone support</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="da">Tilpasset SLA</span><span data-lang="en">Custom SLA</span></li>
+                    </ul>
+                    <a href="mailto:kontakt@ailean.dk" class="plan-cta outline">
+                        <span data-lang="da">Kontakt os</span>
+                        <span data-lang="en">Contact us</span>
+                    </a>
+                    <p class="plan-note" data-lang="da">Skræddersyet onboarding inkluderet</p>
+                    <p class="plan-note" data-lang="en">Custom onboarding included</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="compare-section">
+        <div class="container">
+            <h2 data-lang="da">Sammenlign planer</h2>
+            <h2 data-lang="en">Compare plans</h2>
+            <div class="compare-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th data-lang="da">Funktion</th>
+                            <th data-lang="en">Feature</th>
+                            <th>Starter</th>
+                            <th class="featured-col">Commercial</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-lang="da">Procesanalyser / måned</td>
+                            <td data-lang="en">Process analyses / month</td>
+                            <td>1</td>
+                            <td data-lang="da">Ubegrænset</td>
+                            <td data-lang="da">Ubegrænset</td>
+                            <td data-lang="en">Unlimited</td>
+                            <td data-lang="en">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">BPMN-diagram generering</td>
+                            <td data-lang="en">BPMN diagram generation</td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">Voice-to-Launch</td>
+                            <td data-lang="en">Voice-to-Launch</td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">Eksport til XML</td>
+                            <td data-lang="en">Export to XML</td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">AI-forbedringsforslag</td>
+                            <td data-lang="en">AI improvement suggestions</td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">SOP-generering</td>
+                            <td data-lang="en">SOP generation</td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">Projektplan</td>
+                            <td data-lang="en">Project plan</td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">API-integration</td>
+                            <td data-lang="en">API integration</td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>SSO / SAML</td>
+                            <td>SSO / SAML</td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">Tilpassede rapporter</td>
+                            <td data-lang="en">Custom reporting</td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-times cross"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-lang="da">Support</td>
+                            <td data-lang="en">Support</td>
+                            <td data-lang="da">—</td>
+                            <td data-lang="da">E-mail</td>
+                            <td data-lang="da">24/7 telefon</td>
+                            <td data-lang="en">—</td>
+                            <td data-lang="en">Email</td>
+                            <td data-lang="en">24/7 phone</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-section bg-alt-2" style="padding: 5rem 0;">
+        <div class="container" style="text-align:center;">
+            <h2 style="color:var(--white);font-size:2rem;font-weight:900;margin-bottom:1rem;" data-lang="da">Klar til at komme i gang?</h2>
+            <h2 style="color:var(--white);font-size:2rem;font-weight:900;margin-bottom:1rem;" data-lang="en">Ready to get started?</h2>
+            <p style="color:rgba(255,255,255,0.6);max-width:540px;margin:0 auto 2rem;line-height:1.7;" data-lang="da">Prøv AILEAN gratis — ingen kreditkort, ingen binding. Opgrader når du er klar.</p>
+            <p style="color:rgba(255,255,255,0.6);max-width:540px;margin:0 auto 2rem;line-height:1.7;" data-lang="en">Try AILEAN for free — no credit card, no commitment. Upgrade when you're ready.</p>
+            <a href="https://voice-2-launch.vercel.app/" class="cta-button" data-lang="da">Kom i gang gratis</a>
+            <a href="https://voice-2-launch.vercel.app/" class="cta-button" data-lang="en">Get started free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AILEAN.</p>
+        </div>
+    </footer>
+
+    <script>
+        const htmlElement = document.documentElement;
+        const langButtons = document.querySelectorAll('.lang-btn');
+        htmlElement.setAttribute('lang', 'da');
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang-switch');
+                htmlElement.setAttribute('lang', lang);
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

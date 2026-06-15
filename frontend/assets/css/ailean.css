@@ -140,6 +140,28 @@ nav .container {
     color: var(--white);
 }
 
+.nav-signup-btn {
+    padding: 0.5rem 1.1rem;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: var(--dark-grey);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-signup-btn:hover {
+    background: #7dd84a;
+    border-color: #7dd84a;
+    color: var(--dark-grey);
+}
+
 /* =========================================
    4. Hero Section
    ========================================= */

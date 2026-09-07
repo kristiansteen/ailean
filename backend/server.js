@@ -5,6 +5,13 @@ const { Resend } = require('resend');
 // Removed sqlite requirement
 const path = require('path');
 const fs = require('fs');
+const {
+    validateLeadInput,
+    firstNameOf,
+    buildLead,
+    renderWelcomeEmail,
+    resolveAttachments,
+} = require('./lib/leads');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -35,23 +42,17 @@ if (!fs.existsSync(dbPath)) {
 
 // Endpoint to handle new leads
 app.post('/api/v1/leads', async (req, res) => {
-    const { name, email, phone, selectedDocuments } = req.body;
+    const { name, email } = req.body;
 
     // Basic validation
-    if (!name || !email || !selectedDocuments || !Array.isArray(selectedDocuments) || selectedDocuments.length === 0) {
-        return res.status(400).json({ error: 'Missing required fields or documents' });
+    const validation = validateLeadInput(req.body);
+    if (!validation.valid) {
+        return res.status(400).json({ error: validation.error });
     }
 
     try {
         // 1. Save lead to database
-        const newLead = {
-            id: Date.now().toString(),
-            name,
-            email,
-            phone: phone || null,
-            selected_documents: selectedDocuments,
-            created_at: new Date().toISOString()
-        };
+        const newLead = buildLead(req.body);
 
         const leads = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
         leads.push(newLead);
@@ -59,21 +60,10 @@ app.post('/api/v1/leads', async (req, res) => {
         console.log(`Lead saved to database with ID: ${newLead.id}`);
 
         // 2. Prepare attachments from the frontend assets folder
-        const attachments = [];
         const documentsDir = path.join(__dirname, '..', 'frontend', 'assets', 'documents');
-
-        for (const filename of selectedDocuments) {
-            const filePath = path.join(documentsDir, filename);
-            if (fs.existsSync(filePath)) {
-                // Read file as base64 or buffer for Resend
-                const fileContent = fs.readFileSync(filePath);
-                attachments.push({
-                    filename: filename,
-                    content: fileContent,
-                });
-            } else {
-                console.warn(`Requested document not found: ${filePath}`);
-            }
+        const { attachments, missing } = resolveAttachments(req.body.selectedDocuments, documentsDir, fs);
+        for (const filePath of missing) {
+            console.warn(`Requested document not found: ${filePath}`);
         }
 
         if (attachments.length === 0) {
@@ -89,8 +79,7 @@ app.post('/api/v1/leads', async (req, res) => {
         if (fs.existsSync(templatePath)) {
             htmlContent = fs.readFileSync(templatePath, 'utf8');
             // Extract the first name from the full name
-            const firstName = name.split(' ')[0] || name;
-            htmlContent = htmlContent.replace('{{first_name}}', firstName);
+            htmlContent = renderWelcomeEmail(htmlContent, firstNameOf(name));
         } else {
             // Fallback
             htmlContent = `

@@ -277,8 +277,9 @@
                     }),
                 });
 
-                if (response.ok) {
-                    // Email sent — show enhanced success
+                const result = response.ok ? await response.json().catch(() => ({})) : {};
+                if (result.confirmed) {
+                    // Confirmation email sent — show enhanced success
                     const successDa = 'Tak for din interesse! Dine downloads er startet, og vi har sendt dig en bekræftelsesmail.';
                     const successEn = 'Thank you for your interest! Your downloads have started, and we have sent you a confirmation email.';
                     showSuccess(currentLang === 'da' ? successDa : successEn);

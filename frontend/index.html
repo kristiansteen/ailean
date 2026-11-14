@@ -1,605 +1,606 @@
 <!DOCTYPE html>
 <html lang="da">
-
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6T4H0QH68"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-N6T4H0QH68');
-    </script>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AILEAN — Din virtuelle lean-konsulent</title>
-    <link rel="stylesheet" href="assets/css/fonts.css">
-    <link href="assets/css/ailean.css" rel="stylesheet">
-    <style>
-        .pill {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            padding: 0.3rem 0.9rem;
-            border-radius: 100px;
-            border: 1px solid rgba(101,196,52,0.4);
-            color: var(--primary);
-            background: rgba(101,196,52,0.07);
-            margin-bottom: 1.5rem;
-        }
-        .split-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            max-width: 860px;
-            margin: 0 auto;
-        }
-        .comparison-value-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            max-width: 860px;
-            margin: 0 auto;
-        }
-        .cta-heading {
-            font-size: clamp(1.6rem, 6vw, 2.5rem);
-            font-weight: 900;
-            color: var(--white);
-            margin-bottom: 1.25rem;
-        }
-        .tool-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.09);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s;
-        }
-        .tool-card:hover { border-color: rgba(101,196,52,0.35); }
-        .tool-card .tool-number {
-            font-size: 4rem;
-            font-weight: 900;
-            font-family: monospace;
-            color: rgba(101,196,52,0.12);
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            line-height: 1;
-        }
-        @media (max-width: 768px) {
-            .split-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .comparison-value-grid { grid-template-columns: 1fr; }
-            .stat-value { font-size: 2.2rem; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            .cta-section { padding: 4rem 0; }
-            /* Scale down section intro h2 (uses inline font-size: 2.5rem etc.) */
-            section h2[style] { font-size: clamp(1.6rem, 6vw, 2.2rem) !important; }
-            /* Body text in sections */
-            section p[style] { font-size: 1rem !important; line-height: 1.75 !important; }
-            /* Hero CTA buttons go full width */
-            .hero-content .btn-primary,
-            .hero-content .btn-secondary { width: auto; }
-        }
-        @media (max-width: 480px) {
-            .tool-card { padding: 1.5rem 1.25rem; }
-            .tool-card .tool-number { font-size: 2.5rem; right: 1rem; top: 0.75rem; }
-            .step-row { gap: 1rem; }
-            /* Bump all small inline text to readable minimum */
-            .tool-card p,
-            .tool-card div,
-            .step-row p,
-            .stat-card p { font-size: 1rem !important; line-height: 1.7 !important; }
-            .tool-card h3 { font-size: 1.25rem !important; }
-            /* Section body paragraphs */
-            .text-section p[style],
-            section p[style] { font-size: 1rem !important; line-height: 1.75 !important; }
-            /* Comparison cards */
-            .comparison-value-grid div[style] { font-size: 1rem; }
-        }
-        .step-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            max-width: 760px;
-            margin: 0 auto 2.5rem;
-        }
-        .step-num {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            background: rgba(101,196,52,0.12);
-            border: 1px solid rgba(101,196,52,0.35);
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 0.2rem;
-        }
-        .connector {
-            width: 1px;
-            height: 2.5rem;
-            background: linear-gradient(to bottom, rgba(101,196,52,0.3), transparent);
-            margin: 0.25rem 0 0.25rem 1.25rem;
-        }
-        .stat-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-        .text-section-inner { padding: 7rem 0; }
-        @media (max-width: 768px) { .text-section-inner { padding: 4.5rem 0; } }
-        @media (max-width: 480px) { .text-section-inner { padding: 3.5rem 0; } }
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6T4H0QH68"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N6T4H0QH68');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AILEAN — Fortæl processen. Få diagrammet.</title>
+<meta name="description" content="Ailean interviewer den, der kender processen, tegner et BPMN-diagram af svarene, foreslår forbedringer og lægger en projektplan.">
+<link rel="icon" type="image/svg+xml" href="favicon-ailean.svg">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<style>
+:root{
+  --paper:#F1F1EE;
+  --case:#E2E2DD;
+  --panel:#FAFAF8;
+  --ink:#151515;
+  --mid:#62625D;
+  --line:#C6C6C0;
+  --signal:#E8500A;
+  --u:8px;
+  --wrap:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html[lang="da"] [data-lang="en"],html[lang="en"] [data-lang="da"]{display:none!important}
+body{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
 
-        .cta-section {
-            text-align: center;
-            padding: 6rem 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(101,196,52,0.08) 0%, transparent 70%);
-        }
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: var(--primary);
-            color: #000;
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .btn-primary:hover { background: #7ddb4a; transform: translateY(-1px); }
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: transparent;
-            color: var(--white);
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            text-decoration: none;
-            transition: border-color 0.2s, background 0.2s;
-        }
-        .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
-        .section-label {
-            color: rgba(101,196,52,0.7);
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
-        }
-        @media (max-width: 768px) {
-            .split-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+/* Header */
+.top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:28px;height:64px}
+.mark{font-weight:700;letter-spacing:.14em;font-size:15px;text-decoration:none}
+.nav{display:flex;gap:24px;margin-left:16px;font-size:14px}
+.nav a{text-decoration:none;color:var(--mid)}
+.nav a:hover{color:var(--ink)}
+.top-right{margin-left:auto;display:flex;align-items:center;gap:14px;font-size:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{font:inherit;font-size:12px;font-weight:600;border:0;background:transparent;color:var(--mid);padding:5px 11px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{display:inline-block;font:inherit;font-weight:500;font-size:15px;text-decoration:none;border-radius:999px;padding:11px 22px;border:1px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--signal);border-color:var(--signal)}
+.btn.small{padding:7px 16px;font-size:14px}
+.login{text-decoration:none;color:var(--ink)}
+.login:hover{text-decoration:underline}
+
+/* Hero */
+.hero{padding:72px 0 40px}
+.hero-grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:end}
+h1{font-weight:500;font-size:clamp(2.5rem,5.6vw,4.6rem);line-height:1.02;letter-spacing:-.035em}
+.lede{font-size:1.12rem;color:var(--mid);max-width:36em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+
+/* Instrument */
+.unit{margin-top:56px;background:var(--case);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 1px 0 #fff inset,0 30px 60px -40px rgba(0,0,0,.35)}
+.unit-head{display:flex;justify-content:space-between;align-items:baseline;padding:4px 10px 12px;font-size:13px;color:var(--mid)}
+.unit-head b{color:var(--ink);font-weight:600;letter-spacing:.1em;font-size:12px}
+.unit-body{display:grid;grid-template-columns:168px 1fr;gap:14px}
+.side{display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:22px 0 14px}
+.grille{width:124px;height:124px;border-radius:50%;background:radial-gradient(circle,var(--ink) 1.7px,transparent 2.1px) 0 0/10px 10px;opacity:.28;transition:opacity .25s}
+.grille.live{opacity:.95;animation:talk .9s ease-in-out infinite}
+@keyframes talk{50%{opacity:.5}}
+.side-label{font-size:12px;color:var(--mid);margin-top:10px;min-height:1.4em;text-align:center}
+.play{width:64px;height:64px;border-radius:50%;border:0;background:var(--signal);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 0 rgba(0,0,0,.25),0 0 0 6px var(--paper)}
+.play:active{transform:translateY(1px);box-shadow:0 1px 0 rgba(0,0,0,.25),0 0 0 6px var(--paper)}
+.play svg{width:22px;height:22px;fill:#fff}
+.play-cap{font-size:12px;color:var(--mid);margin-top:12px}
+.screen{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-height:560px;padding:26px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.stage{display:none}
+.stage.show{display:block;width:100%}
+.rv{opacity:0;transform:translateY(4px);transition:opacity .35s,transform .35s}
+.rv.on{opacity:1;transform:none}
+.stage-title{font-size:13px;color:var(--mid);margin-bottom:16px}
+
+/* stage 1 */
+.talk{display:flex;flex-direction:column;gap:9px;max-width:720px}
+.say{font-size:15px;line-height:1.42;padding:9px 14px;border-radius:12px;max-width:86%}
+.say small{display:block;font-size:11px;font-weight:600;color:var(--mid);margin-bottom:1px}
+.say.ai{background:#fff;border:1px solid var(--line);align-self:flex-start}
+.say.me{background:var(--ink);color:var(--paper);align-self:flex-end}
+.say.me small{color:#A9A9A3}
+/* stage 2 */
+.sheet{display:grid;grid-template-columns:1fr 1fr;gap:6px 40px;font-size:14px}
+.sheet h4{font-size:12px;font-weight:600;color:var(--mid);margin:12px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.sheet ol,.sheet ul{list-style:none}
+.sheet li{padding:3px 0;display:flex;gap:10px}
+.sheet li span:first-child{color:var(--mid);min-width:1.2em;font-variant-numeric:tabular-nums}
+.sheet li em{font-style:normal;color:var(--mid);margin-left:auto;text-align:right;font-size:13px}
+.sheet .name{grid-column:1/-1;font-size:1.35rem;font-weight:500;letter-spacing:-.01em}
+/* stage 3 */
+.bpmn{width:100%;height:auto;display:block}
+.bpmn .lane{fill:none;stroke:var(--line)}
+.bpmn .lane-t{font-size:10.5px;fill:var(--mid)}
+.bpmn .task{fill:#fff;stroke:var(--ink);stroke-width:1.2}
+.bpmn .ex{stroke-dasharray:4 3}
+.bpmn .gw{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
+.bpmn .ev{fill:#fff;stroke:var(--ink);stroke-width:1.4}
+.bpmn .ev.end{stroke-width:3.4;stroke:var(--signal)}
+.bpmn text{font-family:inherit;font-size:10.5px;fill:var(--ink)}
+.bpmn .gl{font-size:9.5px;fill:var(--mid)}
+.bpmn .flow{fill:none;stroke:var(--ink);stroke-width:1.1}
+.bpmn g.rv{transform:none}
+/* stage 4 */
+.ideas{display:grid;gap:0;font-size:14px}
+.idea{display:grid;grid-template-columns:22px 1fr 150px 150px;gap:18px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.idea:first-child{border-top:1px solid var(--line)}
+.tick{width:16px;height:16px;border-radius:50%;border:1.4px solid var(--ink)}
+.tick.sel{background:var(--signal);border-color:var(--signal)}
+.idea b{font-weight:500;display:block}
+.idea p{color:var(--mid);font-size:13px}
+.meter{font-size:11px;color:var(--mid)}
+.meter i{display:block;height:4px;background:var(--line);border-radius:2px;margin-top:5px;position:relative}
+.meter i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--v);background:var(--ink);border-radius:2px}
+/* stage 5 */
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.gains{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.gain{padding:14px 0}
+.gain strong{font-size:2.6rem;font-weight:500;letter-spacing:-.03em;display:block;line-height:1}
+.gain span{font-size:13px;color:var(--mid)}
+.plan h4{font-size:12px;font-weight:600;color:var(--mid);margin-bottom:8px}
+.plan ul{list-style:none;font-size:14px}
+.plan li{padding:7px 0;border-bottom:1px solid var(--line)}
+.note{font-size:12px;color:var(--mid);margin-top:14px}
+
+/* selector */
+.selector{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:14px}
+.selector button{font:inherit;font-size:14px;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:11px 14px;cursor:pointer;color:var(--mid);display:flex;gap:10px;align-items:center}
+.selector button i{font-style:normal;font-variant-numeric:tabular-nums;font-size:12px;width:20px;height:20px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;flex:none}
+.selector button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.selector button[aria-selected="true"] i{background:var(--signal);border-color:var(--signal);color:#fff}
+.unit-foot{font-size:12px;color:var(--mid);padding:10px 10px 2px}
+
+/* Sections */
+section{padding:96px 0}
+section + section{border-top:1px solid var(--line)}
+h2{font-weight:500;font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.08;letter-spacing:-.028em;max-width:18em}
+.sub{color:var(--mid);max-width:38em;margin-top:14px}
+.steps{list-style:none;margin-top:48px;border-top:1px solid var(--ink)}
+.steps li{display:grid;grid-template-columns:64px 220px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.steps .n{font-size:13px;color:var(--mid);font-variant-numeric:tabular-nums}
+.steps h3{font-size:1.25rem;font-weight:500;letter-spacing:-.01em}
+.steps p{color:var(--mid);max-width:44em}
+figure.shot{margin-top:48px}
+figure.shot img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+figcaption{font-size:13px;color:var(--mid);margin-top:10px}
+table.spec{width:100%;border-collapse:collapse;margin-top:48px;font-size:16px}
+.spec th,.spec td{text-align:left;padding:15px 16px 15px 0;border-bottom:1px solid var(--line);vertical-align:top;font-weight:400}
+.spec thead th{font-size:13px;color:var(--mid);border-bottom:1px solid var(--ink)}
+.spec tbody th{color:var(--mid);width:26%}
+.spec td:last-child{font-weight:500}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
+.cols h3{font-size:1.1rem;font-weight:500;padding-top:14px;border-top:1px solid var(--ink)}
+.cols p{color:var(--mid);margin-top:8px;font-size:16px}
+.price{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border-top:1px solid var(--ink)}
+.price div{padding:20px 24px 20px 0}
+.price div + div{padding-left:24px;border-left:1px solid var(--line)}
+.price span{font-size:14px;color:var(--mid)}
+.price strong{display:block;font-size:2rem;font-weight:500;letter-spacing:-.02em}
+.end{background:var(--ink);color:var(--paper);border-top:0}
+.end h2{max-width:14em}
+.end .sub{color:#A9A9A3}
+.end .btn{border-color:var(--paper);color:var(--paper)}
+.end .btn:hover{background:var(--paper);color:var(--ink)}
+.end .btn.solid{background:var(--signal);border-color:var(--signal);color:#fff}
+.end .btn.solid:hover{background:#fff;border-color:#fff;color:var(--ink)}
+footer{padding:36px 0 48px;font-size:14px;color:var(--mid)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:baseline}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink);text-decoration:underline}
+footer .c{margin-left:auto}
+
+@media (max-width:900px){
+  .nav{display:none}
+  .hero{padding-top:48px}
+  .hero-grid{grid-template-columns:1fr;gap:20px}
+  .unit-body{grid-template-columns:1fr}
+  .side{flex-direction:row;gap:18px;padding:6px 10px;justify-content:flex-start}
+  .grille{width:56px;height:56px}
+  .side-label{margin:0;text-align:left;flex:1}
+  .play{width:52px;height:52px}
+  .play-cap{display:none}
+  .screen{padding:18px 16px;min-height:0}
+  .selector{grid-template-columns:repeat(5,1fr)}
+  .selector button{padding:9px 6px;justify-content:center}
+  .selector button span{display:none}
+  .sheet,.plan{grid-template-columns:1fr}
+  .idea{grid-template-columns:22px 1fr}
+  .idea .meter{display:none}
+  .bpmn-scroll{overflow-x:auto}
+  .bpmn{min-width:720px}
+  .steps li{grid-template-columns:36px 1fr;gap:6px 12px}
+  .steps p{grid-column:2}
+  .cols,.price{grid-template-columns:1fr;gap:28px}
+  .price div + div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  section{padding:64px 0}
+  .spec tbody th{width:24%}
+  .spec{font-size:13.5px;table-layout:fixed}
+  .spec th,.spec td{padding-right:10px;overflow-wrap:anywhere;hyphens:auto}
+}
+@media (max-width:560px){
+  .wrap{padding:0 18px}
+  .top .wrap{gap:10px}
+  .top-right{gap:8px}
+  .lang button{padding:5px 8px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{transition:none}
+  .grille.live{animation:none}
+}
+/* cookie banner */
+html body #cookie-banner{background:#151515!important;border-top:0!important;color:#F1F1EE!important;font-family:inherit}
+html body #cookie-banner svg{color:#F1F1EE!important}
+html body #cookie-banner a{color:#F1F1EE!important;text-decoration:underline}
+html body #cookie-banner button{background:#F1F1EE!important;color:#151515!important;border:0!important;border-radius:999px!important;font-weight:500!important;box-shadow:none!important}
+html body #cookie-banner button:hover{background:#E8500A!important;color:#fff!important}
+</style>
 </head>
-
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">AILEAN</div>
-        <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
-            <a href="https://voice-2-launch.vercel.app/" class="nav-login-btn" data-lang="da">Log ind</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-login-btn" data-lang="en">Log in</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-signup-btn" data-lang="da">Opret konto</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-signup-btn" data-lang="en">Sign up</a>
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang-switch="da">DA</button>
-                <button class="lang-btn" data-lang-switch="en">EN</button>
-            </div>
-        </div>
-        </div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">AILEAN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#produkt"><span data-lang="da">Produktet</span><span data-lang="en">Product</span></a>
+      <a href="#trin"><span data-lang="da">Sådan virker det</span><span data-lang="en">How it works</span></a>
+      <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+      <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
     </nav>
+    <div class="top-right">
+      <div class="lang" role="group" aria-label="Sprog / Language">
+        <button type="button" data-lang-switch="da" aria-pressed="true">DA</button>
+        <button type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="login" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
+      <a class="btn solid small" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
+    </div>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background-wrapper">
-            <img src="assets/images/ailean-burst-vision.jpg" alt="AILEAN background" class="hero-bg-image">
-            <div class="hero-overlay"></div>
+<main>
+<div class="hero" id="produkt">
+  <div class="wrap">
+    <div class="hero-grid">
+      <h1>
+        <span data-lang="da">Fortæl, hvordan processen kører. Ailean tegner den.</span>
+        <span data-lang="en">Describe the process out loud. Ailean draws it.</span>
+      </h1>
+      <div>
+        <p class="lede" data-lang="da">Ailean interviewer den, der kender processen, laver svarene om til et BPMN-diagram, foreslår forbedringer og lægger en projektplan. Det tager under en time.</p>
+        <p class="lede" data-lang="en">Ailean interviews the person who knows the process, turns the answers into a BPMN diagram, suggests improvements and drafts a project plan. It takes less than an hour.</p>
+        <div class="hero-cta">
+          <a class="btn solid" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto gratis</span><span data-lang="en">Sign up free</span></a>
+          <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3vKpVzsn4ZyxYo6XipnsZRnIzbpdqArU3h8MF1PjzB6wCERCUx9dI5PCstLZfTSXTaiblwgFYr" target="_blank" rel="noopener"><span data-lang="da">Book et møde</span><span data-lang="en">Book a meeting</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit" id="demo">
+      <div class="unit-head">
+        <b>AILEAN</b>
+        <span><span data-lang="da">Session: fakturagodkendelse</span><span data-lang="en">Session: invoice approval</span></span>
+      </div>
+      <div class="unit-body">
+        <div class="side">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div class="grille" id="grille" aria-hidden="true"></div>
+            <div class="side-label" id="sideLabel" aria-live="polite"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <button class="play" id="play" type="button" aria-label="Afspil demo / Play demo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+            </button>
+            <div class="play-cap"><span data-lang="da">Afspil forfra</span><span data-lang="en">Play from start</span></div>
+          </div>
         </div>
 
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-category" data-lang="da">VIRTUEL LEAN-KONSULENT</div>
-                <div class="hero-category" data-lang="en">VIRTUAL LEAN CONSULTANT</div>
-
-                <h1 data-lang="da">Din virtuelle lean-konsulent</h1>
-                <h1 data-lang="en">Your virtual lean consultant</h1>
-
-                <div class="hero-description">
-                    <p data-lang="da">Med mere end 20 års erfaring med LEAN procesoptimering, innovation og digital transformation har vi valgt at dedikere os til at få danske virksomheder til at få succes med AI.</p>
-                    <p data-lang="en">With more than 20 years of experience in LEAN process optimisation, innovation and digital transformation, we have chosen to dedicate ourselves to helping Danish companies succeed with AI.</p>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="https://voice-2-launch.vercel.app" target="_blank" class="btn-primary">
-                        <span data-lang="da">Prøv AILEAN gratis</span>
-                        <span data-lang="en">Try AILEAN free</span>
-                        <span>→</span>
-                    </a>
-                    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3vKpVzsn4ZyxYo6XipnsZRnIzbpdqArU3h8MF1PjzB6wCERCUx9dI5PCstLZfTSXTaiblwgFYr" target="_blank" class="btn-secondary">
-                        <span data-lang="da">Book et møde</span>
-                        <span data-lang="en">Book a meeting</span>
-                    </a>
-                </div>
+        <div class="screen">
+          <!-- 1 Describe -->
+          <div class="stage" data-stage="0">
+            <div class="talk">
+              <div class="say ai rv"><small>Ailean</small>Walk me through what happens from the moment an invoice arrives.</div>
+              <div class="say me rv"><small>Finance manager</small>It lands in the accounts inbox. Marcus checks the amount against the purchase order and keys it into the system.</div>
+              <div class="say ai rv"><small>Ailean</small>The next step is procurement reviewing the coding and cost centre. What can go wrong here, or what are some exceptions?</div>
+              <div class="say me rv"><small>Finance manager</small>If the amount or the coding is wrong it goes back to Marcus, and he asks the vendor for a corrected invoice.</div>
+              <div class="say ai rv"><small>Ailean</small>And if there is no purchase order in the system?</div>
+              <div class="say me rv"><small>Finance manager</small>Then we create one, and make sure we don't pay the same invoice twice.</div>
+              <div class="say ai rv"><small>Ailean</small>Then we have covered all the steps and their exceptions.</div>
             </div>
+          </div>
+
+          <!-- 2 Review -->
+          <div class="stage" data-stage="1">
+            <div class="sheet">
+              <div class="name rv">Invoice Approval Handling Process</div>
+              <div>
+                <h4 class="rv">Steps</h4>
+                <ol>
+                  <li class="rv"><span>1</span>Invoice receipt<em>Accounts staff</em></li>
+                  <li class="rv"><span>2</span>Verify against purchase order<em>Accounts staff</em></li>
+                  <li class="rv"><span>3</span>Manual system entry<em>Accounts staff</em></li>
+                  <li class="rv"><span>4</span>Procurement review and approval<em>Procurement head</em></li>
+                  <li class="rv"><span>5</span>Department head sign-off<em>Department head</em></li>
+                  <li class="rv"><span>6</span>Process complete<em>Finance</em></li>
+                </ol>
+              </div>
+              <div>
+                <h4 class="rv">Roles</h4>
+                <ul>
+                  <li class="rv">Accounts Receivable Staff</li>
+                  <li class="rv">Procurement / Purchase Department Head</li>
+                  <li class="rv">Department Head</li>
+                </ul>
+                <h4 class="rv">Exceptions</h4>
+                <ul>
+                  <li class="rv">Amount or coding wrong: vendor sends a corrected invoice</li>
+                  <li class="rv">No purchase order found: create one, check for duplicates</li>
+                </ul>
+                <h4 class="rv">Known issues</h4>
+                <ul>
+                  <li class="rv">Manual entry invites data entry errors</li>
+                  <li class="rv">Nobody is told when the invoice is ready for payment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Diagram -->
+          <div class="stage" data-stage="2">
+            <div class="bpmn-scroll"><svg class="bpmn" id="bpmn" viewBox="0 0 940 408" role="img" aria-label="BPMN diagram of the invoice approval process across three swimlanes"></svg></div>
+          </div>
+
+          <!-- 4 Improve -->
+          <div class="stage" data-stage="3">
+            <div class="stage-title rv">3 of 8 suggestions selected</div>
+            <div class="ideas">
+              <div class="idea rv"><span class="tick sel"></span><div><b>OCR and automated invoice data extraction</b><p>Replaces manual receipt and data entry.</p></div><div class="meter">Effort 55<i style="--v:55%"></i></div><div class="meter">Impact 80<i style="--v:80%"></i></div></div>
+              <div class="idea rv"><span class="tick"></span><div><b>AI-powered PO matching and anomaly detection</b><p>Matches invoices to purchase orders and flags duplicates.</p></div><div class="meter">Effort 60<i style="--v:60%"></i></div><div class="meter">Impact 85<i style="--v:85%"></i></div></div>
+              <div class="idea rv"><span class="tick sel"></span><div><b>PO creation approval workflow with policy engine</b><p>A formal gate before a purchase order can be created.</p></div><div class="meter">Effort 50<i style="--v:50%"></i></div><div class="meter">Impact 75<i style="--v:75%"></i></div></div>
+              <div class="idea rv"><span class="tick sel"></span><div><b>Invoice processing dashboard and KPI monitoring</b><p>Cycle time, rejection rates and bottlenecks, visible to all roles.</p></div><div class="meter">Effort 30<i style="--v:30%"></i></div><div class="meter">Impact 65<i style="--v:65%"></i></div></div>
+              <div class="idea rv"><span class="tick"></span><div><b>Mobile approval for department sign-off</b><p>Digital sign-off with an audit trail.</p></div><div class="meter">Effort 28<i style="--v:28%"></i></div><div class="meter">Impact 68<i style="--v:68%"></i></div></div>
+            </div>
+          </div>
+
+          <!-- 5 Plan -->
+          <div class="stage" data-stage="4">
+            <div class="plan">
+              <div>
+                <h4 class="rv">Estimated gains, TO-BE against AS-IS</h4>
+                <div class="gains">
+                  <div class="gain rv"><strong>−23%</strong><span>lead time</span></div>
+                  <div class="gain rv"><strong>−23%</strong><span>cost</span></div>
+                  <div class="gain rv"><strong>−39%</strong><span>backlog</span></div>
+                </div>
+              </div>
+              <div>
+                <h4 class="rv">Key deliverables</h4>
+                <ul>
+                  <li class="rv">Implement OCR and automated invoice data extraction</li>
+                  <li class="rv">Establish PO creation approval workflow with policy engine</li>
+                  <li class="rv">Implement invoice processing dashboard and KPI monitoring</li>
+                </ul>
+                <p class="note rv">The plan opens as a project board with tasks, milestones and risks.</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="hero-tabs">
-            <a href="index.html" class="tab-item active">
-                <span data-lang="da">Hjem</span>
-                <span data-lang="en">Home</span>
-            </a>
-            <a href="ailean-philosophy.html" class="tab-item">
-                <span data-lang="da">AI-filosofi</span>
-                <span data-lang="en">AI philosophy</span>
-            </a>
-            <a href="ailean-termer.html" class="tab-item">
-                <span data-lang="da">AI Termer</span>
-                <span data-lang="en">AI Terms</span>
-            </a>
-            <a href="ailean-pricing.html" class="tab-item">
-                <span data-lang="da">Priser</span>
-                <span data-lang="en">Pricing</span>
-            </a>
-        </div>
+      <div class="selector" role="tablist" aria-label="Demo steps">
+        <button type="button" role="tab" data-go="0"><i>1</i><span><span data-lang="da">Beskriv</span><span data-lang="en">Describe</span></span></button>
+        <button type="button" role="tab" data-go="1"><i>2</i><span><span data-lang="da">Gennemse</span><span data-lang="en">Review</span></span></button>
+        <button type="button" role="tab" data-go="2"><i>3</i><span>Diagram</span></button>
+        <button type="button" role="tab" data-go="3"><i>4</i><span><span data-lang="da">Forbedr</span><span data-lang="en">Improve</span></span></button>
+        <button type="button" role="tab" data-go="4"><i>5</i><span><span data-lang="da">Planlæg</span><span data-lang="en">Plan</span></span></button>
+      </div>
+      <div class="unit-foot">
+        <span data-lang="da">Indholdet stammer fra en rigtig Ailean-session på engelsk. Interviewet er forkortet.</span>
+        <span data-lang="en">The content comes from a real Ailean session. The interview is shortened.</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div class="playback-controls">
-            <div class="control-btn">←</div>
-            <div class="control-btn">→</div>
-        </div>
-    </section>
+<section id="trin">
+  <div class="wrap">
+    <h2><span data-lang="da">Fem trin, én arbejdsgang</span><span data-lang="en">Five steps in one sitting</span></h2>
+    <p class="sub" data-lang="da">Du går fra en mundtlig beskrivelse til et projekt, der kan sættes i gang, uden at skifte værktøj undervejs.</p>
+    <p class="sub" data-lang="en">You go from a spoken description to a project that is ready to start, without changing tools along the way.</p>
+    <ol class="steps">
+      <li><span class="n">1</span><h3><span data-lang="da">Beskriv</span><span data-lang="en">Describe</span></h3>
+        <p data-lang="da">Lad Ailean interviewe procesejeren med opfølgende spørgsmål om undtagelser. Du kan også optage selv eller indsætte en transskription.</p>
+        <p data-lang="en">Let Ailean interview the process owner, with follow-up questions about exceptions. You can also record it yourself or paste a transcript.</p></li>
+      <li><span class="n">2</span><h3><span data-lang="da">Gennemse</span><span data-lang="en">Review</span></h3>
+        <p data-lang="da">Svarene bliver til navn, afgrænsning, roller, trin, undtagelser og kendte problemer. Ret det, der er forkert, før diagrammet tegnes.</p>
+        <p data-lang="en">The answers become a name, scope, roles, steps, exceptions and known issues. Correct anything that is wrong before the diagram is drawn.</p></li>
+      <li><span class="n">3</span><h3>Diagram</h3>
+        <p data-lang="da">Ailean tegner AS-IS som BPMN 2.0 med svømmebaner og beslutningspunkter. Diagrammet kan redigeres og hentes som XML.</p>
+        <p data-lang="en">Ailean draws the AS-IS as BPMN 2.0 with swimlanes and decision points. You can edit the diagram and download it as XML.</p></li>
+      <li><span class="n">4</span><h3><span data-lang="da">Forbedr</span><span data-lang="en">Improve</span></h3>
+        <p data-lang="da">Du får forbedringsforslag med vurderet indsats og effekt. Vælg dem, du tror på, og Ailean tegner TO-BE-processen.</p>
+        <p data-lang="en">You get improvement suggestions scored for effort and impact. Pick the ones you believe in and Ailean draws the TO-BE process.</p></li>
+      <li><span class="n">5</span><h3><span data-lang="da">Planlæg</span><span data-lang="en">Plan</span></h3>
+        <p data-lang="da">De valgte forbedringer bliver til en projektplan med leverancer og risici, som åbnes på en projekttavle. Porteføljen viser alle dine processer samlet.</p>
+        <p data-lang="en">The selected improvements become a project plan with deliverables and risks, opened on a project board. The portfolio shows all your processes in one place.</p></li>
+    </ol>
 
-    <!-- Problem: The $500/hr consultant -->
-    <section class="text-section bg-alt-1 text-section-inner">
-        <div class="container">
-            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
-                <div class="section-label" data-lang="da">Problemet</div>
-                <div class="section-label" data-lang="en">The problem</div>
-                <h2 data-lang="da">Lean virker — men det er svært og dyrt at gøre rigtigt</h2>
-                <h2 data-lang="en">Lean works — but it's hard and expensive to do right</h2>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="da">
-                    De fleste organisationer ved, at de har processer der kan forbedres. Men at kortlægge dem, identificere spild og eksekvere forbedringsprojekter kræver erfaring, metode og tid. En senior lean-konsulent koster 5.000–8.000 kr. i timen — og de fleste projekter kræver uger af arbejde. Det betyder, at lean-transformation indtil nu har været forbeholdt de største virksomheder.
-                </p>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="en">
-                    Most organisations know they have processes that can be improved. But mapping them, identifying waste, and executing improvement projects requires experience, methodology, and time. A senior lean consultant costs $500–$1,000 per hour — and most projects require weeks of work. This means lean transformation is reserved for the largest companies.
-                </p>
-            </div>
+    <figure class="shot">
+      <img src="assets/img/ailean-diagram-screen.jpg" width="1918" height="748" loading="lazy"
+           alt="Ailean's diagram editor showing a TO-BE process with four swimlanes, tasks and gateways">
+      <figcaption>
+        <span data-lang="da">Skærmbillede fra Ailean: en TO-BE-proces for anskaffelse af anlægsaktiver.</span>
+        <span data-lang="en">Screen from Ailean: a TO-BE process for acquiring fixed assets.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">$500+</div>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="da">Timepris for en erfaren lean-konsulent</p>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="en">Hourly rate for an experienced lean consultant</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">6–12</div>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="da">Uger fra procesinterview til forbedringsprojekt i gang</p>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="en">Weeks from process interview to improvement project running</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">&lt; 1h</div>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="da">Med AILEAN: fra interview til projektplan klar</p>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5;" data-lang="en">With AILEAN: from interview to project plan ready</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section>
+  <div class="wrap">
+    <h2><span data-lang="da">Det samme arbejde, målt på tid</span><span data-lang="en">The same work, measured in time</span></h2>
+    <table class="spec">
+      <thead><tr><th></th>
+        <th><span data-lang="da">Traditionelt forløb</span><span data-lang="en">Traditional engagement</span></th>
+        <th>Ailean</th></tr></thead>
+      <tbody>
+        <tr><th><span data-lang="da">Fra interview til plan</span><span data-lang="en">Interview to plan</span></th>
+          <td><span data-lang="da">6–12 uger</span><span data-lang="en">6–12 weeks</span></td>
+          <td><span data-lang="da">Under en time</span><span data-lang="en">Less than an hour</span></td></tr>
+        <tr><th><span data-lang="da">Dokumentation</span><span data-lang="en">Documentation</span></th>
+          <td><span data-lang="da">Skrives i hånden efter workshoppen</span><span data-lang="en">Written by hand after the workshop</span></td>
+          <td><span data-lang="da">BPMN 2.0 og analyse laves automatisk</span><span data-lang="en">BPMN 2.0 and analysis produced automatically</span></td></tr>
+        <tr><th><span data-lang="da">Opfølgning</span><span data-lang="en">Follow-up</span></th>
+          <td><span data-lang="da">Excel eller et generelt projektværktøj</span><span data-lang="en">Excel or a general project tool</span></td>
+          <td><span data-lang="da">Projekttavle bygget til lean-projekter</span><span data-lang="en">A project board built for lean projects</span></td></tr>
+        <tr><th><span data-lang="da">Viden</span><span data-lang="en">Knowledge</span></th>
+          <td><span data-lang="da">Forsvinder, når konsulenten går</span><span data-lang="en">Leaves with the consultant</span></td>
+          <td><span data-lang="da">Bliver i jeres procesportefølje</span><span data-lang="en">Stays in your process portfolio</span></td></tr>
+        <tr><th><span data-lang="da">Pris</span><span data-lang="en">Price</span></th>
+          <td><span data-lang="da">Timepris</span><span data-lang="en">Hourly rate</span></td>
+          <td><span data-lang="da">Fast månedspris</span><span data-lang="en">Fixed monthly price</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-    <!-- What is AILEAN -->
-    <section class="text-section text-section-inner">
-        <div class="container">
-            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
-                <div class="section-label" data-lang="da">Hvad er AILEAN</div>
-                <div class="section-label" data-lang="en">What is AILEAN</div>
-                <h2 data-lang="da">To kraftfulde værktøjer. Én samlet løsning.</h2>
-                <h2 data-lang="en">Two powerful tools. One integrated solution.</h2>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="da">
-                    AILEAN er en kombination af to AI-drevne værktøjer: <strong style="color: var(--white);">Voice-to-launch</strong>, der omdanner procesinterviews til professionelle proceskort og forbedringsplaner, og <strong style="color: var(--white);">Visualise-to-Implement</strong>, der giver dig den visuelle projekttavle du skal bruge for at eksekvere lean-projektet. Tilsammen erstatter de det, der normalt kræver en konsulent i ugevis.
-                </p>
-                <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin-top: 1.5rem;" data-lang="en">
-                    AILEAN is a combination of two AI-driven tools: <strong style="color: var(--white);">Voice-to-launch</strong>, which transforms process interviews into professional process maps and improvement plans, and <strong style="color: var(--white);">Visualise-to-Implement</strong>, the visual project board you need to execute the lean project. Together, they replace what normally requires a consultant for weeks.
-                </p>
-            </div>
+<section>
+  <div class="wrap">
+    <h2><span data-lang="da">Bygget af folk, der har lavet lean i 20 år</span><span data-lang="en">Built by people who have done lean for 20 years</span></h2>
+    <div class="cols">
+      <div><h3><span data-lang="da">Lean-faglighed</span><span data-lang="en">Lean method</span></h3>
+        <p data-lang="da">Spørgsmålene og forslagene bygger på mere end 20 års arbejde med lean, innovation og digital transformation.</p>
+        <p data-lang="en">The questions and suggestions build on more than 20 years of work in lean, innovation and digital transformation.</p></div>
+      <div><h3><span data-lang="da">Åbne formater</span><span data-lang="en">Open formats</span></h3>
+        <p data-lang="da">Diagrammerne er standard BPMN 2.0 og kan eksporteres til den BPM-platform, I allerede bruger.</p>
+        <p data-lang="en">The diagrams are standard BPMN 2.0 and export to the BPM platform you already use.</p></div>
+      <div><h3><span data-lang="da">Dansk og engelsk</span><span data-lang="en">Danish and English</span></h3>
+        <p data-lang="da">Hele produktet findes på begge sprog, så procesejeren kan arbejde på sit eget.</p>
+        <p data-lang="en">The whole product is available in both languages, so the process owner can work in their own.</p></div>
+    </div>
 
-            <!-- Two tool cards -->
-            <div class="split-grid">
-                <!-- Voice-to-launch -->
-                <div class="tool-card">
-                    <div class="tool-number">01</div>
-                    <div style="color: rgba(101,196,52,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="da">Proceskortlægning</div>
-                    <div style="color: rgba(101,196,52,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="en">Process mapping</div>
-                    <h3 style="color: var(--white); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem;">Voice-to-launch</h3>
-                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="da">
-                        Tal med din procesejers stemme. AI'en lytter, strukturerer og genererer automatisk et professionelt BPMN-procesdiagram, identificerer spild og foreslår konkrete forbedringer — præcis som en lean-konsulent ville gøre det efter et daglangt workshop.
-                    </p>
-                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="en">
-                        Speak with your process owner's voice. The AI listens, structures, and automatically generates a professional BPMN process diagram, identifies waste, and suggests concrete improvements — exactly as a lean consultant would after a full-day workshop.
-                    </p>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.75rem;">
-                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
-                            <span style="color: var(--primary); font-size: 0.8rem;">✓</span>
-                            <span data-lang="da">BPMN-diagram genereret på minutter</span>
-                            <span data-lang="en">BPMN diagram generated in minutes</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
-                            <span style="color: var(--primary); font-size: 0.8rem;">✓</span>
-                            <span data-lang="da">AI identificerer spild og forbedringsmuligheder</span>
-                            <span data-lang="en">AI identifies waste and improvement opportunities</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
-                            <span style="color: var(--primary); font-size: 0.8rem;">✓</span>
-                            <span data-lang="da">Eksporter direkte til Visualise-to-Implement projektboard</span>
-                            <span data-lang="en">Export directly to Visualise-to-Implement project board</span>
-                        </div>
-                    </div>
-                    <a href="https://voice-2-launch.vercel.app" target="_blank" class="btn-primary" style="font-size: 0.85rem; padding: 0.7rem 1.4rem;">
-                        <span data-lang="da">Åbn Voice-to-launch →</span>
-                        <span data-lang="en">Open Voice-to-launch →</span>
-                    </a>
-                </div>
+    <div class="price">
+      <div><span>Starter</span><strong>$39</strong><span><span data-lang="da">pr. måned</span><span data-lang="en">per month</span></span></div>
+      <div><span>Commercial</span><strong>$399</strong><span><span data-lang="da">pr. måned</span><span data-lang="en">per month</span></span></div>
+      <div><span>Enterprise</span><strong><span data-lang="da">Lad os tale</span><span data-lang="en">Let's talk</span></strong>
+        <span><a href="ailean-pricing.html"><span data-lang="da">Se alle priser</span><span data-lang="en">See all pricing</span></a></span></div>
+    </div>
+  </div>
+</section>
 
-                <!-- vimpl -->
-                <div class="tool-card">
-                    <div class="tool-number">02</div>
-                    <div style="color: rgba(14,165,233,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="da">Lean projektstyring</div>
-                    <div style="color: rgba(14,165,233,0.7); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;" data-lang="en">Lean project management</div>
-                    <h3 style="color: var(--white); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem;">Visualise-to-Implement</h3>
-                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="da">
-                        Et visuelt projektstyringværktøj bygget specifikt til lean-projekter. Modtager forbedringsplanerne direkte fra Voice-to-launch og giver dit team en klar tavle med opgaver, milepæle og risici — klar til at eksekvere fra dag ét.
-                    </p>
-                    <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;" data-lang="en">
-                        A visual project management tool built specifically for lean projects. Receives improvement plans directly from Voice-to-launch and gives your team a clear board with tasks, milestones, and risks — ready to execute from day one.
-                    </p>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.75rem;">
-                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
-                            <span style="color: #0ea5e9; font-size: 0.8rem;">✓</span>
-                            <span data-lang="da">Projektplan importeret automatisk fra AI</span>
-                            <span data-lang="en">Project plan imported automatically from AI</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
-                            <span style="color: #0ea5e9; font-size: 0.8rem;">✓</span>
-                            <span data-lang="da">Risikomatrix og idékatalog inkluderet</span>
-                            <span data-lang="en">Risk matrix and idea catalogue included</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.65); font-size: 0.85rem;">
-                            <span style="color: #0ea5e9; font-size: 0.8rem;">✓</span>
-                            <span data-lang="da">Visuelt gantt-board med tracks og ugeplan</span>
-                            <span data-lang="en">Visual Gantt board with tracks and week plan</span>
-                        </div>
-                    </div>
-                    <a href="https://frontend-puce-ten-18.vercel.app" target="_blank" class="btn-secondary" style="font-size: 0.85rem; padding: 0.7rem 1.4rem; border-color: rgba(14,165,233,0.4); color: #0ea5e9;">
-                        <span data-lang="da">Åbn Visualise-to-Implement →</span>
-                        <span data-lang="en">Open Visualise-to-Implement →</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="end">
+  <div class="wrap">
+    <h2><span data-lang="da">Kortlæg din første proces i dag</span><span data-lang="en">Map your first process today</span></h2>
+    <p class="sub" data-lang="da">Det er gratis at begynde. Du skal ikke installere noget og ikke bruge kreditkort.</p>
+    <p class="sub" data-lang="en">Starting is free. There is nothing to install and no credit card needed.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto gratis</span><span data-lang="en">Sign up free</span></a>
+      <a class="btn" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
+    </div>
+  </div>
+</section>
+</main>
 
-    <!-- How it works -->
-    <section class="text-section bg-alt-1 text-section-inner">
-        <div class="container">
-            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
-                <div class="section-label" data-lang="da">Sådan fungerer det</div>
-                <div class="section-label" data-lang="en">How it works</div>
-                <h2 data-lang="da">Fra procesinterview til lean-projekt på under en time</h2>
-                <h2 data-lang="en">From process interview to lean project in under an hour</h2>
-            </div>
+<footer>
+  <div class="wrap">
+    <span class="mark">AILEAN</span>
+    <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
+    <a href="ailean-termer.html"><span data-lang="da">AI-termer</span><span data-lang="en">AI terms</span></a>
+    <a href="ailean-downloads.html"><span data-lang="da">Whitepaper og bog</span><span data-lang="en">White paper and book</span></a>
+    <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+    <a href="ailean-privacy.html"><span data-lang="da">Privatliv</span><span data-lang="en">Privacy</span></a>
+    <span class="c">&copy; 2026 AILEAN</span>
+  </div>
+</footer>
 
-            <!-- Steps -->
-            <div style="max-width: 760px; margin: 0 auto;">
+<script>
+(function(){
+  /* Language */
+  var html=document.documentElement, KEY='ailean_lang';
+  function setLang(l){
+    html.setAttribute('lang',l);
+    document.querySelectorAll('[data-lang-switch]').forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang-switch')===l ? 'true':'false');
+    });
+    try{localStorage.setItem(KEY,l)}catch(e){}
+    label();
+  }
+  document.querySelectorAll('[data-lang-switch]').forEach(function(b){
+    b.addEventListener('click',function(){setLang(b.getAttribute('data-lang-switch'))});
+  });
 
-                <div class="step-row">
-                    <div class="step-num">1</div>
-                    <div>
-                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="da">Interview procesejeren med din stemme eller få Ailean til at stå for hele interviewet</h3>
-                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="en">Interview the process owner by voice or have Ailean conduct the entire interview for you</h3>
-                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="da">Optag eller indsæt et procesinterview. Voice-to-launch AI'en analyserer samtalen og strukturerer den i et end-to-end procesforløb med roller, aktiviteter og beslutningspunkter.</p>
-                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="en">Record or paste a process interview. The Voice-to-launch AI analyses the conversation and structures it into an end-to-end process flow with roles, activities, and decision points.</p>
-                    </div>
-                </div>
-                <div class="connector"></div>
+  /* Diagram, built from the session data */
+  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('bpmn');
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+  function grp(){return el('g',{class:'rv'})}
+  el('defs',{}).innerHTML='<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#151515"/></marker>';
+  var lanes=[[8,162,'Accounts Receivable Staff'],[170,110,'Procurement Head'],[280,120,'Department Head']];
+  var lg=grp();
+  lanes.forEach(function(l){
+    el('rect',{class:'lane',x:34,y:l[0],width:898,height:l[1]},lg);
+    el('rect',{class:'lane',x:8,y:l[0],width:26,height:l[1]},lg);
+    var t=el('text',{class:'lane-t','text-anchor':'middle',transform:'translate(25,'+(l[0]+l[1]/2)+') rotate(-90)'},lg);t.textContent=l[2];
+  });
+  function task(x,y,w,h,lines,ex){var g=grp();el('rect',{class:'task'+(ex?' ex':''),x:x,y:y,width:w,height:h,rx:5},g);
+    lines.forEach(function(s,i){var t=el('text',{x:x+w/2,y:y+h/2+(i-(lines.length-1)/2)*12.5+3.5,'text-anchor':'middle'},g);t.textContent=s});return g}
+  function gw(x,y,lab,lx,ly,anchor){var g=grp();el('path',{class:'gw',d:'M'+x+','+(y-14)+' L'+(x+14)+','+y+' L'+x+','+(y+14)+' L'+(x-14)+','+y+' z'},g);
+    el('path',{class:'flow',d:'M'+(x-4)+','+(y-4)+' L'+(x+4)+','+(y+4)+' M'+(x+4)+','+(y-4)+' L'+(x-4)+','+(y+4)},g);
+    var t=el('text',{class:'gl',x:lx,y:ly,'text-anchor':anchor||'middle'},g);t.textContent=lab;return g}
+  function flow(d,lab,lx,ly){var g=grp();el('path',{class:'flow',d:d,'marker-end':'url(#ah)'},g);
+    if(lab){var t=el('text',{class:'gl',x:lx,y:ly},g);t.textContent=lab}return g}
+  function ev(x,y,end){var g=grp();el('circle',{class:'ev'+(end?' end':''),cx:x,cy:y,r:9},g);return g}
+  ev(60,60);
+  flow('M69,60 L98,60'); task(100,38,96,44,['Receive invoice','by email']);
+  flow('M196,60 L220,60'); gw(236,60,'PO in system?',236,34);
+  flow('M250,60 L288,60'); task(290,38,96,44,['Verify amount','against PO']);
+  flow('M386,60 L410,60'); gw(426,60,'Amount matches?',426,34);
+  flow('M440,60 L478,60'); task(480,38,96,44,['Enter invoice','in system']);
+  flow('M236,74 L236,110','no',241,96); task(188,112,96,40,['Create PO, check','for duplicates'],true);
+  flow('M284,132 L320,132 L320,84');
+  flow('M426,74 L426,110','no',431,96); task(378,112,96,40,['Ask vendor for','corrected invoice'],true);
+  flow('M378,132 L352,132 L352,84');
+  flow('M576,60 L672,60 L672,201'); task(620,203,104,44,['Review coding','and cost centre']);
+  flow('M724,225 L754,225'); gw(770,225,'Coding correct?',790,229,'start');
+  flow('M770,211 L770,186 L450,186 L450,154','no',776,200);
+  flow('M770,239 L770,321'); task(722,323,96,44,['Department head','sign-off']);
+  flow('M818,345 L858,345'); ev(869,345,true);
 
-                <div class="step-row">
-                    <div class="step-num">2</div>
-                    <div>
-                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="da">Godkend BPMN-diagram og forbedringsforslag</h3>
-                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="en">Approve the BPMN diagram and improvement suggestions</h3>
-                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="da">AI'en genererer automatisk et professionelt BPMN 2.0-procesdiagram og identificerer konkrete forbedringsmuligheder, spild og risici — præcis som en erfaren lean-konsulent ville gøre det.</p>
-                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="en">The AI automatically generates a professional BPMN 2.0 process diagram and identifies concrete improvement opportunities, waste, and risks — exactly as an experienced lean consultant would.</p>
-                    </div>
-                </div>
-                <div class="connector"></div>
+  /* Player */
+  var stages=[].slice.call(document.querySelectorAll('.stage')),
+      tabs=[].slice.call(document.querySelectorAll('[data-go]')),
+      grille=document.getElementById('grille'), side=document.getElementById('sideLabel'),
+      pace=[1500,260,170,520,420], hold=[1600,2200,2600,2400,0],
+      labels={da:['Ailean interviewer','Svarene struktureres','AS-IS tegnes','Forslag vurderes','Planen er klar'],
+              en:['Ailean is interviewing','Structuring the answers','Drawing the AS-IS','Scoring suggestions','The plan is ready']},
+      cur=0, run=0, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function label(){side.textContent=(labels[html.getAttribute('lang')]||labels.da)[cur]}
+  function show(i,auto,instant){
+    var my=++run; cur=i;
+    stages.forEach(function(s,k){s.classList.toggle('show',k===i)});
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false')});
+    label();
+    var items=[].slice.call(stages[i].querySelectorAll('.rv'));
+    grille.classList.remove('live');
+    if(instant||reduce){items.forEach(function(x){x.classList.add('on')});return}
+    items.forEach(function(x){x.classList.remove('on')});
+    var n=0;
+    (function next(){
+      if(my!==run)return;
+      if(n<items.length){
+        var it=items[n++]; it.classList.add('on');
+        if(i===0)grille.classList.toggle('live',it.classList.contains('ai'));
+        setTimeout(next,pace[i]);
+      }else{
+        grille.classList.remove('live');
+        if(auto&&i<stages.length-1)setTimeout(function(){if(my===run)show(i+1,true)},hold[i]);
+      }
+    })();
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(+t.getAttribute('data-go'),false)})});
+  document.getElementById('play').addEventListener('click',function(){show(0,true)});
 
-                <div class="step-row">
-                    <div class="step-num">3</div>
-                    <div>
-                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="da">Eksporter dit flow til Visualise-to-Implement og start projektet</h3>
-                        <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;" data-lang="en">Export your flow to Visualise-to-Implement and start the project</h3>
-                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="da">Med ét klik oprettes et komplet lean-projektboard i Visualise-to-Implement (vimpl.com) med opgaver, risikomatrix og idékatalog. Dit team kan begynde at eksekvere med det samme — uden at starte fra bunden.</p>
-                        <p style="color: var(--light-grey); font-size: 0.95rem; line-height: 1.8;" data-lang="en">With one click, a complete lean project board is created in Visualise-to-Implement (vimpl.com) with tasks, risk matrix, and idea catalogue. Your team can start executing immediately — without starting from scratch.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Value comparison -->
-    <section class="text-section text-section-inner">
-        <div class="container">
-            <div style="max-width: 860px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
-                <div class="section-label" data-lang="da">Hvad du får</div>
-                <div class="section-label" data-lang="en">What you get</div>
-                <h2 data-lang="da">Konsulentekspertisen — uden konsulentprisen</h2>
-                <h2 data-lang="en">Consultant expertise — without the consultant price</h2>
-            </div>
-
-            <div class="comparison-value-grid">
-                <!-- Traditional -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 2rem;">
-                    <div style="color: rgba(255,255,255,0.35); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem;" data-lang="da">Traditionel lean-konsulent</div>
-                    <div style="color: rgba(255,255,255,0.35); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem;" data-lang="en">Traditional lean consultant</div>
-                    <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
-                            <span style="color: #ef4444;">✕</span>
-                            <span data-lang="da">2.000–5.000 kr./time</span>
-                            <span data-lang="en">$400–$1,000/hour</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
-                            <span style="color: #ef4444;">✕</span>
-                            <span data-lang="da">Ugers kalenderplanlægning</span>
-                            <span data-lang="en">Weeks of calendar planning</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
-                            <span style="color: #ef4444;">✕</span>
-                            <span data-lang="da">Manuel dokumentation og procesdiagrammer</span>
-                            <span data-lang="en">Manual documentation and process diagrams</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
-                            <span style="color: #ef4444;">✕</span>
-                            <span data-lang="da">Projektstyring i Excel eller generiske tools</span>
-                            <span data-lang="en">Project management in Excel or generic tools</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.9rem;">
-                            <span style="color: #ef4444;">✕</span>
-                            <span data-lang="da">Viden forsvinder når konsulenten rejser</span>
-                            <span data-lang="en">Knowledge disappears when the consultant leaves</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AILEAN -->
-                <div style="background: rgba(101,196,52,0.04); border: 1px solid rgba(101,196,52,0.25); border-radius: 16px; padding: 2rem; position: relative;">
-                    <div style="position: absolute; top: -0.75rem; right: 1.5rem; background: var(--primary); color: #000; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 100px;" data-lang="da">Med AILEAN</div>
-                    <div style="position: absolute; top: -0.75rem; right: 1.5rem; background: var(--primary); color: #000; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 100px;" data-lang="en">With AILEAN</div>
-                    <div style="color: rgba(101,196,52,0.8); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem;">AILEAN</div>
-                    <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
-                            <span style="color: var(--primary);">✓</span>
-                            <span data-lang="da">Fast månedlig pris — ingen timepris</span>
-                            <span data-lang="en">Fixed monthly price — no hourly rate</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
-                            <span style="color: var(--primary);">✓</span>
-                            <span data-lang="da">Projektplan klar på under en time</span>
-                            <span data-lang="en">Project plan ready in under an hour</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
-                            <span style="color: var(--primary);">✓</span>
-                            <span data-lang="da">Automatisk BPMN-diagram og procesanalyse</span>
-                            <span data-lang="en">Automatic BPMN diagram and process analysis</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
-                            <span style="color: var(--primary);">✓</span>
-                            <span data-lang="da">Visualise-to-Implement projektboard bygget til lean</span>
-                            <span data-lang="en">Visualise-to-Implement project board built for lean</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
-                            <span style="color: var(--primary);">✓</span>
-                            <span data-lang="da">Al viden gemt og tilgængelig for altid</span>
-                            <span data-lang="en">All knowledge saved and accessible forever</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <div style="max-width: 640px; margin: 0 auto;">
-                <div class="pill" data-lang="da">Gratis at komme i gang</div>
-                <div class="pill" data-lang="en">Free to get started</div>
-                <h2 class="cta-heading" data-lang="da">Start dit første lean-projekt i dag</h2>
-                <h2 class="cta-heading" data-lang="en">Start your first lean project today</h2>
-                <p style="color: var(--light-grey); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.5rem;" data-lang="da">Ingen kreditkort. Ingen installation. Åbn Voice-to-launch, indsæt et procesinterview og se din første projektplan genereres på minutter.</p>
-                <p style="color: var(--light-grey); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.5rem;" data-lang="en">No credit card. No installation. Open Voice-to-launch, paste a process interview, and watch your first project plan be generated in minutes.</p>
-                <div class="hero-actions" style="justify-content: center;">
-                    <a href="https://voice-2-launch.vercel.app" target="_blank" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.25rem;">
-                        <span data-lang="da">Prøv Voice-to-launch gratis →</span>
-                        <span data-lang="en">Try Voice-to-launch free →</span>
-                    </a>
-                    <a href="ailean-cases.html" class="btn-secondary" style="font-size: 1rem; padding: 1rem 2.25rem;">
-                        <span data-lang="da">Se cases</span>
-                        <span data-lang="en">See cases</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 AILEAN.</p>
-        </div>
-    </footer>
-
-    <script>
-        const htmlElement = document.documentElement;
-        const langButtons = document.querySelectorAll('.lang-btn');
-        htmlElement.setAttribute('lang', 'da');
-
-        langButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const lang = button.getAttribute('data-lang-switch');
-                htmlElement.setAttribute('lang', lang);
-                langButtons.forEach(b => b.classList.remove('active'));
-                button.classList.add('active');
-            });
-        });
-
-        // Show/hide elements based on lang attribute
-        function applyLang(lang) {
-            document.querySelectorAll('[data-lang]').forEach(el => {
-                el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
-            });
-        }
-
-        const observer = new MutationObserver(() => {
-            applyLang(htmlElement.getAttribute('lang'));
-        });
-        observer.observe(htmlElement, { attributes: true, attributeFilter: ['lang'] });
-        applyLang('da');
-    </script>
-    <script src="assets/js/cookie-banner.js" defer></script>
+  var saved=null; try{saved=localStorage.getItem(KEY)}catch(e){}
+  setLang(saved==='en'?'en':'da');
+  show(0,false,true);
+  stages[0].querySelectorAll('.rv').forEach(function(x,k){if(k>1)x.classList.remove('on')});
+  if(!reduce&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      if(es[0].isIntersecting){io.disconnect();show(0,true)}
+    },{threshold:.35});
+    io.observe(document.getElementById('demo'));
+  }else{show(0,false,true)}
+})();
+</script>
+<script src="assets/js/cookie-banner.js" defer></script>
 </body>
-
 </html>

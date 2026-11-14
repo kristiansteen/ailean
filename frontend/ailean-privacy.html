@@ -11,19 +11,18 @@
     
       gtag('config', 'G-N6T4H0QH68');
     </script>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon-ailean.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AILEAN - Privatlivspolitik</title>
     <link rel="stylesheet" href="assets/css/fonts.css">
-    <link href="assets/css/ailean.css" rel="stylesheet">
     <style>
         h2 {
             font-size: 1.5rem;
             color: var(--white);
             margin-top: 2rem;
             margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(21,21,21,0.16);
             padding-bottom: 0.5rem;
         }
 
@@ -35,7 +34,7 @@
         }
 
         p {
-            color: rgba(255, 255, 255, 0.82);
+            color: rgba(21,21,21,1.00);
             margin-bottom: 1.25rem;
             font-size: 1rem;
         }
@@ -43,7 +42,7 @@
         ul {
             margin-bottom: 1.5rem;
             padding-left: 1.5rem;
-            color: rgba(255, 255, 255, 0.82);
+            color: rgba(21,21,21,1.00);
         }
 
         li {
@@ -75,21 +74,33 @@
             }
         }
     </style>
+    <link href="assets/css/ailean-braun.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Background -->
-    <div class="background-wrapper fixed">
-        <img src="assets/images/ailean-burst-vision.jpg" alt="Background" class="hero-bg-image">
-        <div class="hero-overlay"></div>
-    </div>
+    
 
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="ailean-philosophy.html" class="logo">AILEAN</a>
-        </div>
+    <header class="top">
+  <div class="wrap">
+    <a class="mark" href="index.html">AILEAN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#produkt"><span data-lang="da">Produktet</span><span data-lang="en">Product</span></a>
+      <a href="index.html#trin"><span data-lang="da">Sådan virker det</span><span data-lang="en">How it works</span></a>
+      <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+      <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
     </nav>
+    <div class="top-right">
+      <div class="lang language-switcher" role="group" aria-label="Sprog / Language">
+        <button type="button" class="lang-btn active" data-lang-switch="da">DA</button>
+        <button type="button" class="lang-btn" data-lang-switch="en">EN</button>
+      </div>
+      <a class="login" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
+      <a class="btn solid small" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
+    </div>
+  </div>
+</header>
 
     <!-- Header -->
     <header class="hero" style="min-height: auto; padding: 160px 0 60px; justify-content: center;">
@@ -104,7 +115,7 @@
     <!-- Content -->
     <section class="content-section" style="padding: 0 20px 80px; flex: 1; position: relative; z-index: 10;">
         <div class="container"
-            style="max-width: 800px; margin: 0 auto; background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(10px); padding: 3rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+            style="max-width: 800px; margin: 0 auto; background: rgba(241,241,238,0.70); backdrop-filter: blur(10px); padding: 3rem; border-radius: 16px; border: 1px solid rgba(21,21,21,0.08);">
             <div class="content-container">
                 <p style="font-size: 1.1rem; color: var(--white); margin-bottom: 3rem;">
                     Last updated: January 2026
@@ -261,10 +272,16 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 AILEAN.</p>
-        </div>
-    </footer>
+  <div class="wrap">
+    <span class="mark">AILEAN</span>
+    <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
+    <a href="ailean-termer.html"><span data-lang="da">AI-termer</span><span data-lang="en">AI terms</span></a>
+    <a href="ailean-downloads.html"><span data-lang="da">Whitepaper og bog</span><span data-lang="en">White paper and book</span></a>
+    <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+    <a href="ailean-privacy.html"><span data-lang="da">Privatliv</span><span data-lang="en">Privacy</span></a>
+    <span class="c">&copy; 2026 AILEAN</span>
+  </div>
+</footer>
 
     <script>
         const htmlElement = document.documentElement;
@@ -286,6 +303,7 @@
         });
     </script>
     <script src="assets/js/cookie-banner.js" defer></script>
+    <script src="assets/js/ailean-site.js" defer></script>
 </body>
 
 </html>

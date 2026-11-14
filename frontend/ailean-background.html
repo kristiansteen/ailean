@@ -11,12 +11,11 @@
     
       gtag('config', 'G-N6T4H0QH68');
     </script>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon-ailean.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AILEAN - Our background</title>
     <link rel="stylesheet" href="assets/css/fonts.css">
-    <link href="assets/css/ailean.css" rel="stylesheet">
     <style>
         /* ── Background page — mobile overrides ─────────────────── */
         @media (max-width: 768px) {
@@ -58,32 +57,34 @@
             }
         }
     </style>
+    <link href="assets/css/ailean-braun.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">AILEAN</div>
-        <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
-            <a href="https://voice-2-launch.vercel.app/" class="nav-login-btn" data-lang="da">Log ind</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-login-btn" data-lang="en">Log in</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-signup-btn" data-lang="da">Opret konto</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-signup-btn" data-lang="en">Sign up</a>
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang-switch="da">DA</button>
-                <button class="lang-btn" data-lang-switch="en">EN</button>
-            </div>
-        </div>
-        </div>
+    <header class="top">
+  <div class="wrap">
+    <a class="mark" href="index.html">AILEAN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#produkt"><span data-lang="da">Produktet</span><span data-lang="en">Product</span></a>
+      <a href="index.html#trin"><span data-lang="da">Sådan virker det</span><span data-lang="en">How it works</span></a>
+      <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+      <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
     </nav>
+    <div class="top-right">
+      <div class="lang language-switcher" role="group" aria-label="Sprog / Language">
+        <button type="button" class="lang-btn active" data-lang-switch="da">DA</button>
+        <button type="button" class="lang-btn" data-lang-switch="en">EN</button>
+      </div>
+      <a class="login" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
+      <a class="btn solid small" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
+    </div>
+  </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background-wrapper">
-            <img src="assets/images/ailean-burst-precision.jpg" alt="Cinematic Backdrop" class="hero-bg-image">
-            <div class="hero-overlay"></div>
-        </div>
+        
 
         <div class="container">
             <div class="hero-content">
@@ -111,30 +112,6 @@
                 </a>
             </div>
         </div>
-
-        <div class="hero-tabs">
-            <a href="index.html" class="tab-item">
-                <span data-lang="da">Hjem</span>
-                <span data-lang="en">Home</span>
-            </a>
-            <a href="ailean-philosophy.html" class="tab-item">
-                <span data-lang="da"> AI-filosofi</span>
-                <span data-lang="en"> AI philosophy</span>
-            </a>
-            <a href="ailean-termer.html" class="tab-item">
-                <span data-lang="da">AI Termer</span>
-                <span data-lang="en">AI Terms</span>
-            </a>
-            <a href="ailean-pricing.html" class="tab-item">
-                <span data-lang="da">Priser</span>
-                <span data-lang="en">Pricing</span>
-            </a>
-        </div>
-
-        <div class="playback-controls">
-            <div class="control-btn">←</div>
-            <div class="control-btn">→</div>
-        </div>
     </section>
 
 
@@ -154,7 +131,7 @@
                 <!-- Kristian Steen -->
                 <div class="value-card" style="text-align: center; padding: 2.5rem 2rem; max-width: 360px; width: 100%;">
                     <img src="assets/img/kristian-steen.png" alt="Kristian Steen"
-                        style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 3px solid rgba(101,196,52,0.3);">
+                        style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 3px solid rgba(21,21,21,0.30);">
                     <h3 style="color: var(--white); font-size: 1.3rem; margin-bottom: 0.4rem;" data-lang="da">Kristian Steen</h3>
                     <h3 style="color: var(--white); font-size: 1.3rem; margin-bottom: 0.4rem;" data-lang="en">Kristian Steen</h3>
                     <p style="color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;"
@@ -167,7 +144,7 @@
                         data-lang="en">Focus on value creation and waste elimination in every layer of the organisation.</p>
                     <div style="margin-bottom: 1.5rem;">
                         <a href="https://github.com/kristiansteen" target="_blank"
-                            style="color: rgba(255,255,255,0.4); font-size: 1.5rem; transition: color 0.3s;"
+                            style="color: rgba(21,21,21,0.64); font-size: 1.5rem; transition: color 0.3s;"
                             onmouseover="this.style.color='var(--primary)'"
                             onmouseout="this.style.color='rgba(255,255,255,0.4)'">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -187,7 +164,7 @@
                             <span data-lang="da">Se CV</span><span data-lang="en">See CV</span>
                         </a>
                         <a href="mailto:kristian.steen@vimpl.com?subject=Contact%20from%20AILEAN"
-                            style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; color: var(--white); text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s;"
+                            style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; color: var(--white); text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; border: 1px solid rgba(21,21,21,0.32); transition: all 0.3s;"
                             onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'"
                             onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='var(--white)'">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -207,19 +184,19 @@
 
     <!-- CV Modal Overlay -->
     <div id="cv-modal"
-        style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(6px); overflow-y:auto;"
+        style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(241,241,238,0.85); backdrop-filter:blur(6px); overflow-y:auto;"
         onclick="if(event.target===this)closeCvModal()">
         <div style="max-width:900px; margin:4rem auto; padding:0 1.5rem 6rem; position:relative;">
 
             <!-- Close Button -->
             <button onclick="closeCvModal()"
-                style="position:fixed; top:1.5rem; right:1.5rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:var(--white); width:44px; height:44px; border-radius:50%; font-size:1.25rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; z-index:10000;"
+                style="position:fixed; top:1.5rem; right:1.5rem; background:rgba(21,21,21,0.13); border:1px solid rgba(21,21,21,0.24); color:var(--white); width:44px; height:44px; border-radius:50%; font-size:1.25rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; z-index:10000;"
                 onmouseover="this.style.background='var(--primary)';this.style.borderColor='var(--primary)';this.style.color='var(--dark-grey)'"
                 onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='var(--white)'">✕</button>
 
             <!-- CV Hero -->
             <div
-                style="text-align:center; padding:3rem 0 2.5rem; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:3rem;">
+                style="text-align:center; padding:3rem 0 2.5rem; border-bottom:1px solid rgba(21,21,21,0.13); margin-bottom:3rem;">
                 <p
                     style="color:var(--primary); font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">
                     AI Transformation | Digital Innovation | Operational Excellence</p>
@@ -231,7 +208,7 @@
                     Results-driven leader with 20+ years transforming organisations through AI, digitalisation, and
                     operational excellence.</p>
                 <div
-                    style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; color:rgba(255,255,255,0.5); font-size:0.9rem;">
+                    style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; color:rgba(21,21,21,0.80); font-size:0.9rem;">
                     <span style="display:flex; align-items:center; gap:0.4rem;">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -266,14 +243,14 @@
                     Professional Experience</h3>
 
                 <!-- vimpl -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
+                <div style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
                     onmouseover="this.style.borderColor='rgba(101,196,52,0.3)'"
                     onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
                     <div
                         style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.5rem;">
                         <span style="color:var(--white); font-size:1.1rem; font-weight:700;">vimpl</span>
                         <span
-                            style="color:rgba(255,255,255,0.4); font-size:0.8rem; background:rgba(255,255,255,0.05); padding:3px 12px; border-radius:20px; border:1px solid rgba(255,255,255,0.1);">2024
+                            style="color:rgba(21,21,21,0.64); font-size:0.8rem; background:rgba(21,21,21,0.08); padding:3px 12px; border-radius:20px; border:1px solid rgba(21,21,21,0.16);">2024
                             – Present | Global</span>
                     </div>
                     <span
@@ -285,14 +262,14 @@
                 </div>
 
                 <!-- Sprint365 -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
+                <div style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
                     onmouseover="this.style.borderColor='rgba(101,196,52,0.3)'"
                     onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
                     <div
                         style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.5rem;">
                         <span style="color:var(--white); font-size:1.1rem; font-weight:700;">Sprint365</span>
                         <span
-                            style="color:rgba(255,255,255,0.4); font-size:0.8rem; background:rgba(255,255,255,0.05); padding:3px 12px; border-radius:20px; border:1px solid rgba(255,255,255,0.1);">Dec
+                            style="color:rgba(21,21,21,0.64); font-size:0.8rem; background:rgba(21,21,21,0.08); padding:3px 12px; border-radius:20px; border:1px solid rgba(21,21,21,0.16);">Dec
                             2023 – Present | Copenhagen</span>
                     </div>
                     <span
@@ -302,7 +279,7 @@
                         and AI innovation for ERP implementation platform. Managing team of 11, driving solutions to
                         optimise business process implementations.</p>
                     <div
-                        style="background:rgba(101,196,52,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
+                        style="background:rgba(21,21,21,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
                         <strong
                             style="display:block; color:var(--primary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;">Key
                             Accomplishments</strong>
@@ -313,14 +290,14 @@
                 </div>
 
                 <!-- Maersk -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
+                <div style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
                     onmouseover="this.style.borderColor='rgba(101,196,52,0.3)'"
                     onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
                     <div
                         style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.5rem;">
                         <span style="color:var(--white); font-size:1.1rem; font-weight:700;">A.P. Møller - Maersk</span>
                         <span
-                            style="color:rgba(255,255,255,0.4); font-size:0.8rem; background:rgba(255,255,255,0.05); padding:3px 12px; border-radius:20px; border:1px solid rgba(255,255,255,0.1);">Sep
+                            style="color:rgba(21,21,21,0.64); font-size:0.8rem; background:rgba(21,21,21,0.08); padding:3px 12px; border-radius:20px; border:1px solid rgba(21,21,21,0.16);">Sep
                             2019 – Oct 2021 | Copenhagen</span>
                     </div>
                     <span
@@ -330,7 +307,7 @@
                         transformation initiative for enterprise capability architecture. Orchestrated deployment of RPA
                         and machine learning technologies at scale.</p>
                     <div
-                        style="background:rgba(101,196,52,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
+                        style="background:rgba(21,21,21,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
                         <strong
                             style="display:block; color:var(--primary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;">Key
                             Accomplishments</strong>
@@ -341,14 +318,14 @@
                 </div>
 
                 <!-- Vimpl Consulting -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
+                <div style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.75rem; margin-bottom:1rem; transition:border-color 0.3s;"
                     onmouseover="this.style.borderColor='rgba(101,196,52,0.3)'"
                     onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
                     <div
                         style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.5rem;">
                         <span style="color:var(--white); font-size:1.1rem; font-weight:700;">Vimpl Consulting</span>
                         <span
-                            style="color:rgba(255,255,255,0.4); font-size:0.8rem; background:rgba(255,255,255,0.05); padding:3px 12px; border-radius:20px; border:1px solid rgba(255,255,255,0.1);">June
+                            style="color:rgba(21,21,21,0.64); font-size:0.8rem; background:rgba(21,21,21,0.08); padding:3px 12px; border-radius:20px; border:1px solid rgba(21,21,21,0.16);">June
                             2012 – Dec 2023 | Copenhagen</span>
                     </div>
                     <span
@@ -358,7 +335,7 @@
                         service line with full P&L responsibility. Delivered high-impact digital transformation projects
                         for Maersk, Danske Bank, SDC, and Norlys.</p>
                     <div
-                        style="background:rgba(101,196,52,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
+                        style="background:rgba(21,21,21,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
                         <strong
                             style="display:block; color:var(--primary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;">Key
                             Accomplishments</strong>
@@ -369,7 +346,7 @@
                 </div>
 
                 <!-- Implement Consulting -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.75rem; transition:border-color 0.3s;"
+                <div style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.75rem; transition:border-color 0.3s;"
                     onmouseover="this.style.borderColor='rgba(101,196,52,0.3)'"
                     onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
                     <div
@@ -377,7 +354,7 @@
                         <span style="color:var(--white); font-size:1.1rem; font-weight:700;">Implement Consulting
                             Group</span>
                         <span
-                            style="color:rgba(255,255,255,0.4); font-size:0.8rem; background:rgba(255,255,255,0.05); padding:3px 12px; border-radius:20px; border:1px solid rgba(255,255,255,0.1);">Oct
+                            style="color:rgba(21,21,21,0.64); font-size:0.8rem; background:rgba(21,21,21,0.08); padding:3px 12px; border-radius:20px; border:1px solid rgba(21,21,21,0.16);">Oct
                             2008 – Jan 2011 | Hørsholm</span>
                     </div>
                     <span
@@ -387,7 +364,7 @@
                         Sigma implementations. Led process optimisation initiatives in prosecution services, defence,
                         and wind energy manufacturing.</p>
                     <div
-                        style="background:rgba(101,196,52,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
+                        style="background:rgba(21,21,21,0.06); border-left:3px solid var(--primary); padding:1rem 1.25rem; margin-top:1rem; border-radius:0 8px 8px 0;">
                         <strong
                             style="display:block; color:var(--primary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;">Key
                             Accomplishments</strong>
@@ -404,28 +381,28 @@
                     style="color:var(--white); font-size:1.4rem; font-weight:800; margin-bottom:1.5rem; padding-left:1rem; border-left:4px solid var(--primary);">
                     Education</h3>
                 <div
-                    style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.5rem; margin-bottom:1rem;">
+                    style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.5rem; margin-bottom:1rem;">
                     <div
                         style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.4rem;">
                         <span style="color:var(--white); font-weight:700;">Copenhagen Business School</span>
-                        <span style="color:rgba(255,255,255,0.4); font-size:0.8rem;">2001 – 2004</span>
+                        <span style="color:rgba(21,21,21,0.64); font-size:0.8rem;">2001 – 2004</span>
                     </div>
                     <span
                         style="color:var(--primary); font-size:0.9rem; font-weight:600; display:block; margin-bottom:0.25rem;">MSc
                         in Business Administration & Computer Science (Cand.merc.dat)</span>
-                    <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; margin:0;">Top 10% of cohort</p>
+                    <p style="color:rgba(21,21,21,0.64); font-size:0.85rem; margin:0;">Top 10% of cohort</p>
                 </div>
                 <div
-                    style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.5rem;">
+                    style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.5rem;">
                     <div
                         style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.4rem;">
                         <span style="color:var(--white); font-weight:700;">Simon Fraser University</span>
-                        <span style="color:rgba(255,255,255,0.4); font-size:0.8rem;">Fall 2003</span>
+                        <span style="color:rgba(21,21,21,0.64); font-size:0.8rem;">Fall 2003</span>
                     </div>
                     <span
                         style="color:var(--primary); font-size:0.9rem; font-weight:600; display:block; margin-bottom:0.25rem;">Specialist
                         MBA Programme – Organisational Change</span>
-                    <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; margin:0;">Vancouver, Canada</p>
+                    <p style="color:rgba(21,21,21,0.64); font-size:0.85rem; margin:0;">Vancouver, Canada</p>
                 </div>
             </div>
 
@@ -436,9 +413,9 @@
                     Certifications & Expertise</h3>
                 <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:1rem;">
                     <div
-                        style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.5rem;">
+                        style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.5rem;">
                         <h4
-                            style="color:var(--white); font-size:0.95rem; font-weight:700; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid rgba(101,196,52,0.3); display:inline-block;">
+                            style="color:var(--white); font-size:0.95rem; font-weight:700; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid rgba(21,21,21,0.30); display:inline-block;">
                             Professional Certifications</h4>
                         <ul style="list-style:none; padding:0; margin:0;">
                             <li
@@ -460,9 +437,9 @@
                         </ul>
                     </div>
                     <div
-                        style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.5rem;">
+                        style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.5rem;">
                         <h4
-                            style="color:var(--white); font-size:0.95rem; font-weight:700; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid rgba(101,196,52,0.3); display:inline-block;">
+                            style="color:var(--white); font-size:0.95rem; font-weight:700; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid rgba(21,21,21,0.30); display:inline-block;">
                             Key Competencies</h4>
                         <ul style="list-style:none; padding:0; margin:0;">
                             <li
@@ -484,9 +461,9 @@
                         </ul>
                     </div>
                     <div
-                        style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.5rem;">
+                        style="background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.13); border-radius:12px; padding:1.5rem;">
                         <h4
-                            style="color:var(--white); font-size:0.95rem; font-weight:700; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid rgba(101,196,52,0.3); display:inline-block;">
+                            style="color:var(--white); font-size:0.95rem; font-weight:700; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid rgba(21,21,21,0.30); display:inline-block;">
                             Languages & Personal</h4>
                         <ul style="list-style:none; padding:0; margin:0;">
                             <li
@@ -513,107 +490,107 @@
                     Core Expertise & Skills</h3>
                 <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">AI
                         Strategy</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Digital
                         Transformation</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Innovation
                         Management</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Lean
                         Management</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Six
                         Sigma Black Belt</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">People
                         Management</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Operational
                         Excellence</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Intelligent
                         Automation</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Enterprise
                         Architecture</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Agile
                         (SCRUM/SAFe)</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Change
                         Management</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Process
                         Mining</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">AI
                         Governance</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Product
                         Leadership</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">ERP
                         Implementation</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">P&L
                         Responsibility</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Predictive
                         Modeling</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Machine
                         Learning</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Visual
                         Planning</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Strategic
                         Consulting</span>
                     <span
-                        style="background:rgba(101,196,52,0.08); color:var(--primary); border:1px solid rgba(101,196,52,0.3); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
+                        style="background:rgba(21,21,21,0.08); color:var(--primary); border:1px solid rgba(21,21,21,0.30); padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:500; transition:all 0.3s; cursor:default;"
                         onmouseover="this.style.background='var(--primary)';this.style.color='var(--dark-grey)'"
                         onmouseout="this.style.background='rgba(101,196,52,0.08)';this.style.color='var(--primary)'">Cross-functional
                         Leadership</span>
@@ -622,7 +599,7 @@
 
             <!-- Contact CTA -->
             <div
-                style="text-align:center; background:rgba(101,196,52,0.05); border:1px solid rgba(101,196,52,0.2); border-radius:16px; padding:3rem 2rem;">
+                style="text-align:center; background:rgba(21,21,21,0.05); border:1px solid rgba(21,21,21,0.20); border-radius:16px; padding:3rem 2rem;">
                 <h3 style="color:var(--white); font-size:1.8rem; font-weight:800; margin-bottom:0.75rem;">Let's make it
                     happen</h3>
                 <p style="color:var(--light-grey); max-width:480px; margin:0 auto 2rem; line-height:1.7;">I'm always
@@ -644,10 +621,16 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 AILEAN.</p>
-        </div>
-    </footer>
+  <div class="wrap">
+    <span class="mark">AILEAN</span>
+    <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
+    <a href="ailean-termer.html"><span data-lang="da">AI-termer</span><span data-lang="en">AI terms</span></a>
+    <a href="ailean-downloads.html"><span data-lang="da">Whitepaper og bog</span><span data-lang="en">White paper and book</span></a>
+    <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+    <a href="ailean-privacy.html"><span data-lang="da">Privatliv</span><span data-lang="en">Privacy</span></a>
+    <span class="c">&copy; 2026 AILEAN</span>
+  </div>
+</footer>
 
     <script>
         // CV Modal
@@ -695,7 +678,6 @@
         // Playback Controls Navigation
         const pages = [
             'ailean-philosophy.html',
-            'ailean-cases.html',
             'ailean-blitz.html'
         ];
         const currentPage = window.location.pathname.split('/').pop() || 'ailean-background.html';
@@ -714,6 +696,7 @@
         });
     </script>
     <script src="assets/js/cookie-banner.js" defer></script>
+    <script src="assets/js/ailean-site.js" defer></script>
 </body>
 
 </html>

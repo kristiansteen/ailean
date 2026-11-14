@@ -11,12 +11,11 @@
     
       gtag('config', 'G-N6T4H0QH68');
     </script>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon-ailean.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AILEAN - Our AI philosophy</title>
     <link rel="stylesheet" href="assets/css/fonts.css">
-    <link href="assets/css/ailean.css" rel="stylesheet">
     <style>
         /* ── Philosophy page — mobile overrides ─────────────────── */
         @media (max-width: 768px) {
@@ -62,32 +61,34 @@
             }
         }
     </style>
+    <link href="assets/css/ailean-braun.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">AILEAN</div>
-        <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
-            <a href="https://voice-2-launch.vercel.app/" class="nav-login-btn" data-lang="da">Log ind</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-login-btn" data-lang="en">Log in</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-signup-btn" data-lang="da">Opret konto</a>
-            <a href="https://voice-2-launch.vercel.app/" class="nav-signup-btn" data-lang="en">Sign up</a>
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang-switch="da">DA</button>
-                <button class="lang-btn" data-lang-switch="en">EN</button>
-            </div>
-        </div>
-        </div>
+    <header class="top">
+  <div class="wrap">
+    <a class="mark" href="index.html">AILEAN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#produkt"><span data-lang="da">Produktet</span><span data-lang="en">Product</span></a>
+      <a href="index.html#trin"><span data-lang="da">Sådan virker det</span><span data-lang="en">How it works</span></a>
+      <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+      <a href="ailean-philosophy.html" aria-current="page"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
     </nav>
+    <div class="top-right">
+      <div class="lang language-switcher" role="group" aria-label="Sprog / Language">
+        <button type="button" class="lang-btn active" data-lang-switch="da">DA</button>
+        <button type="button" class="lang-btn" data-lang-switch="en">EN</button>
+      </div>
+      <a class="login" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
+      <a class="btn solid small" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
+    </div>
+  </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background-wrapper">
-            <img src="assets/images/ailean-burst-vision.jpg" alt="Roadmap 2025 Backdrop" class="hero-bg-image">
-            <div class="hero-overlay"></div>
-        </div>
+        
 
         <div class="container">
             <div class="hero-content">
@@ -105,34 +106,10 @@
                 </div>
 
                 <a href="ailean-downloads.html" class="cta-button">
-                    <span data-lang="da">Hent whitepaper</span>
-                    <span data-lang="en">Download whitepaper</span>
+                    <span data-lang="da">Få whitepaper og bog</span>
+                    <span data-lang="en">Get the white paper and book</span>
                 </a>
             </div>
-        </div>
-
-        <div class="hero-tabs">
-            <a href="index.html" class="tab-item">
-                <span data-lang="da">Hjem</span>
-                <span data-lang="en">Home</span>
-            </a>
-            <a href="ailean-philosophy.html" class="tab-item active">
-                <span data-lang="da"> AI-filosofi</span>
-                <span data-lang="en"> AI philosophy</span>
-            </a>
-            <a href="ailean-termer.html" class="tab-item">
-                <span data-lang="da">AI Termer</span>
-                <span data-lang="en">AI Terms</span>
-            </a>
-            <a href="ailean-pricing.html" class="tab-item">
-                <span data-lang="da">Priser</span>
-                <span data-lang="en">Pricing</span>
-            </a>
-        </div>
-
-        <div class="playback-controls">
-            <div class="control-btn">←</div>
-            <div class="control-btn">→</div>
         </div>
     </section>
 
@@ -145,7 +122,7 @@
                 data-lang="en">Based on universal Lean principles</h2>
 
             <div
-                style="max-width: 860px; margin: 0 auto 3.5rem; text-align: left; border: 1px solid rgba(101, 196, 52, 0.2); padding: 2.5rem; border-radius: 12px; background: rgba(255, 255, 255, 0.02);">
+                style="max-width: 860px; margin: 0 auto 3.5rem; text-align: left; border: 1px solid rgba(21,21,21,0.20); padding: 2.5rem; border-radius: 12px; background: rgba(21,21,21,0.03);">
                 <p style="color: var(--light-grey); line-height: 1.9; font-size: 1.05rem; margin: 0 0 1.5rem;"
                     data-lang="da">
                     De fleste organisationer springer direkte til AI-løsninger uden først at forstå, hvad der faktisk
@@ -212,15 +189,15 @@
 
                 <!-- Principle 1: Hyper-personalization -->
                 <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    style="border: 1px solid rgba(21,21,21,0.13); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
                     <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(21,21,21,0.05);">
                         <span
                             style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">01</span>
                         <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="da">#Kundens_stemme</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="en">#voice_of_customer</div>
                             <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
                                 data-lang="da">AI som motor for hyper-personalisering</h3>
@@ -229,12 +206,12 @@
                         </div>
                         <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            style="color: rgba(21,21,21,0.48); transition: transform 0.35s; flex-shrink: 0;">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </div>
                     <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(21,21,21,0.10);">
                             <div style="padding-top: 1.5rem;">
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
                                     data-lang="da">AI gør det muligt at bevæge sig fra segmentering til reel
@@ -247,7 +224,7 @@
                                     tværs af kanaler og kundekontaktpunkter. Det kræver et stærkt datafundament og et
                                     end-to-end-perspektiv, men når det lykkes, skaber AI differentierede oplevelser,
                                     højere relevans og markant større effekt end traditionel personalisering.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -273,7 +250,7 @@
                                     end-to-end perspective, but when successful, AI creates differentiated experiences,
                                     higher relevance, and significantly greater impact than traditional personalization.
                                 </p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -294,15 +271,15 @@
 
                 <!-- Principle 2: Value Stream Mapping -->
                 <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    style="border: 1px solid rgba(21,21,21,0.13); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
                     <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(21,21,21,0.05);">
                         <span
                             style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">02</span>
                         <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="da">#værdistrømskortlægning</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="en">#value_stream_mapping</div>
                             <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
                                 data-lang="da">AI gør værdistrømmen synlig — og spildet umuligt at ignorere</h3>
@@ -311,12 +288,12 @@
                         </div>
                         <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            style="color: rgba(21,21,21,0.48); transition: transform 0.35s; flex-shrink: 0;">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </div>
                     <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(21,21,21,0.10);">
                             <div style="padding-top: 1.5rem;">
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
                                     data-lang="da">Vi bruger AI til at afdække, hvor værdien faktisk skabes, og hvor den
@@ -328,7 +305,7 @@
                                     skaber værdi — og hvilke der ikke gør. Det gør det muligt systematisk at fjerne
                                     spild, prioritere forbedringer med størst effekt og designe et flow, der
                                     understøtter både Kaizen-forbedringer og mere radikale Kaikaku-spring.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -352,7 +329,7 @@
                                     This makes it possible to systematically eliminate waste, prioritize improvements
                                     with the greatest impact, and design a flow that supports both incremental Kaizen
                                     improvements and more radical Kaikaku leaps.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -372,15 +349,15 @@
 
                 <!-- Principle 3: End-to-End -->
                 <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    style="border: 1px solid rgba(21,21,21,0.13); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
                     <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(21,21,21,0.05);">
                         <span
                             style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">03</span>
                         <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="da">#skab_flow</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="en">#create_flow</div>
                             <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
                                 data-lang="da">End-2-End perspektiv skaber resultatet</h3>
@@ -389,12 +366,12 @@
                         </div>
                         <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            style="color: rgba(21,21,21,0.48); transition: transform 0.35s; flex-shrink: 0;">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </div>
                     <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(21,21,21,0.10);">
                             <div style="padding-top: 1.5rem;">
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
                                     data-lang="da">AI indfrier ikke løftet om tidsbesparelser eller øget kvalitet, hvis
@@ -406,7 +383,7 @@
                                     andre møder, hvor der er behov for et beslutningsreferat fra et tidligere møde?
                                     Kunne man etablere en mødestruktur og en governance model, der var baseret på at
                                     møderne informerer hinanden 'just in time'.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -428,7 +405,7 @@
                                     meetings that require decision logs from previous sessions? Could we establish a
                                     meeting structure and a governance model based on meetings informing each other
                                     'just-in-time'?</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -448,15 +425,15 @@
 
                 <!-- Principle 4: Establish Pull -->
                 <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    style="border: 1px solid rgba(21,21,21,0.13); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
                     <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(21,21,21,0.05);">
                         <span
                             style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">04</span>
                         <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="da">#etabler_pull</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="en">#establish_pull</div>
                             <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
                                 data-lang="da">Nye muligheder for overvågning og etablering af signaler</h3>
@@ -465,12 +442,12 @@
                         </div>
                         <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            style="color: rgba(21,21,21,0.48); transition: transform 0.35s; flex-shrink: 0;">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </div>
                     <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(21,21,21,0.10);">
                             <div style="padding-top: 1.5rem;">
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
                                     data-lang="da">AI gør det muligt at etablere pull uden at skabe bunker mellem
@@ -481,7 +458,7 @@
                                     igangsætning og synkroniserer flow på tværs af værdistrømmen. Resultatet er færre
                                     ventetider, kortere lead time og et stabilt pull-flow, hvor problemer bliver
                                     synlige, når de opstår — ikke gemt i bunker mellem procestrin.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -504,7 +481,7 @@
                                     The result is reduced waiting times, shorter lead times, and a stable pull-flow
                                     where problems become visible as they arise — rather than being hidden in piles
                                     between process steps.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -524,15 +501,15 @@
 
                 <!-- Principle 5: Kaizen -->
                 <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    style="border: 1px solid rgba(21,21,21,0.13); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
                     <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(21,21,21,0.05);">
                         <span
                             style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">05</span>
                         <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="da">#kaizen</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="en">#kaizen</div>
                             <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
                                 data-lang="da">Et helt nyt idékatalog — og de gamle ideer kan endelig realiseres</h3>
@@ -541,12 +518,12 @@
                         </div>
                         <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            style="color: rgba(21,21,21,0.48); transition: transform 0.35s; flex-shrink: 0;">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </div>
                     <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(21,21,21,0.10);">
                             <div style="padding-top: 1.5rem;">
                                 <!-- Existing: Revisiting old ideas (DA) -->
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
@@ -559,7 +536,7 @@
                                     systemer og man kan få AI til at udføre en række af de manuelle opgaver. På den måde
                                     bliver en række af de ideer, som man kom frem under proceskortlægningen, mere
                                     tilgængelige og sniger sig over barren for hvad vi betragter som high effort.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -574,7 +551,7 @@
                                 </div>
 
                                 <!-- NEW: New potential (DA) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
+                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(21,21,21,0.20); padding-bottom: 0.5rem;"
                                     data-lang="da">Nye ideer, der ikke fandtes før</p>
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
                                     data-lang="da">AI åbner ikke kun for realisering af gamle ideer. Det skaber et helt
@@ -584,7 +561,7 @@
                                     flytte menneskelig kapacitet derhen, hvor den skaber mest værdi.<br><br>Spørgsmålet
                                     er ikke længere: "Hvad kan vi forbedre?" — men: "Hvad er muligt nu, som ikke var
                                     muligt for 18 måneder siden?"</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -599,7 +576,7 @@
                                 </div>
 
                                 <!-- NEW: Task transfer to AI agents (DA) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
+                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(21,21,21,0.20); padding-bottom: 0.5rem;"
                                     data-lang="da">Fra menneskelig opgave til AI-agent</p>
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
                                     data-lang="da">Den mest direkte form for AI-impact er enkel: opgaver, der i dag
@@ -611,7 +588,7 @@
                                     relation.<br><br>Resultatet er dobbeltsidigt: lavere omkostninger og højere kvalitet
                                     — ikke som en trade-off, men som en direkte konsekvens af, at AI er mere konsistent,
                                     hurtigere og fejlfri på de opgaver, det er sat til.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -624,7 +601,7 @@
                                         BPMN-model på under en time. Rådgiveren bruger den sparede tid på at validere og
                                         forbedre modellen i stedet for at bygge den fra bunden.</p>
                                 </div>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -649,7 +626,7 @@
                                     systems and have AI perform many of those manual tasks. In this way, ideas generated
                                     during your process mapping become more accessible, sliding under the bar of what
                                     was previously categorized as "high effort."</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -664,7 +641,7 @@
                                 </div>
 
                                 <!-- NEW: New potential (EN) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
+                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(21,21,21,0.20); padding-bottom: 0.5rem;"
                                     data-lang="en">New ideas that didn't exist before</p>
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
                                     data-lang="en">AI does not just unlock the realisation of old ideas. It creates an
@@ -674,7 +651,7 @@
                                     about reallocating human capacity to where it creates the most value.<br><br>The
                                     question is no longer: "What can we improve?" — but: "What is possible now that
                                     wasn't possible 18 months ago?"</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -689,7 +666,7 @@
                                 </div>
 
                                 <!-- NEW: Task transfer to AI agents (EN) -->
-                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(101,196,52,0.2); padding-bottom: 0.5rem;"
+                                <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 2.5rem 0 0.75rem; border-bottom: 1px solid rgba(21,21,21,0.20); padding-bottom: 0.5rem;"
                                     data-lang="en">From human task to AI agent</p>
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1rem;"
                                     data-lang="en">The most direct form of AI impact is simple: tasks performed by
@@ -701,7 +678,7 @@
                                     two-sided: lower costs and higher quality — not as a trade-off, but as a direct
                                     consequence of AI being more consistent, faster, and error-free on the tasks it is
                                     assigned.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -714,7 +691,7 @@
                                         model in under an hour. The consultant now spends the saved time validating and
                                         improving the model instead of building it from scratch.</p>
                                 </div>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -733,15 +710,15 @@
 
                 <!-- Principle 6: Kaikaku -->
                 <div class="phil-item" onclick="togglePhil(this)"
-                    style="border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
+                    style="border: 1px solid rgba(21,21,21,0.13); border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; cursor: pointer; transition: border-color 0.3s;">
                     <div class="phil-header"
-                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03);">
+                        style="display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; background: rgba(21,21,21,0.05);">
                         <span
                             style="color: var(--primary); font-size: 1.5rem; font-weight: 900; min-width: 2rem; font-family: monospace;">06</span>
                         <div style="flex: 1;">
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="da">#kaikaku</div>
-                            <div style="color: rgba(101,196,52,0.6); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
+                            <div style="color: rgba(21,21,21,0.60); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;"
                                 data-lang="en">#kaikaku</div>
                             <h3 style="color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0;"
                                 data-lang="da">Radikal transformation</h3>
@@ -750,12 +727,12 @@
                         </div>
                         <svg class="phil-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5"
-                            style="color: rgba(255,255,255,0.3); transition: transform 0.35s; flex-shrink: 0;">
+                            style="color: rgba(21,21,21,0.48); transition: transform 0.35s; flex-shrink: 0;">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </div>
                     <div class="phil-body" style="max-height: 0; overflow: hidden; transition: max-height 0.45s ease;">
-                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                        <div style="padding: 0 2rem 2rem 5.25rem; border-top: 1px solid rgba(21,21,21,0.10);">
                             <div style="padding-top: 1.5rem;">
                                 <p style="color: var(--light-grey); line-height: 1.8; font-size: 0.95rem; margin: 0 0 1.5rem;"
                                     data-lang="da">AI skaber først reel værdi, når infrastruktur, data, processer og
@@ -770,7 +747,7 @@
                                     blot automatiseret. Når AI behandles som kritisk forretningsinfrastruktur frem for
                                     et teknologiprojekt, transformeres hele organisationen langsomt imod en varig
                                     konkurrencefordel.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="da">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -797,7 +774,7 @@
                                     When AI is treated as critical business infrastructure rather than a technology
                                     project, the entire organization gradually transforms toward a lasting competitive
                                     advantage.</p>
-                                <div style="background: rgba(101,196,52,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
+                                <div style="background: rgba(21,21,21,0.06); border-left: 3px solid var(--primary); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;"
                                     data-lang="en">
                                     <p
                                         style="color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.5rem;">
@@ -822,11 +799,37 @@
 
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 AILEAN.</p>
-        </div>
-    </footer>
+    <section class="reads" id="downloads">
+  <div class="wrap">
+    <h2><span data-lang="da">Læs videre: whitepaper og bog</span><span data-lang="en">Read on: white paper and book</span></h2>
+    <div class="reads-grid">
+      <div class="read">
+        <h3>AILEAN White Paper</h3>
+        <p data-lang="da">Why AI rhymes with LEAN. Hvorfor lean-principperne er udgangspunktet for at få værdi af AI.</p>
+        <p data-lang="en">Why AI rhymes with LEAN. Why the lean principles are the starting point for getting value from AI.</p>
+      </div>
+      <div class="read">
+        <h3>Perfect processes</h3>
+        <p data-lang="da">E-bogen om Lean og Six Sigma.</p>
+        <p data-lang="en">The e-book on Lean and Six Sigma.</p>
+      </div>
+    </div>
+    <a class="btn solid" href="ailean-downloads.html"><span data-lang="da">Få whitepaper og bog</span><span data-lang="en">Get the white paper and book</span></a>
+    <p class="reads-note" data-lang="da">Du oplyser navn og e-mail og henter begge som PDF med det samme.</p>
+    <p class="reads-note" data-lang="en">You give your name and email and download both as PDF straight away.</p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <span class="mark">AILEAN</span>
+    <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
+    <a href="ailean-termer.html"><span data-lang="da">AI-termer</span><span data-lang="en">AI terms</span></a>
+    <a href="ailean-downloads.html"><span data-lang="da">Whitepaper og bog</span><span data-lang="en">White paper and book</span></a>
+    <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+    <a href="ailean-privacy.html"><span data-lang="da">Privatliv</span><span data-lang="en">Privacy</span></a>
+    <span class="c">&copy; 2026 AILEAN</span>
+  </div>
+</footer>
 
     <script>
         function togglePhil(item) {
@@ -859,7 +862,6 @@
         // Playback Controls Navigation
         const pages = [
             'ailean-philosophy.html',
-            'ailean-cases.html',
             'ailean-blitz.html'
         ];
         const currentPage = window.location.pathname.split('/').pop() || 'ailean-philosophy.html';
@@ -878,6 +880,7 @@
         });
     </script>
     <script src="assets/js/cookie-banner.js" defer></script>
+    <script src="assets/js/ailean-site.js" defer></script>
 </body>
 
 </html>

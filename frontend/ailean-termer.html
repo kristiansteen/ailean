@@ -11,12 +11,11 @@
     
       gtag('config', 'G-N6T4H0QH68');
     </script>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon-ailean.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AILEAN - AI Termer & Begreber</title>
     <link rel="stylesheet" href="assets/css/fonts.css">
-    <link href="assets/css/ailean.css" rel="stylesheet">
     <style>
         /* ── Page-level card grid ───────────────────────────────────────── */
         .terms-grid {
@@ -35,8 +34,8 @@
 
         /* ── Individual term card ───────────────────────────────────────── */
         .term-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(21,21,21,0.03);
+            border: 1px solid rgba(21,21,21,0.11);
             border-radius: 12px;
             padding: 1.5rem 1.75rem 1.5rem 2rem;
             position: relative;
@@ -45,8 +44,8 @@
         }
 
         .term-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.14);
+            background: rgba(21,21,21,0.06);
+            border-color: rgba(21,21,21,0.22);
         }
 
         /* Coloured left-border accent */
@@ -62,26 +61,26 @@
         }
 
         /* Per-card accent colours */
-        .term-card:nth-child(1)  { --card-accent: #65c434; }
-        .term-card:nth-child(2)  { --card-accent: #0ea5e9; }
-        .term-card:nth-child(3)  { --card-accent: #10b981; }
-        .term-card:nth-child(4)  { --card-accent: #f59e0b; }
+        .term-card:nth-child(1)  { --card-accent: #151515; }
+        .term-card:nth-child(2)  { --card-accent: #151515; }
+        .term-card:nth-child(3)  { --card-accent: #151515; }
+        .term-card:nth-child(4)  { --card-accent: #E8500A; }
         .term-card:nth-child(5)  { --card-accent: #ef4444; }
-        .term-card:nth-child(6)  { --card-accent: #8b5cf6; }
-        .term-card:nth-child(7)  { --card-accent: #06b6d4; }
-        .term-card:nth-child(8)  { --card-accent: #84cc16; }
+        .term-card:nth-child(6)  { --card-accent: #151515; }
+        .term-card:nth-child(7)  { --card-accent: #151515; }
+        .term-card:nth-child(8)  { --card-accent: #151515; }
         .term-card:nth-child(9)  { --card-accent: #f97316; }
         .term-card:nth-child(10) { --card-accent: #ec4899; }
-        .term-card:nth-child(11) { --card-accent: #a78bfa; }
-        .term-card:nth-child(12) { --card-accent: #34d399; }
+        .term-card:nth-child(11) { --card-accent: #151515; }
+        .term-card:nth-child(12) { --card-accent: #151515; }
         .term-card:nth-child(13) { --card-accent: #f43f5e; }
-        .term-card:nth-child(14) { --card-accent: #3b82f6; }
+        .term-card:nth-child(14) { --card-accent: #151515; }
         .term-card:nth-child(15) { --card-accent: #d946ef; }
-        .term-card:nth-child(16) { --card-accent: #fb923c; }
-        .term-card:nth-child(17) { --card-accent: #22d3ee; }
-        .term-card:nth-child(18) { --card-accent: #a3e635; }
-        .term-card:nth-child(19) { --card-accent: #6366f1; }
-        .term-card:nth-child(20) { --card-accent: #14b8a6; }
+        .term-card:nth-child(16) { --card-accent: #E8500A; }
+        .term-card:nth-child(17) { --card-accent: #151515; }
+        .term-card:nth-child(18) { --card-accent: #151515; }
+        .term-card:nth-child(19) { --card-accent: #151515; }
+        .term-card:nth-child(20) { --card-accent: #151515; }
 
         /* Number badge */
         .term-number {
@@ -117,13 +116,13 @@
         /* Body explanation */
         .term-body {
             font-size: clamp(0.875rem, 2vw, 0.9rem);
-            color: rgba(236, 239, 241, 0.65);
+            color: rgba(21,21,21,1.00);
             line-height: 1.75;
             font-weight: 300;
         }
 
         .term-body strong {
-            color: rgba(236, 239, 241, 0.9);
+            color: rgba(21,21,21,1.00);
             font-weight: 600;
         }
 
@@ -131,7 +130,7 @@
         .term-phrase {
             margin-top: 0.85rem;
             padding: 0.6rem 0.85rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(21,21,21,0.05);
             border-radius: 6px;
             border-left: 2px solid var(--card-accent);
             font-size: 0.78rem;
@@ -149,28 +148,34 @@
         }
 
     </style>
+    <link href="assets/css/ailean-braun.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">AILEAN</div>
-            <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang-switch="da">DA</button>
-                    <button class="lang-btn" data-lang-switch="en">EN</button>
-                </div>
-            </div>
-        </div>
+    <header class="top">
+  <div class="wrap">
+    <a class="mark" href="index.html">AILEAN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#produkt"><span data-lang="da">Produktet</span><span data-lang="en">Product</span></a>
+      <a href="index.html#trin"><span data-lang="da">Sådan virker det</span><span data-lang="en">How it works</span></a>
+      <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+      <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
     </nav>
+    <div class="top-right">
+      <div class="lang language-switcher" role="group" aria-label="Sprog / Language">
+        <button type="button" class="lang-btn active" data-lang-switch="da">DA</button>
+        <button type="button" class="lang-btn" data-lang-switch="en">EN</button>
+      </div>
+      <a class="login" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
+      <a class="btn solid small" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
+    </div>
+  </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background-wrapper">
-            <img src="assets/images/ailean-burst-complexity.jpg" alt="AI Terms backdrop" class="hero-bg-image">
-            <div class="hero-overlay"></div>
-        </div>
+        
 
         <div class="container">
             <div class="hero-content">
@@ -186,34 +191,10 @@
                 </div>
             </div>
         </div>
-
-        <div class="hero-tabs">
-            <a href="index.html" class="tab-item">
-                <span data-lang="da">Hjem</span>
-                <span data-lang="en">Home</span>
-            </a>
-            <a href="ailean-philosophy.html" class="tab-item">
-                <span data-lang="da">AI-filosofi</span>
-                <span data-lang="en">AI philosophy</span>
-            </a>
-            <a href="ailean-termer.html" class="tab-item active">
-                <span data-lang="da">AI Termer</span>
-                <span data-lang="en">AI Terms</span>
-            </a>
-            <a href="ailean-pricing.html" class="tab-item">
-                <span data-lang="da">Priser</span>
-                <span data-lang="en">Pricing</span>
-            </a>
-        </div>
-
-        <div class="playback-controls">
-            <div class="control-btn">←</div>
-            <div class="control-btn">→</div>
-        </div>
     </section>
 
     <!-- Cards -->
-    <section style="padding: 4rem 0 6rem; background: #07090a;">
+    <section style="padding: 4rem 0 6rem; background: #E9E9E6;">
         <div class="container">
             <div class="terms-grid">
 
@@ -449,10 +430,16 @@
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 AILEAN.</p>
-        </div>
-    </footer>
+  <div class="wrap">
+    <span class="mark">AILEAN</span>
+    <a href="ailean-philosophy.html"><span data-lang="da">AI-filosofi</span><span data-lang="en">AI philosophy</span></a>
+    <a href="ailean-termer.html"><span data-lang="da">AI-termer</span><span data-lang="en">AI terms</span></a>
+    <a href="ailean-downloads.html"><span data-lang="da">Whitepaper og bog</span><span data-lang="en">White paper and book</span></a>
+    <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
+    <a href="ailean-privacy.html"><span data-lang="da">Privatliv</span><span data-lang="en">Privacy</span></a>
+    <span class="c">&copy; 2026 AILEAN</span>
+  </div>
+</footer>
 
     <script>
         // Language switching
@@ -474,5 +461,6 @@
 
     </script>
     <script src="assets/js/cookie-banner.js" defer></script>
+    <script src="assets/js/ailean-site.js" defer></script>
 </body>
 </html>

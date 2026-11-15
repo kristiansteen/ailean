@@ -1,73 +1,120 @@
+/* AILEAN cookie consent.
+   Google Analytics (G-N6T4H0QH68) is loaded only after the visitor accepts
+   statistics cookies. The choice is stored in localStorage ('ailean_consent':
+   'analytics' | 'necessary'). Any element with [data-cookie-settings] reopens the banner. */
 (function () {
-  if (localStorage.getItem('ailean_cookie_consent')) return;
+  var GA_ID = 'G-N6T4H0QH68';
+  var KEY = 'ailean_consent';
 
-  // Detect current language (matches ailean's lang system)
-  var lang = localStorage.getItem('ailean_lang') || 'da';
+  function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function lang() {
+    var l = document.documentElement.getAttribute('lang');
+    if (l !== 'en' && l !== 'da') { try { l = localStorage.getItem('ailean_lang'); } catch (e) {} }
+    return l === 'en' ? 'en' : 'da';
+  }
 
-  var text = lang === 'en'
-    ? 'We use essential cookies only to make our site work &mdash; no tracking, no ads.'
-    : 'Vi bruger kun n&oslash;dvendige cookies for at siden fungerer &mdash; ingen sporing, ingen annoncer.';
-  var privacyLabel = lang === 'en' ? 'Privacy policy' : 'Privatlivspolitik';
-  var btnLabel = lang === 'en' ? 'Got it' : 'OK, forst&aring;et';
+  var gaLoaded = false;
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
 
-  var banner = document.createElement('div');
-  banner.id = 'cookie-banner';
-  banner.innerHTML = [
-    '<div id="cookie-banner-inner">',
-    '  <span id="cookie-banner-text">',
-    '    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:#65c434">',
-    '      <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>',
-    '      <path d="M12 8v4m0 4h.01"/>',
-    '    </svg>',
-    '    ' + text + ' <a href="ailean-privacy.html" id="cookie-privacy-link">' + privacyLabel + '</a>',
-    '  </span>',
-    '  <button id="cookie-accept-btn">' + btnLabel + '</button>',
-    '</div>',
-  ].join('');
+  function clearGACookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (name === '_ga' || name.indexOf('_ga_') === 0) {
+        var host = location.hostname.replace(/^www\./, '');
+        ['', '; domain=' + host, '; domain=.' + host].forEach(function (d) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + d;
+        });
+      }
+    });
+  }
 
-  var style = document.createElement('style');
-  style.textContent = [
-    '#cookie-banner{',
-    '  position:fixed;bottom:0;left:0;right:0;z-index:9999;',
-    '  background:rgba(10,10,10,0.97);',
-    '  border-top:1px solid rgba(101,196,52,0.25);',
-    '  backdrop-filter:blur(8px);',
-    '  padding:14px 24px;',
-    '  transform:translateY(100%);',
-    '  transition:transform 0.3s ease;',
-    '}',
-    '#cookie-banner.visible{transform:translateY(0);}',
-    '#cookie-banner-inner{',
-    '  max-width:1200px;margin:0 auto;',
-    '  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;',
-    '}',
-    '#cookie-banner-text{',
-    '  display:flex;align-items:center;gap:10px;',
-    '  color:rgba(255,255,255,0.75);font-size:13px;font-family:Inter,sans-serif;line-height:1.5;',
-    '}',
-    '#cookie-privacy-link{color:#65c434;text-decoration:none;margin-left:4px;}',
-    '#cookie-privacy-link:hover{text-decoration:underline;}',
-    '#cookie-accept-btn{',
-    '  flex-shrink:0;',
-    '  background:#65c434;color:#fff;border:none;',
-    '  padding:8px 20px;border-radius:8px;',
-    '  font-size:13px;font-weight:600;font-family:Inter,sans-serif;',
-    '  cursor:pointer;transition:background 0.15s;white-space:nowrap;',
-    '}',
-    '#cookie-accept-btn:hover{background:#3d7a1f;}',
-  ].join('');
+  var TEXT = {
+    da: {
+      body: 'Vi vil gerne måle, hvordan siden bruges, med Google Analytics. Det sker kun, hvis du siger ja. Nødvendige cookies bruges altid.',
+      privacy: 'Privatlivspolitik',
+      accept: 'Tillad statistik',
+      decline: 'Kun nødvendige'
+    },
+    en: {
+      body: 'We would like to measure how the site is used with Google Analytics. That only happens if you say yes. Necessary cookies are always used.',
+      privacy: 'Privacy policy',
+      accept: 'Allow statistics',
+      decline: 'Necessary only'
+    }
+  };
 
-  document.head.appendChild(style);
-  document.body.appendChild(banner);
+  function injectStyle() {
+    if (document.getElementById('cookie-banner-style')) return;
+    var st = document.createElement('style');
+    st.id = 'cookie-banner-style';
+    st.textContent =
+      '#cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#151515;color:#F1F1EE;' +
+      'font:14px/1.5 Inter,"Helvetica Neue",Helvetica,Arial,sans-serif;padding:16px 24px;transform:translateY(100%);transition:transform .25s ease}' +
+      '#cookie-banner.visible{transform:none}' +
+      '#cookie-banner .cb-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}' +
+      '#cookie-banner p{flex:1 1 420px;margin:0;color:#F1F1EE}' +
+      '#cookie-banner a{color:#F1F1EE;text-decoration:underline;margin-left:4px}' +
+      '#cookie-banner .cb-btns{display:flex;gap:10px;flex-wrap:wrap}' +
+      '#cookie-banner button{font:inherit;font-weight:500;border-radius:999px;padding:8px 18px;cursor:pointer;border:1px solid #F1F1EE}' +
+      '#cookie-banner .cb-yes{background:#F1F1EE;color:#151515}' +
+      '#cookie-banner .cb-no{background:transparent;color:#F1F1EE}' +
+      '#cookie-banner button:hover{background:#E8500A;border-color:#E8500A;color:#fff}' +
+      '#cookie-banner button:focus-visible{outline:2px solid #E8500A;outline-offset:2px}' +
+      '@media (prefers-reduced-motion:reduce){#cookie-banner{transition:none}}';
+    document.head.appendChild(st);
+  }
 
-  requestAnimationFrame(function () {
-    requestAnimationFrame(function () { banner.classList.add('visible'); });
-  });
+  function show() {
+    var old = document.getElementById('cookie-banner');
+    if (old) old.remove();
+    injectStyle();
+    var t = TEXT[lang()];
+    var b = document.createElement('div');
+    b.id = 'cookie-banner';
+    b.setAttribute('role', 'region');
+    b.setAttribute('aria-label', 'Cookies');
+    b.innerHTML =
+      '<div class="cb-in"><p>' + t.body + '<a href="ailean-privacy.html#cookies">' + t.privacy + '</a></p>' +
+      '<div class="cb-btns"><button type="button" class="cb-no">' + t.decline + '</button>' +
+      '<button type="button" class="cb-yes">' + t.accept + '</button></div></div>';
+    document.body.appendChild(b);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { b.classList.add('visible'); }); });
 
-  document.getElementById('cookie-accept-btn').addEventListener('click', function () {
-    localStorage.setItem('ailean_cookie_consent', '1');
-    banner.style.transition = 'transform 0.2s ease';
-    banner.style.transform = 'translateY(100%)';
-    setTimeout(function () { banner.remove(); }, 250);
-  });
+    function close() {
+      b.classList.remove('visible');
+      setTimeout(function () { b.remove(); }, 260);
+    }
+    b.querySelector('.cb-yes').addEventListener('click', function () { set('analytics'); loadGA(); close(); });
+    b.querySelector('.cb-no').addEventListener('click', function () {
+      var had = get() === 'analytics';
+      set('necessary'); clearGACookies(); close();
+      if (had && gaLoaded) location.reload(); /* stop the already-loaded script */
+    });
+  }
+
+  function init() {
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest && e.target.closest('[data-cookie-settings]');
+      if (!el) return;
+      e.preventDefault();
+      show();
+    });
+    var c = get();
+    if (c === 'analytics') loadGA();
+    else if (c !== 'necessary') show();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

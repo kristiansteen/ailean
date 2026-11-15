@@ -2,15 +2,6 @@
 <html lang="da">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6T4H0QH68"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-N6T4H0QH68');
-    </script>
     <link rel="icon" type="image/svg+xml" href="favicon-ailean.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -277,7 +268,7 @@
         <button type="button" class="lang-btn" data-lang-switch="en">EN</button>
       </div>
       <a class="login" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
-      <a class="btn solid small" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
+      <a class="btn solid small" href="https://voice-2-launch.vercel.app/?register=1"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
     </div>
   </div>
 </header>
@@ -297,6 +288,8 @@
                 <div class="hero-description">
                     <p data-lang="da">Vælg den plan, der passer til din organisation — fra enkeltperson til stor virksomhed.</p>
                     <p data-lang="en">Choose the plan that fits your organisation — from individual to large enterprise.</p>
+                    <p data-lang="da">Start gratis: din første proces er inkluderet, og du skal ikke bruge kreditkort.</p>
+                    <p data-lang="en">Start free: your first process is included, and no credit card is needed.</p>
                 </div>
             </div>
         </div>
@@ -500,8 +493,8 @@
             <h2 style="color:var(--white);font-size:2rem;font-weight:900;margin-bottom:1rem;" data-lang="en">Ready to get started?</h2>
             <p style="color:rgba(21,21,21,0.96);max-width:540px;margin:0 auto 2rem;line-height:1.7;" data-lang="da">Prøv AILEAN gratis — ingen kreditkort, ingen binding. Opgrader når du er klar.</p>
             <p style="color:rgba(21,21,21,0.96);max-width:540px;margin:0 auto 2rem;line-height:1.7;" data-lang="en">Try AILEAN for free — no credit card, no commitment. Upgrade when you're ready.</p>
-            <a href="https://voice-2-launch.vercel.app/" class="cta-button" data-lang="da">Kom i gang gratis</a>
-            <a href="https://voice-2-launch.vercel.app/" class="cta-button" data-lang="en">Get started free</a>
+            <a href="https://voice-2-launch.vercel.app/?register=1" class="cta-button" data-lang="da">Kom i gang gratis</a>
+            <a href="https://voice-2-launch.vercel.app/?register=1" class="cta-button" data-lang="en">Get started free</a>
         </div>
     </section>
 
@@ -514,6 +507,7 @@
     <a href="ailean-downloads.html"><span data-lang="da">Whitepaper og bog</span><span data-lang="en">White paper and book</span></a>
     <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
     <a href="ailean-privacy.html"><span data-lang="da">Privatliv</span><span data-lang="en">Privacy</span></a>
+    <a href="#" data-cookie-settings><span data-lang="da">Cookie-indstillinger</span><span data-lang="en">Cookie settings</span></a>
     <span class="c">&copy; 2026 AILEAN</span>
   </div>
 </footer>
@@ -533,5 +527,6 @@
         });
     </script>
     <script src="assets/js/ailean-site.js" defer></script>
+    <script src="assets/js/cookie-banner.js" defer></script>
 </body>
 </html>

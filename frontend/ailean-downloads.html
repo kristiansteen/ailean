@@ -2,15 +2,6 @@
 <html lang="da">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6T4H0QH68"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-N6T4H0QH68');
-    </script>
     <link rel="icon" type="image/svg+xml" href="favicon-ailean.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +30,7 @@
         <button type="button" class="lang-btn" data-lang-switch="en">EN</button>
       </div>
       <a class="login" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Log ind</span><span data-lang="en">Log in</span></a>
-      <a class="btn solid small" href="https://voice-2-launch.vercel.app/"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
+      <a class="btn solid small" href="https://voice-2-launch.vercel.app/?register=1"><span data-lang="da">Opret konto</span><span data-lang="en">Sign up</span></a>
     </div>
   </div>
 </header>
@@ -140,6 +131,7 @@
     <a href="ailean-downloads.html"><span data-lang="da">Whitepaper og bog</span><span data-lang="en">White paper and book</span></a>
     <a href="ailean-pricing.html"><span data-lang="da">Priser</span><span data-lang="en">Pricing</span></a>
     <a href="ailean-privacy.html"><span data-lang="da">Privatliv</span><span data-lang="en">Privacy</span></a>
+    <a href="#" data-cookie-settings><span data-lang="da">Cookie-indstillinger</span><span data-lang="en">Cookie settings</span></a>
     <span class="c">&copy; 2026 AILEAN</span>
   </div>
 </footer>
@@ -278,6 +270,7 @@
                 });
 
                 const result = response.ok ? await response.json().catch(() => ({})) : {};
+                if (response.ok && window.aileanTrack) window.aileanTrack('generate_lead', { documents: selectedFilenames.length });
                 if (result.confirmed) {
                     // Confirmation email sent — show enhanced success
                     const successDa = 'Tak for din interesse! Dine downloads er startet, og vi har sendt dig en bekræftelsesmail.';

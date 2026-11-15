@@ -1738,10 +1738,3 @@ body section.reads{padding:72px 0 88px!important;border-top:1px solid var(--line
 .read p{color:var(--mid);margin-top:6px}
 .reads-note{font-size:13px;color:var(--mid);margin-top:14px}
 @media (max-width:700px){.reads-grid{grid-template-columns:1fr;gap:24px}}
-
-/* cookie banner in the site style */
-html body #cookie-banner{background:#151515!important;border-top:0!important;color:#F1F1EE!important;font-family:inherit}
-html body #cookie-banner svg{color:#F1F1EE!important}
-html body #cookie-banner a{color:#F1F1EE!important;text-decoration:underline}
-html body #cookie-banner button{background:#F1F1EE!important;color:#151515!important;border:0!important;border-radius:999px!important;font-weight:500!important;box-shadow:none!important}
-html body #cookie-banner button:hover{background:#E8500A!important;color:#fff!important}

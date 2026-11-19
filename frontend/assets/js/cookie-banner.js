@@ -86,7 +86,7 @@
     b.setAttribute('role', 'region');
     b.setAttribute('aria-label', 'Cookies');
     b.innerHTML =
-      '<div class="cb-in"><p>' + t.body + '<a href="ailean-privacy.html#cookies">' + t.privacy + '</a></p>' +
+      '<div class="cb-in"><p>' + t.body + '<a href="https://app.vimpl.com/privacy.html#3-cookies-and-browser-storage">' + t.privacy + '</a></p>' +
       '<div class="cb-btns"><button type="button" class="cb-no">' + t.decline + '</button>' +
       '<button type="button" class="cb-yes">' + t.accept + '</button></div></div>';
     document.body.appendChild(b);

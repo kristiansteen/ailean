@@ -21,6 +21,31 @@
       "source": "/ailean-cases.html",
       "destination": "/ailean-philosophy",
       "permanent": false
+    },
+    {
+      "source": "/ailean-privacy",
+      "destination": "https://app.vimpl.com/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/ailean-privacy.html",
+      "destination": "https://app.vimpl.com/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "https://app.vimpl.com/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "https://app.vimpl.com/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/dpa",
+      "destination": "https://app.vimpl.com/dpa.html",
+      "permanent": true
     }
   ]
 }

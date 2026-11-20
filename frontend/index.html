@@ -266,6 +266,18 @@ footer .c{margin-left:auto}
       </div>
     </div>
 
+    <figure class="shot hero-video" style="margin:40px 0 0">
+      <video id="demo-short" muted playsinline autoplay controls preload="auto" width="1920" height="1080" poster="assets/video/ailean-demo-short-poster.jpg"
+             aria-label="Ailean product demo, 30 seconds"
+             style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#151515">
+        <source src="assets/video/ailean-demo-short.mp4" type="video/mp4">
+      </video>
+      <figcaption>
+        <span data-lang="da">30 sekunder, uden lyd. Slå lyden til for voiceover. <a href="#video">Se hele gennemgangen</a>.</span>
+        <span data-lang="en">30 seconds, muted. Turn on the sound for the voiceover. <a href="#video">Watch the full walkthrough</a>.</span>
+      </figcaption>
+    </figure>
+
     <div class="unit" id="demo">
       <div class="unit-head">
         <b>AILEAN</b>
@@ -398,14 +410,14 @@ footer .c{margin-left:auto}
     <p class="sub" data-lang="da">Tre fagpersoner beskriver den samme proces. Ailean viser, hvor de er uenige, og fører den aftalte proces videre til forbedringer, plan og en playbook til Amazon Quick.</p>
     <p class="sub" data-lang="en">Three subject-matter experts describe the same process. Ailean shows where they disagree and takes the agreed process on to improvements, a plan and a playbook for Amazon Quick.</p>
     <figure class="shot">
-      <video controls playsinline preload="none" width="1920" height="1080" poster="assets/video/ailean-demo-poster.jpg"
+      <video id="demo-long" controls playsinline preload="metadata" width="1920" height="1080" poster="assets/video/ailean-demo-poster.jpg"
              aria-label="Ailean product demo"
              style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#151515">
         <source src="assets/video/ailean-demo.mp4" type="video/mp4">
       </video>
       <figcaption>
-        <span data-lang="da">Optaget i Ailean med eksempeldata. Uden lyd, med engelske tekster.</span>
-        <span data-lang="en">Recorded in Ailean with example data. No sound, captions in English.</span>
+        <span data-lang="da">Optaget i Ailean med eksempeldata. Med voiceover og engelske tekster.</span>
+        <span data-lang="en">Recorded in Ailean with example data. With voiceover and captions in English.</span>
       </figcaption>
     </figure>
   </div>
@@ -661,5 +673,13 @@ footer .c{margin-left:auto}
 </script>
 <script src="assets/js/ailean-site.js" defer></script>
 <script src="assets/js/cookie-banner.js" defer></script>
+<script>
+(function(){
+  var s=document.getElementById('demo-short'), l=document.getElementById('demo-long');
+  if(!s) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ s.removeAttribute('autoplay'); s.pause(); }
+  if(l) l.addEventListener('play',function(){ s.pause(); });
+})();
+</script>
 </body>
 </html>

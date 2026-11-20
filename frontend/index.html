@@ -54,83 +54,15 @@ h1{font-weight:500;font-size:clamp(2.5rem,5.6vw,4.6rem);line-height:1.02;letter-
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 
 /* Instrument */
-.unit{margin-top:56px;background:var(--case);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 1px 0 #fff inset,0 30px 60px -40px rgba(0,0,0,.35)}
-.unit-head{display:flex;justify-content:space-between;align-items:baseline;padding:4px 10px 12px;font-size:13px;color:var(--mid)}
-.unit-head b{color:var(--ink);font-weight:600;letter-spacing:.1em;font-size:12px}
-.unit-body{display:grid;grid-template-columns:168px 1fr;gap:14px}
-.side{display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:22px 0 14px}
-.grille{width:124px;height:124px;border-radius:50%;background:radial-gradient(circle,var(--ink) 1.7px,transparent 2.1px) 0 0/10px 10px;opacity:.28;transition:opacity .25s}
-.grille.live{opacity:.95;animation:talk .9s ease-in-out infinite}
-@keyframes talk{50%{opacity:.5}}
-.side-label{font-size:12px;color:var(--mid);margin-top:10px;min-height:1.4em;text-align:center}
-.play{width:64px;height:64px;border-radius:50%;border:0;background:var(--signal);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 0 rgba(0,0,0,.25),0 0 0 6px var(--paper)}
-.play:active{transform:translateY(1px);box-shadow:0 1px 0 rgba(0,0,0,.25),0 0 0 6px var(--paper)}
-.play svg{width:22px;height:22px;fill:#fff}
-.play-cap{font-size:12px;color:var(--mid);margin-top:12px}
-.screen{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-height:560px;padding:26px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-.stage{display:none}
-.stage.show{display:block;width:100%}
-.rv{opacity:0;transform:translateY(4px);transition:opacity .35s,transform .35s}
-.rv.on{opacity:1;transform:none}
-.stage-title{font-size:13px;color:var(--mid);margin-bottom:16px}
 
 /* stage 1 */
-.talk{display:flex;flex-direction:column;gap:9px;max-width:720px}
-.say{font-size:15px;line-height:1.42;padding:9px 14px;border-radius:12px;max-width:86%}
-.say small{display:block;font-size:11px;font-weight:600;color:var(--mid);margin-bottom:1px}
-.say.ai{background:#fff;border:1px solid var(--line);align-self:flex-start}
-.say.me{background:var(--ink);color:var(--paper);align-self:flex-end}
-.say.me small{color:#A9A9A3}
 /* stage 2 */
-.sheet{display:grid;grid-template-columns:1fr 1fr;gap:6px 40px;font-size:14px}
-.sheet h4{font-size:12px;font-weight:600;color:var(--mid);margin:12px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px}
-.sheet ol,.sheet ul{list-style:none}
-.sheet li{padding:3px 0;display:flex;gap:10px}
-.sheet li span:first-child{color:var(--mid);min-width:1.2em;font-variant-numeric:tabular-nums}
-.sheet li em{font-style:normal;color:var(--mid);margin-left:auto;text-align:right;font-size:13px}
-.sheet .name{grid-column:1/-1;font-size:1.35rem;font-weight:500;letter-spacing:-.01em}
 /* stage 3 */
-.bpmn{width:100%;height:auto;display:block}
-.bpmn .lane{fill:none;stroke:var(--line)}
-.bpmn .lane-t{font-size:10.5px;fill:var(--mid)}
-.bpmn .task{fill:#fff;stroke:var(--ink);stroke-width:1.2}
-.bpmn .ex{stroke-dasharray:4 3}
-.bpmn .gw{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
-.bpmn .ev{fill:#fff;stroke:var(--ink);stroke-width:1.4}
 .bpmn .ev.end{stroke-width:3.4;stroke:var(--signal)}
-.bpmn text{font-family:inherit;font-size:10.5px;fill:var(--ink)}
-.bpmn .gl{font-size:9.5px;fill:var(--mid)}
-.bpmn .flow{fill:none;stroke:var(--ink);stroke-width:1.1}
-.bpmn g.rv{transform:none}
 /* stage 4 */
-.ideas{display:grid;gap:0;font-size:14px}
-.idea{display:grid;grid-template-columns:22px 1fr 150px 150px;gap:18px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
-.idea:first-child{border-top:1px solid var(--line)}
-.tick{width:16px;height:16px;border-radius:50%;border:1.4px solid var(--ink)}
-.tick.sel{background:var(--signal);border-color:var(--signal)}
-.idea b{font-weight:500;display:block}
-.idea p{color:var(--mid);font-size:13px}
-.meter{font-size:11px;color:var(--mid)}
-.meter i{display:block;height:4px;background:var(--line);border-radius:2px;margin-top:5px;position:relative}
-.meter i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--v);background:var(--ink);border-radius:2px}
 /* stage 5 */
-.plan{display:grid;grid-template-columns:1fr 1fr;gap:36px}
-.gains{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
-.gain{padding:14px 0}
-.gain strong{font-size:2.6rem;font-weight:500;letter-spacing:-.03em;display:block;line-height:1}
-.gain span{font-size:13px;color:var(--mid)}
-.plan h4{font-size:12px;font-weight:600;color:var(--mid);margin-bottom:8px}
-.plan ul{list-style:none;font-size:14px}
-.plan li{padding:7px 0;border-bottom:1px solid var(--line)}
-.note{font-size:12px;color:var(--mid);margin-top:14px}
 
 /* selector */
-.selector{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:14px}
-.selector button{font:inherit;font-size:14px;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:11px 14px;cursor:pointer;color:var(--mid);display:flex;gap:10px;align-items:center}
-.selector button i{font-style:normal;font-variant-numeric:tabular-nums;font-size:12px;width:20px;height:20px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;flex:none}
-.selector button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.selector button[aria-selected="true"] i{background:var(--signal);border-color:var(--signal);color:#fff}
-.unit-foot{font-size:12px;color:var(--mid);padding:10px 10px 2px}
 
 /* Sections */
 section{padding:96px 0}
@@ -188,21 +120,6 @@ footer .c{margin-left:auto}
   .nav{display:none}
   .hero{padding-top:48px}
   .hero-grid{grid-template-columns:1fr;gap:20px}
-  .unit-body{grid-template-columns:1fr}
-  .side{flex-direction:row;gap:18px;padding:6px 10px;justify-content:flex-start}
-  .grille{width:56px;height:56px}
-  .side-label{margin:0;text-align:left;flex:1}
-  .play{width:52px;height:52px}
-  .play-cap{display:none}
-  .screen{padding:18px 16px;min-height:0}
-  .selector{grid-template-columns:repeat(5,1fr)}
-  .selector button{padding:9px 6px;justify-content:center}
-  .selector button span{display:none}
-  .sheet,.plan{grid-template-columns:1fr}
-  .idea{grid-template-columns:22px 1fr}
-  .idea .meter{display:none}
-  .bpmn-scroll{overflow-x:auto}
-  .bpmn{min-width:720px}
   .steps li{grid-template-columns:36px 1fr;gap:6px 12px}
   .steps p{grid-column:2}
   .cols,.price{grid-template-columns:1fr;gap:28px}
@@ -220,8 +137,6 @@ footer .c{margin-left:auto}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .rv{transition:none}
-  .grille.live{animation:none}
 }
 </style>
 </head>
@@ -277,130 +192,6 @@ footer .c{margin-left:auto}
         <span data-lang="en">30 seconds, muted. Turn on the sound for the voiceover. <a href="#video">Watch the full walkthrough</a>.</span>
       </figcaption>
     </figure>
-
-    <div class="unit" id="demo">
-      <div class="unit-head">
-        <b>AILEAN</b>
-        <span><span data-lang="da">Session: fakturagodkendelse</span><span data-lang="en">Session: invoice approval</span></span>
-      </div>
-      <div class="unit-body">
-        <div class="side">
-          <div style="display:flex;flex-direction:column;align-items:center">
-            <div class="grille" id="grille" aria-hidden="true"></div>
-            <div class="side-label" id="sideLabel" aria-live="polite"></div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center">
-            <button class="play" id="play" type="button" aria-label="Afspil demo / Play demo">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
-            </button>
-            <div class="play-cap"><span data-lang="da">Afspil forfra</span><span data-lang="en">Play from start</span></div>
-          </div>
-        </div>
-
-        <div class="screen">
-          <!-- 1 Describe -->
-          <div class="stage" data-stage="0">
-            <div class="talk">
-              <div class="say ai rv"><small><span data-lang="da">Ailean</span><span data-lang="en">Ailean</span></small><span data-lang="da">Fortæl mig, hvad der sker, fra en faktura kommer ind.</span><span data-lang="en">Walk me through what happens from the moment an invoice arrives.</span></div>
-              <div class="say me rv"><small><span data-lang="da">Økonomichef</span><span data-lang="en">Finance manager</span></small><span data-lang="da">Den lander i bogholderiets indbakke. Marcus tjekker beløbet mod indkøbsordren og taster den ind i systemet.</span><span data-lang="en">It lands in the accounts inbox. Marcus checks the amount against the purchase order and keys it into the system.</span></div>
-              <div class="say ai rv"><small><span data-lang="da">Ailean</span><span data-lang="en">Ailean</span></small><span data-lang="da">Næste trin er, at indkøb gennemgår kontering og omkostningssted. Hvad kan gå galt her, eller hvilke undtagelser er der?</span><span data-lang="en">The next step is procurement reviewing the coding and cost centre. What can go wrong here, or what are some exceptions?</span></div>
-              <div class="say me rv"><small><span data-lang="da">Økonomichef</span><span data-lang="en">Finance manager</span></small><span data-lang="da">Hvis beløbet eller konteringen er forkert, går den tilbage til Marcus, og han beder leverandøren om en rettet faktura.</span><span data-lang="en">If the amount or the coding is wrong it goes back to Marcus, and he asks the vendor for a corrected invoice.</span></div>
-              <div class="say ai rv"><small><span data-lang="da">Ailean</span><span data-lang="en">Ailean</span></small><span data-lang="da">Og hvis der ikke er en indkøbsordre i systemet?</span><span data-lang="en">And if there is no purchase order in the system?</span></div>
-              <div class="say me rv"><small><span data-lang="da">Økonomichef</span><span data-lang="en">Finance manager</span></small><span data-lang="da">Så opretter vi en, og sikrer os, at vi ikke betaler den samme faktura to gange.</span><span data-lang="en">Then we create one, and make sure we don't pay the same invoice twice.</span></div>
-              <div class="say ai rv"><small><span data-lang="da">Ailean</span><span data-lang="en">Ailean</span></small><span data-lang="da">Så har vi gennemgået alle trin og deres undtagelser.</span><span data-lang="en">Then we have covered all the steps and their exceptions.</span></div>
-            </div>
-          </div>
-
-          <!-- 2 Review -->
-          <div class="stage" data-stage="1">
-            <div class="sheet">
-              <div class="name rv"><span data-lang="da">Godkendelse af indgående fakturaer</span><span data-lang="en">Invoice Approval Handling Process</span></div>
-              <div>
-                <h4 class="rv"><span data-lang="da">Trin</span><span data-lang="en">Steps</span></h4>
-                <ol>
-                  <li class="rv"><span>1</span><span data-lang="da">Modtag faktura</span><span data-lang="en">Invoice receipt</span><em><span data-lang="da">Bogholderi</span><span data-lang="en">Accounts staff</span></em></li>
-                  <li class="rv"><span>2</span><span data-lang="da">Kontrollér mod indkøbsordre</span><span data-lang="en">Verify against purchase order</span><em><span data-lang="da">Bogholderi</span><span data-lang="en">Accounts staff</span></em></li>
-                  <li class="rv"><span>3</span><span data-lang="da">Manuel indtastning</span><span data-lang="en">Manual system entry</span><em><span data-lang="da">Bogholderi</span><span data-lang="en">Accounts staff</span></em></li>
-                  <li class="rv"><span>4</span><span data-lang="da">Gennemgang og godkendelse i indkøb</span><span data-lang="en">Procurement review and approval</span><em><span data-lang="da">Indkøbschef</span><span data-lang="en">Procurement head</span></em></li>
-                  <li class="rv"><span>5</span><span data-lang="da">Afdelingschef godkender</span><span data-lang="en">Department head sign-off</span><em><span data-lang="da">Afdelingschef</span><span data-lang="en">Department head</span></em></li>
-                  <li class="rv"><span>6</span><span data-lang="da">Proces afsluttet</span><span data-lang="en">Process complete</span><em><span data-lang="da">Økonomi</span><span data-lang="en">Finance</span></em></li>
-                </ol>
-              </div>
-              <div>
-                <h4 class="rv"><span data-lang="da">Roller</span><span data-lang="en">Roles</span></h4>
-                <ul>
-                  <li class="rv"><span data-lang="da">Bogholderi</span><span data-lang="en">Accounts Receivable Staff</span></li>
-                  <li class="rv"><span data-lang="da">Indkøbschef</span><span data-lang="en">Procurement / Purchase Department Head</span></li>
-                  <li class="rv"><span data-lang="da">Afdelingschef</span><span data-lang="en">Department Head</span></li>
-                </ul>
-                <h4 class="rv"><span data-lang="da">Undtagelser</span><span data-lang="en">Exceptions</span></h4>
-                <ul>
-                  <li class="rv"><span data-lang="da">Beløb eller kontering forkert: leverandøren sender en rettet faktura</span><span data-lang="en">Amount or coding wrong: vendor sends a corrected invoice</span></li>
-                  <li class="rv"><span data-lang="da">Ingen indkøbsordre: opret en, og tjek for dubletter</span><span data-lang="en">No purchase order found: create one, check for duplicates</span></li>
-                </ul>
-                <h4 class="rv"><span data-lang="da">Kendte problemer</span><span data-lang="en">Known issues</span></h4>
-                <ul>
-                  <li class="rv"><span data-lang="da">Manuel indtastning giver tastefejl</span><span data-lang="en">Manual entry invites data entry errors</span></li>
-                  <li class="rv"><span data-lang="da">Ingen får besked, når fakturaen er klar til betaling</span><span data-lang="en">Nobody is told when the invoice is ready for payment</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3 Diagram -->
-          <div class="stage" data-stage="2">
-            <div class="bpmn-scroll"><svg class="bpmn" id="bpmn" viewBox="0 0 940 408" role="img" aria-label="BPMN-diagram / BPMN diagram"></svg></div>
-          </div>
-
-          <!-- 4 Improve -->
-          <div class="stage" data-stage="3">
-            <div class="stage-title rv"><span data-lang="da">3 af 8 forslag valgt</span><span data-lang="en">3 of 8 suggestions selected</span></div>
-            <div class="ideas">
-              <div class="idea rv"><span class="tick sel"></span><div><b><span data-lang="da">OCR og automatisk aflæsning af fakturadata</span><span data-lang="en">OCR and automated invoice data extraction</span></b><p><span data-lang="da">Erstatter manuel modtagelse og indtastning.</span><span data-lang="en">Replaces manual receipt and data entry.</span></p></div><div class="meter"><span data-lang="da">Indsats</span><span data-lang="en">Effort</span> 55<i style="--v:55%"></i></div><div class="meter"><span data-lang="da">Effekt</span><span data-lang="en">Impact</span> 80<i style="--v:80%"></i></div></div>
-              <div class="idea rv"><span class="tick"></span><div><b><span data-lang="da">AI-baseret match mod indkøbsordrer og afvigelser</span><span data-lang="en">AI-powered PO matching and anomaly detection</span></b><p><span data-lang="da">Matcher fakturaer med indkøbsordrer og finder dubletter.</span><span data-lang="en">Matches invoices to purchase orders and flags duplicates.</span></p></div><div class="meter"><span data-lang="da">Indsats</span><span data-lang="en">Effort</span> 60<i style="--v:60%"></i></div><div class="meter"><span data-lang="da">Effekt</span><span data-lang="en">Impact</span> 85<i style="--v:85%"></i></div></div>
-              <div class="idea rv"><span class="tick sel"></span><div><b><span data-lang="da">Godkendelsesflow for nye indkøbsordrer med politikregler</span><span data-lang="en">PO creation approval workflow with policy engine</span></b><p><span data-lang="da">En formel kontrol, før en indkøbsordre kan oprettes.</span><span data-lang="en">A formal gate before a purchase order can be created.</span></p></div><div class="meter"><span data-lang="da">Indsats</span><span data-lang="en">Effort</span> 50<i style="--v:50%"></i></div><div class="meter"><span data-lang="da">Effekt</span><span data-lang="en">Impact</span> 75<i style="--v:75%"></i></div></div>
-              <div class="idea rv"><span class="tick sel"></span><div><b><span data-lang="da">Dashboard og KPI-opfølgning på fakturabehandling</span><span data-lang="en">Invoice processing dashboard and KPI monitoring</span></b><p><span data-lang="da">Gennemløbstid, afvisninger og flaskehalse, synligt for alle roller.</span><span data-lang="en">Cycle time, rejection rates and bottlenecks, visible to all roles.</span></p></div><div class="meter"><span data-lang="da">Indsats</span><span data-lang="en">Effort</span> 30<i style="--v:30%"></i></div><div class="meter"><span data-lang="da">Effekt</span><span data-lang="en">Impact</span> 65<i style="--v:65%"></i></div></div>
-              <div class="idea rv"><span class="tick"></span><div><b><span data-lang="da">Mobilgodkendelse for afdelingschefen</span><span data-lang="en">Mobile approval for department sign-off</span></b><p><span data-lang="da">Digital godkendelse med revisionsspor.</span><span data-lang="en">Digital sign-off with an audit trail.</span></p></div><div class="meter"><span data-lang="da">Indsats</span><span data-lang="en">Effort</span> 28<i style="--v:28%"></i></div><div class="meter"><span data-lang="da">Effekt</span><span data-lang="en">Impact</span> 68<i style="--v:68%"></i></div></div>
-            </div>
-          </div>
-
-          <!-- 5 Plan -->
-          <div class="stage" data-stage="4">
-            <div class="plan">
-              <div>
-                <h4 class="rv"><span data-lang="da">Estimeret gevinst, TO-BE mod AS-IS</span><span data-lang="en">Estimated gains, TO-BE against AS-IS</span></h4>
-                <div class="gains">
-                  <div class="gain rv"><strong>−23%</strong><span><span data-lang="da">gennemløbstid</span><span data-lang="en">lead time</span></span></div>
-                  <div class="gain rv"><strong>−23%</strong><span><span data-lang="da">omkostninger</span><span data-lang="en">cost</span></span></div>
-                  <div class="gain rv"><strong>−39%</strong><span><span data-lang="da">kø</span><span data-lang="en">backlog</span></span></div>
-                </div>
-              </div>
-              <div>
-                <h4 class="rv"><span data-lang="da">Hovedleverancer</span><span data-lang="en">Key deliverables</span></h4>
-                <ul>
-                  <li class="rv"><span data-lang="da">Indfør OCR og automatisk aflæsning af fakturadata</span><span data-lang="en">Implement OCR and automated invoice data extraction</span></li>
-                  <li class="rv"><span data-lang="da">Etablér godkendelsesflow for nye indkøbsordrer</span><span data-lang="en">Establish PO creation approval workflow with policy engine</span></li>
-                  <li class="rv"><span data-lang="da">Indfør dashboard og KPI-opfølgning</span><span data-lang="en">Implement invoice processing dashboard and KPI monitoring</span></li>
-                </ul>
-                <p class="note rv"><span data-lang="da">Planen åbner som en projekttavle med opgaver, milepæle og risici.</span><span data-lang="en">The plan opens as a project board with tasks, milestones and risks.</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="selector" role="tablist" aria-label="Demo steps">
-        <button type="button" role="tab" data-go="0"><i>1</i><span><span data-lang="da">Beskriv</span><span data-lang="en">Describe</span></span></button>
-        <button type="button" role="tab" data-go="1"><i>2</i><span><span data-lang="da">Gennemse</span><span data-lang="en">Review</span></span></button>
-        <button type="button" role="tab" data-go="2"><i>3</i><span>Diagram</span></button>
-        <button type="button" role="tab" data-go="3"><i>4</i><span><span data-lang="da">Forbedr</span><span data-lang="en">Improve</span></span></button>
-        <button type="button" role="tab" data-go="4"><i>5</i><span><span data-lang="da">Planlæg</span><span data-lang="en">Plan</span></span></button>
-      </div>
-      <div class="unit-foot">
-        <span data-lang="da">Struktur, diagram, forslag og estimater er fra en rigtig Ailean-session. Interviewet er gengivet i forkortet form.</span>
-        <span data-lang="en">Structure, diagram, suggestions and estimates come from a real Ailean session. The interview is a shortened rendering.</span>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -575,100 +366,13 @@ footer .c{margin-left:auto}
       b.setAttribute('aria-pressed', b.getAttribute('data-lang-switch')===l ? 'true':'false');
     });
     try{localStorage.setItem(KEY,l)}catch(e){}
-    if(svg)drawDiagram();
-    label();
   }
   document.querySelectorAll('[data-lang-switch]').forEach(function(b){
     b.addEventListener('click',function(){setLang(b.getAttribute('data-lang-switch'))});
   });
 
-  /* Diagram, built from the session data */
-  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('bpmn');
-  function L(da,en){return html.getAttribute('lang')==='en'?en:da}
-  function drawDiagram(){
-  while(svg.firstChild)svg.removeChild(svg.firstChild);
-  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
-  function grp(){return el('g',{class:'rv'})}
-  el('defs',{}).innerHTML='<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#151515"/></marker>';
-  var lanes=[[8,162,L('Bogholderi','Accounts Receivable Staff')],[170,110,L('Indkøbschef','Procurement Head')],[280,120,L('Afdelingschef','Department Head')]];
-  var lg=grp();
-  lanes.forEach(function(l){
-    el('rect',{class:'lane',x:34,y:l[0],width:898,height:l[1]},lg);
-    el('rect',{class:'lane',x:8,y:l[0],width:26,height:l[1]},lg);
-    var t=el('text',{class:'lane-t','text-anchor':'middle',transform:'translate(25,'+(l[0]+l[1]/2)+') rotate(-90)'},lg);t.textContent=l[2];
-  });
-  function task(x,y,w,h,lines,ex){var g=grp();el('rect',{class:'task'+(ex?' ex':''),x:x,y:y,width:w,height:h,rx:5},g);
-    lines.forEach(function(s,i){var t=el('text',{x:x+w/2,y:y+h/2+(i-(lines.length-1)/2)*12.5+3.5,'text-anchor':'middle'},g);t.textContent=s});return g}
-  function gw(x,y,lab,lx,ly,anchor){var g=grp();el('path',{class:'gw',d:'M'+x+','+(y-14)+' L'+(x+14)+','+y+' L'+x+','+(y+14)+' L'+(x-14)+','+y+' z'},g);
-    el('path',{class:'flow',d:'M'+(x-4)+','+(y-4)+' L'+(x+4)+','+(y+4)+' M'+(x+4)+','+(y-4)+' L'+(x-4)+','+(y+4)},g);
-    var t=el('text',{class:'gl',x:lx,y:ly,'text-anchor':anchor||'middle'},g);t.textContent=lab;return g}
-  function flow(d,lab,lx,ly){var g=grp();el('path',{class:'flow',d:d,'marker-end':'url(#ah)'},g);
-    if(lab){var t=el('text',{class:'gl',x:lx,y:ly},g);t.textContent=lab}return g}
-  function ev(x,y,end){var g=grp();el('circle',{class:'ev'+(end?' end':''),cx:x,cy:y,r:9},g);return g}
-  ev(60,60);
-  flow('M69,60 L98,60'); task(100,38,96,44,L(['Modtag faktura','på e-mail'],['Receive invoice','by email']));
-  flow('M196,60 L220,60'); gw(236,60,L('Ordre i systemet?','PO in system?'),236,34);
-  flow('M250,60 L288,60'); task(290,38,96,44,L(['Kontrollér beløb','mod ordre'],['Verify amount','against PO']));
-  flow('M386,60 L410,60'); gw(426,60,L('Beløb stemmer?','Amount matches?'),426,34);
-  flow('M440,60 L478,60'); task(480,38,96,44,L(['Tast faktura','i systemet'],['Enter invoice','in system']));
-  flow('M236,74 L236,110',L('nej','no'),241,96); task(188,112,96,40,L(['Opret ordre, tjek','for dubletter'],['Create PO, check','for duplicates']),true);
-  flow('M284,132 L320,132 L320,84');
-  flow('M426,74 L426,110',L('nej','no'),431,96); task(378,112,96,40,L(['Bed om rettet','faktura'],['Ask vendor for','corrected invoice']),true);
-  flow('M378,132 L352,132 L352,84');
-  flow('M576,60 L672,60 L672,201'); task(620,203,104,44,L(['Gennemgå kontering','og omk.-sted'],['Review coding','and cost centre']));
-  flow('M724,225 L754,225'); gw(770,225,L('Kontering korrekt?','Coding correct?'),790,229,'start');
-  flow('M770,211 L770,186 L450,186 L450,154',L('nej','no'),776,200);
-  flow('M770,239 L770,321'); task(722,323,96,44,L(['Afdelingschef','godkender'],['Department head','sign-off']));
-  flow('M818,345 L858,345'); ev(869,345,true);
-  if(stages){var cs=stages[cur];if(cs&&cs.getAttribute('data-stage')==='2')cs.querySelectorAll('.rv').forEach(function(x){x.classList.add('on')})}
-  }
-  drawDiagram();
-
-  /* Player */
-  var stages=[].slice.call(document.querySelectorAll('.stage')),
-      tabs=[].slice.call(document.querySelectorAll('[data-go]')),
-      grille=document.getElementById('grille'), side=document.getElementById('sideLabel'),
-      pace=[1500,260,170,520,420], hold=[1600,2200,2600,2400,0],
-      labels={da:['Ailean interviewer','Svarene struktureres','AS-IS tegnes','Forslag vurderes','Planen er klar'],
-              en:['Ailean is interviewing','Structuring the answers','Drawing the AS-IS','Scoring suggestions','The plan is ready']},
-      cur=0, run=0, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function label(){side.textContent=(labels[html.getAttribute('lang')]||labels.da)[cur]}
-  function show(i,auto,instant){
-    var my=++run; cur=i;
-    stages.forEach(function(s,k){s.classList.toggle('show',k===i)});
-    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false')});
-    label();
-    var items=[].slice.call(stages[i].querySelectorAll('.rv'));
-    grille.classList.remove('live');
-    if(instant||reduce){items.forEach(function(x){x.classList.add('on')});return}
-    items.forEach(function(x){x.classList.remove('on')});
-    var n=0;
-    (function next(){
-      if(my!==run)return;
-      if(n<items.length){
-        var it=items[n++]; it.classList.add('on');
-        if(i===0)grille.classList.toggle('live',it.classList.contains('ai'));
-        setTimeout(next,pace[i]);
-      }else{
-        grille.classList.remove('live');
-        if(i===stages.length-1&&auto&&window.aileanTrack)window.aileanTrack('demo_complete');
-        if(auto&&i<stages.length-1)setTimeout(function(){if(my===run)show(i+1,true)},hold[i]);
-      }
-    })();
-  }
-  tabs.forEach(function(t){t.addEventListener('click',function(){show(+t.getAttribute('data-go'),false)})});
-  document.getElementById('play').addEventListener('click',function(){show(0,true)});
-
   var saved=null; try{saved=localStorage.getItem(KEY)}catch(e){}
   setLang(saved==='en'?'en':'da');
-  show(0,false,true);
-  stages[0].querySelectorAll('.rv').forEach(function(x,k){if(k>1)x.classList.remove('on')});
-  if(!reduce&&'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      if(es[0].isIntersecting){io.disconnect();show(0,true)}
-    },{threshold:.35});
-    io.observe(document.getElementById('demo'));
-  }else{show(0,false,true)}
 })();
 </script>
 <script src="assets/js/ailean-site.js" defer></script>
